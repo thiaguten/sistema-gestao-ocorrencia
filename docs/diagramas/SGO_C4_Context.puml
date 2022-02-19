@@ -1,0 +1,32 @@
+@startuml TCC_C4_Context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include FONTAWESOME/users.puml
+
+
+' SHOW_PERSON_OUTLINE()
+SHOW_PERSON_PORTRAIT()
+
+AddRelTag("async", $lineStyle = DashedLine())
+
+title Diagrama de Contexto
+
+Person(usuario, "Usuário", "Pessoa externa que pode interagir com o sistema de ocorrência")
+
+Enterprise_Boundary(boundary, "Prefeitura ou Administração Regional") {
+    System(sistema_sgo, "Sistema de Gestão de Ocorrência", "Gerencia Ocorrências sobre serviços de manutençao em estruturas que compõem uma infraestrutura urbana. Tais como: tapa buraco, vazamento água/esgoto, iluminação")
+    Person_Ext(empregado, "Pessoal de back office", "Administração e pessoal de apoio dentro da instituição.", $sprite = "users")
+    System_Ext(sistema_os, "Sistema de Gestão de Ordem de Serviço", "Gerencia Ordem de Serviço para execução.")
+}
+
+System_Ext(sistema_correios, "Sistema de Localização (Correios)", "Gerencia endereços")
+
+Rel(usuario, sistema_sgo, "Registra/Altera/Pesquisa/Cancela uma ocorrência", "HTTP")
+Rel_U(sistema_sgo, usuario, "Notifica sobre a situação de uma ocorrência via Email", "SMTP", $tags = "async")
+Rel_L(sistema_sgo, sistema_correios, "Busca um endereço a partir de um CEP para a ocorrência via Web Service", "HTTP")
+Rel_Neighbor(sistema_sgo, sistema_os, "Notificar quando uma ocorrência mudar para situação aprovada.", "Broker de mensageria", $tags = "async")
+Rel(empregado, sistema_sgo, "Analisa e atende uma ocorrência", "HTTP")
+Rel(empregado, sistema_os, "Analisa e atende uma ordem de serviço", "HTTP")
+
+@enduml

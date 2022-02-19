@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="584px" preserveAspectRatio="none" style="width:1052px;height:584px;background:#FFFFFF;" version="1.1" viewBox="0 0 1052 584" width="1052px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="201" x="419" y="16.708">Diagrama de Contexto</text><!--MD5=[3a46192ac4c9c59f028a21206f9a1da6]
+cluster boundary--><rect fill="#FFFFFF" height="551" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="655" x="391" y="27.9531"/><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="329" x="554" y="54.8047">Prefeitura ou Administração Regional</text><text fill="#444444" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="75" x="681" y="69.7168">[Enterprise]</text><!--MD5=[1acd731a2e4a42e1f88f5e684a68da77]
+entity sistema_sgo--><rect fill="#1168BD" height="201.5938" style="stroke:#3C7FC0;stroke-width:1.5;" width="220" x="407" y="360.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="58" x="488" y="382.0918">«system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="195" x="419.5" y="399.7734">Sistema de Gestão de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="97" x="468.5" y="418.3984">Ocorrência</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="519" y="435.167"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="193" x="422.5" y="451.4639">Gerencia Ocorrências sobre</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="196" x="417" y="467.7607">serviços de manutençao em</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176" x="427" y="484.0576">estruturas que compõem</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="182" x="424" y="500.3545">uma infraestrutura urbana.</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="432" y="516.6514">Tais como: tapa buraco,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="172" x="429" y="532.9482">vazamento água/esgoto,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="480.5" y="549.2451">iluminação</text><!--MD5=[a9bd0d0c0faf75003508f72120b38483]
+entity empregado--><rect fill="#686868" height="149.4844" style="stroke:#8A8A8A;stroke-width:1.5;" width="220" x="701" y="88.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="115" x="753.5" y="110.0918">«external_person»</text><image height="48" width="48" x="787" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACRklEQVR4Xu2WK3PDMBCE+3ONg4ONg4ODjYONg4ODg83dHV0qn1c6nax02k7HH7Req72H9dH9MT74w2+zC/LYBXnsgjy+QdDxeDydTn3fHw4HHttOuyAcf71ep2maFY/HA+J46hYaBcEPkqIZx5EXVNMiCDEqqBGaNbUIQlz4/BxtscsIulwuz+cTO8IGZAmN4hg+2QC607X3+30OO99uNzhNE7pUEKwu75tOKKDr7nw+0yhkpZpWgpCqtEbQPskVK8GGsgrKeCyQurgSZN0eEYxzKhNIiGmU2hOh7rUShLjy9AC8dedkiRFBXvLYFxS1laBhGHh6QBtb2JrQ1yiUQpwjrARZkYbh7pwUqlCpXCJtV1xl6VXSyreM1MAeSg6EhjShPvQEgQV1wQMcCe2QEsuEcDPJWoiIjwGrbWYEVWL5hIRLu0s9LAj2YLteUXhUYAg3hlsQAf8L9xZo56zuRRB2t5oeYt8bIagE0edNA0g1XEnPXARlq0DAsvLVXco5pzW9BFkJMQd7YtSwEi7K20N+vTqmCAEaRLQZCxHEmt44q270EmT9EGL1pkVbT2wchWvHCLwEWYdJ6kAND2wEIZODrDSNvbckKDYu931YgyRKbzwoWFA2ZGJjwedNxF9b4axFUDbjZChrXhtiQ9oC9PNmKXuYOSjE4fpfaQ3yK0VG0kG693KnJt5PZ032b0o4gqwcbOM/CgK86xukT6sUX5D18m8g+3snfEFdaEWozOkNEKwaNV2loJ9kF+SxC/LYBXnsgjw+AUvXCHwjywsMAAAAAElFTkSuQmCC" y="112.9219"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="200" x="711" y="175.7734">Pessoal de back office</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="813" y="192.542"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190" x="716" y="208.8389">Administração e pessoal de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="187" x="717.5" y="225.1357">apoio dentro da instituição.</text><!--MD5=[6660a859a31ae5f734a6b8028fa6152d]
+entity sistema_os--><rect fill="#999999" height="120.1094" style="stroke:#8A8A8A;stroke-width:1.5;" width="217" x="812.5" y="401.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="115" x="863.5" y="423.0918">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="195" x="823.5" y="440.7734">Sistema de Gestão de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="159" x="841.5" y="459.3984">Ordem de Serviço</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="923" y="476.167"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="189" x="826.5" y="492.4639">Gerencia Ordem de Serviço</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="868.5" y="508.7607">para execução.</text><!--MD5=[add1f11cc0a9945b597266d37d500565]
+entity usuario--><ellipse cx="261" cy="114.4219" fill="#08427B" rx="16" ry="16" style="stroke:#073B6F;stroke-width:1.5;"/><path d="M261,134.4219 C265,134.4219 268,134.4219 272,130.4219 C280,130.4219 288,138.4219 288,146.4219 L288,150.4219 C288,154.4219 284,158.4219 280,158.4219 L242,158.4219 C238,158.4219 234,154.4219 234,150.4219 L234,146.4219 C234,138.4219 242,130.4219 250,130.4219 C254,134.4219 257,134.4219 261,134.4219 " fill="#08427B" style="stroke:#073B6F;stroke-width:1.5;"/><text fill="#08427B" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="66" x="228" y="174.7734">Usuário</text><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="263" y="191.542"/><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="178" x="172" y="207.8389">Pessoa externa que pode</text><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="183" x="167.5" y="224.1357">interagir com o sistema de</text><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="224.5" y="240.4326">ocorrência</text><text fill="#08427B" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="58" x="232" y="94.0918">«person»</text><!--MD5=[25258cbb08514c6542f3504479c5e9e4]
+entity sistema_correios--><rect fill="#999999" height="103.8125" style="stroke:#8A8A8A;stroke-width:1.5;" width="214" x="7" y="409.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="115" x="56.5" y="431.0918">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="98" x="62" y="448.7734">Sistema de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="194" x="17" y="467.3984">Localização (Correios)</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="116" y="484.167"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="141" x="45.5" y="500.4639">Gerencia endereços</text><!--MD5=[cd137d0a69cae96417c2a63ff207e31e]
+link usuario to sistema_sgo--><path d="M230.98,244.2231 C225.04,273.4231 224.86,305.5031 241,330.9531 C275.89,385.9531 340.95,418.1131 399.15,436.6831 " fill="none" id="usuario-to-sistema_sgo" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="406.94,439.1031,400.1884,433.8671,398.4103,439.5976,406.94,439.1031" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="236" x="242" y="293.0918">Registra/Altera/Pesquisa/Cancela</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="109" x="305.5" y="307.0605">uma ocorrência</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="41" x="339.5" y="321.0293">[HTTP]</text><!--MD5=[80e3e25548bf62e83c5396d4e40adfe1]
+reverse link usuario to sistema_sgo--><path d="M361.78,229.1831 C371.5,234.4731 381.33,239.4931 391,243.9531 C430.06,261.9631 454.72,241.5531 483,273.9531 C503.72,297.6931 513.72,329.7431 518.1,360.6031 " fill="none" id="usuario-backto-sistema_sgo" style="stroke:#666666;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#666666" points="354.73,225.2831,360.2787,231.7802,363.1826,226.5297,354.73,225.2831" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="112" x="524" y="286.0918">Notifica sobre a</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="117" x="521.5" y="300.0605">situação de uma</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="140" x="512" y="314.0293">ocorrência via Email</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="43" x="560.5" y="327.998">[SMTP]</text><!--MD5=[822eb2879cb34c1b811b55e6b2ab0155]
+reverse link sistema_correios to sistema_sgo--><path d="M229.35,461.9531 C285.15,461.9531 351.8,461.9531 406.89,461.9531 " fill="none" id="sistema_correios-backto-sistema_sgo" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="221.2,461.9531,229.2,464.9531,229.2,458.9531,221.2,461.9531" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="138" x="243" y="400.0918">Busca um endereço</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="130" x="247" y="414.0605">a partir de um CEP</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="149" x="239.5" y="428.0293">para a ocorrência via</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="87" x="270.5" y="441.998">Web Service</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="41" x="293.5" y="455.9668">[HTTP]</text><!--MD5=[c71b81b03f7d84fba22332cf69e3d819]
+link sistema_sgo to sistema_os--><path d="M627.13,461.9531 C682.02,461.9531 748.42,461.9531 804.2,461.9531 " fill="none" id="sistema_sgo-to-sistema_os" style="stroke:#666666;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#666666" points="812.35,461.9531,804.35,458.9531,804.35,464.9531,812.35,461.9531" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="118" x="658.75" y="400.0918">Notificar quando</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="109" x="663.25" y="414.0605">uma ocorrência</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="147" x="646.25" y="428.0293">mudar para situação</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="72" x="683.75" y="441.998">aprovada.</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="149" x="645.25" y="455.9668">[Broker de mensageria]</text><!--MD5=[2768e52d0112091dd26bcd174a8a76a4]
+link empregado to sistema_sgo--><path d="M747.61,238.0731 C721.45,267.5831 690.42,301.5031 661,330.9531 C652.03,339.9331 642.58,349.0831 632.99,358.1631 " fill="none" id="empregado-to-sistema_sgo" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="627,363.8031,634.8776,360.4952,630.7601,356.131,627,363.8031" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="120" x="713" y="293.0918">Analisa e atende</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="109" x="720.5" y="307.0605">uma ocorrência</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="41" x="754.5" y="321.0293">[HTTP]</text><!--MD5=[71cf58fe15ce98c5c13c36e8265bb703]
+link empregado to sistema_os--><path d="M842.74,238.1031 C847.65,250.0331 852.56,262.2931 857,273.9531 C871.98,313.3031 887.31,357.9031 899.2,393.6731 " fill="none" id="empregado-to-sistema_os" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="901.84,401.6331,902.1707,393.0955,896.4754,394.9832,901.84,401.6331" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="120" x="878" y="286.0918">Analisa e atende</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="101" x="887.5" y="300.0605">uma ordem de</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="50" x="915" y="314.0293">serviço</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="41" x="919.5" y="327.998">[HTTP]</text><!--MD5=[55a48ac4b37736f63c78027fed2afe87]
+@startuml TCC_C4_Context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include FONTAWESOME/users.puml
+
+
+' SHOW_PERSON_OUTLINE()
+SHOW_PERSON_PORTRAIT()
+
+AddRelTag("async", $lineStyle = DashedLine())
+
+title Diagrama de Contexto
+
+Person(usuario, "Usuário", "Pessoa externa que pode interagir com o sistema de ocorrência")
+
+Enterprise_Boundary(boundary, "Prefeitura ou Administração Regional") {
+    System(sistema_sgo, "Sistema de Gestão de Ocorrência", "Gerencia Ocorrências sobre serviços de manutençao em estruturas que compõem uma infraestrutura urbana. Tais como: tapa buraco, vazamento água/esgoto, iluminação")
+    Person_Ext(empregado, "Pessoal de back office", "Administração e pessoal de apoio dentro da instituição.", $sprite = "users")
+    System_Ext(sistema_os, "Sistema de Gestão de Ordem de Serviço", "Gerencia Ordem de Serviço para execução.")
+}
+
+System_Ext(sistema_correios, "Sistema de Localização (Correios)", "Gerencia endereços")
+
+Rel(usuario, sistema_sgo, "Registra/Altera/Pesquisa/Cancela uma ocorrência", "HTTP")
+Rel_U(sistema_sgo, usuario, "Notifica sobre a situação de uma ocorrência via Email", "SMTP", $tags = "async")
+Rel_L(sistema_sgo, sistema_correios, "Busca um endereço a partir de um CEP para a ocorrência via Web Service", "HTTP")
+Rel_Neighbor(sistema_sgo, sistema_os, "Notificar quando uma ocorrência mudar para situação aprovada.", "Broker de mensageria", $tags = "async")
+Rel(empregado, sistema_sgo, "Analisa e atende uma ocorrência", "HTTP")
+Rel(empregado, sistema_os, "Analisa e atende uma ordem de serviço", "HTTP")
+
+@enduml
+
+@startuml TCC_C4_Context
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam LegendBorderColor transparent
+skinparam LegendBackgroundColor transparent
+skinparam LegendFontColor #FFFFFF
+
+skinparam shadowing<<legendArea>> false
+skinparam rectangle<<legendArea>> {
+    backgroundcolor #00000000
+    bordercolor #00000000
+}
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam queue {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam actor {
+    StereotypeFontSize 12
+    shadowing false
+    style awesome
+}
+
+skinparam person {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam package {
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    FontStyle plain
+    BackgroundColor transparent
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    FontColor #444444
+    BorderColor #444444
+    BackgroundColor transparent
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam database<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam queue<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam actor<<person>> {
+    StereotypeFontColor #08427B
+    FontColor #08427B
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam person<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam database<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_person>> {
+    StereotypeFontColor #686868
+    FontColor #686868
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam person<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam queue<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam actor<<system>> {
+    StereotypeFontColor #1168BD
+    FontColor #1168BD
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam person<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_system>> {
+    StereotypeFontColor #999999
+    FontColor #999999
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam person<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+sprite $person [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000025788300000000005886410000000000000
+000000000007DFFFFFFD9643347BFFFFFFFB400000000000
+0000000004EFFFFFFFFFFFFFFFFFFFFFFFFFFB1000000000
+000000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFD200000000
+00000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE10000000
+0000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB0000000
+000000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5000000
+000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD000000
+000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF200000
+00000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF600000
+00000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00000EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF700000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+0000008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD3000000
+000000014555555555555555555555555555555300000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+sprite $person2 [48x48/16] {
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000002578888300000000005888864100000000000
+0000000007DFFFFFFFFD9643347BFFFFFFFFFB4000000000
+00000004EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB10000000
+0000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD2000000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+00003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+0000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50000
+0003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0000
+0009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+0009FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF2000
+0003FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFD0000
+0000BFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFF50000
+00003FFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFB00000
+000006FFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFE100000
+0000007FFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFD2000000
+00000004EFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFB10000000
+0000000007DF8FFFFFFFFFFFFFFFFFFFFFF8FB4000000000
+000000000002578888888888888888888864100000000000
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sprite $users [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000024310000000000000000000000
+000000000000000000018EFFFFC400000000000000000000
+0000000000000000003EFFFFFFFF90000000000000000000
+000000000000000002EFFFFFFFFFF9000000000000000000
+00000000000000000CFFFFFFFFFFFF400000000000000000
+0000006DFE8000004FFFFFFFFFFFFFC000004BFEA2000000
+000009FFFFFC00009FFFFFFFFFFFFFF10005FFFFFE200000
+00003FFFFFFF8000BFFFFFFFFFFFFFF3001FFFFFFFC00000
+00009FFFFFFFD000CFFFFFFFFFFFFFF4005FFFFFFFF10000
+0000AFFFFFFFE000AFFFFFFFFFFFFFF2006FFFFFFFF20000
+00007FFFFFFFC0006FFFFFFFFFFFFFE0004FFFFFFFF00000
+00001FFFFFFF50001FFFFFFFFFFFFF80000DFFFFFF900000
+000004FFFFF8000007FFFFFFFFFFFE100002DFFFFB000000
+000000179830000000AFFFFFFFFFF3000000069940000000
+00000000000000000007FFFFFFFC20000000000000000000
+0000012333310000000016ACB94000000000233332000000
+0001BFFFFFFFD3000000000000000000008FFFFFFFE60000
+000DFFFFFFFFE400000000000000000000AFFFFFFFFF6000
+007FFFFFFFFD1006BEFE8310025BFFD92006FFFFFFFFF000
+00CFFFFFFFE102DFFFFFFFFFFFFFFFFFF8007FFFFFFFF400
+00DFFFFFFF302FFFFFFFFFFFFFFFFFFFFFA00BFFFFFFF500
+00DFFFFFFB00EFFFFFFFFFFFFFFFFFFFFFF603FFFFFFF500
+00CFFFFFF407FFFFFFFFFFFFFFFFFFFFFFFE00CFFFFFF400
+006FFFFFF00DFFFFFFFFFFFFFFFFFFFFFFFF508FFFFFD000
+00037777601FFFFFFFFFFFFFFFFFFFFFFFFF902777761000
+00000000002FFFFFFFFFFFFFFFFFFFFFFFFFB00000000000
+00000000003FFFFFFFFFFFFFFFFFFFFFFFFFB00000000000
+00000000003FFFFFFFFFFFFFFFFFFFFFFFFFB00000000000
+00000000000FFFFFFFFFFFFFFFFFFFFFFFFF800000000000
+000000000009FFFFFFFFFFFFFFFFFFFFFFFF200000000000
+0000000000007DEEEEEEEEEEEEEEEEEEEEB2000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<FA5 USERS>> White
+
+
+
+skinparam arrow<<async>> {
+    Color ;line.dashed
+}
+
+
+title Diagrama de Contexto
+
+actor "==Usuário\n\n Pessoa externa que pode interagir com o sistema de ocorrência" <<person>> as usuario 
+
+rectangle "==Prefeitura ou Administração Regional\n<size:12>[Enterprise]</size>" <<boundary>> as boundary  {
+    rectangle "==Sistema de Gestão de Ocorrência\n\n Gerencia Ocorrências sobre serviços de manutençao em estruturas que compõem uma infraestrutura urbana. Tais como: tapa buraco, vazamento água/esgoto, iluminação" <<system>> as sistema_sgo 
+    rectangle "<$users>\n==Pessoal de back office\n\n Administração e pessoal de apoio dentro da instituição." <<external_person>> as empregado 
+    rectangle "==Sistema de Gestão de Ordem de Serviço\n\n Gerencia Ordem de Serviço para execução." <<external_system>> as sistema_os 
+}
+
+rectangle "==Sistema de Localização (Correios)\n\n Gerencia endereços" <<external_system>> as sistema_correios 
+
+usuario - ->> sistema_sgo : **Registra/Altera/Pesquisa/Cancela uma ocorrência**\n//<size:12>[HTTP]</size>//
+sistema_sgo -UP->> usuario <<async>> : **Notifica sobre a situação de uma ocorrência via Email**\n//<size:12>[SMTP]</size>//
+sistema_sgo -LEFT->> sistema_correios : **Busca um endereço a partir de um CEP para a ocorrência via Web Service**\n//<size:12>[HTTP]</size>//
+sistema_sgo ->> sistema_os <<async>> : **Notificar quando uma ocorrência mudar para situação aprovada.**\n//<size:12>[Broker de mensageria]</size>//
+empregado - ->> sistema_sgo : **Analisa e atende uma ocorrência**\n//<size:12>[HTTP]</size>//
+empregado - ->> sistema_os : **Analisa e atende uma ordem de serviço**\n//<size:12>[HTTP]</size>//
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 13:16:42 BRT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
