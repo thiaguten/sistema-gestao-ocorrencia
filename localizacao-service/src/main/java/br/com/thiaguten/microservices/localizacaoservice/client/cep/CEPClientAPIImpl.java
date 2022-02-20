@@ -16,6 +16,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.thiaguten.microservices.localizacaoservice.configuration.http.webclient.WebClientFilters;
 import br.com.thiaguten.microservices.localizacaoservice.dto.EnderecoDTO;
+import br.com.thiaguten.microservices.localizacaoservice.support.util.CEPUtils;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import reactor.core.publisher.Mono;
 
@@ -42,19 +43,21 @@ public class CEPClientAPIImpl implements CEPClientAPI {
     @CircuitBreaker(name = "api-cep", fallbackMethod = "cepApiFallback")
     @Override
     public Mono<EnderecoDTO> obterEnderecoPeloCEP(String cep) {
+        var cepCode = CEPUtils.apenasDigitos(cep);
+        LOGGER.info("Obtendo informações para o CEP: {}", cepCode);
         var uriTemplate = ObjectUtils.requireNonEmpty(apiCEPPath) + "/{cepCode}";
-        var uriVariable = ObjectUtils.requireNonEmpty(cep) + ".json";
+        var uriVariable = ObjectUtils.requireNonEmpty(cepCode) + ".json";
         return webClient.get()
                 .uri(uriTemplate, uriVariable)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(HttpStatus::isError, WebClientFilters::handleClientOrServerError)
                 .bodyToMono(CEPClientAPIResponse.class)
-                .timeout(Duration.ofSeconds(apiCEPTimeout))
-                // // @formatter:off
-                // .onErrorMap(cause -> new CEPClientAPIException(
-                //         "Falha na requisição HTTP GET - API: " + url, cause))
-                // // @formatter:on
+                // Uma exceção TimeoutException será lançada caso nenhum evento chegue dentro da
+                // duração parametrizada.
+                .timeout(Duration.ofMillis(apiCEPTimeout))
+                // Transforma a exceção em uma mais especializada.
+                .onErrorMap(cause -> new CEPClientAPIException("Falha ao obter endereço pelo CEP.", cause))
                 .doOnError(WebClientFilters::logOnError)
                 .filter(this::isRespostaValida)
                 .map(apiCepResponse -> {
@@ -82,9 +85,9 @@ public class CEPClientAPIImpl implements CEPClientAPI {
         return predicate.test(response);
     }
 
-    public Mono<EnderecoDTO> cepApiFallback(String cep, Exception ex) {
+    public Mono<EnderecoDTO> cepApiFallback(String cep, Throwable ex) {
         var erroMsg = ExceptionUtils.getRootCauseMessage(ex);
-        LOGGER.error("Executando fallback devido ao erro na busca do CEP: {}, Erro: {}", cep, erroMsg);
+        LOGGER.warn("Executando fallback devido ao erro na busca do CEP: {}, Erro: {}", cep, erroMsg);
         // ...
         // return Mono.just(new EnderecoDTO());
         return Mono.empty();

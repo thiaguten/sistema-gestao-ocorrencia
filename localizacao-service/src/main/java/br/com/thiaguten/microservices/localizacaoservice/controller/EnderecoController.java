@@ -45,6 +45,7 @@ public class EnderecoController {
     public ResponseEntity<EntityModel<EnderecoDTO>> buscarEnderecoPorCEP2(@PathVariable("cep") String cep) {
         var timeout = java.time.Duration.ofSeconds(5);
 
+        // // Implementacao usando o operador block()
         // // @formatter:off
         // return service.obterEnderecoPeloCEP(cep)
         //         .map(enderecoDTO -> {
@@ -57,27 +58,36 @@ public class EnderecoController {
         //         .block(timeout);
         // // @formatter:on
 
+        // Implementacao sem usar o operador block()
         var latch = new java.util.concurrent.CountDownLatch(1);
         var list = new java.util.ArrayList<EnderecoDTO>(1);
+        var isSucesso = false;
 
         service.obterEnderecoPeloCEP(cep)
                 .doAfterTerminate(latch::countDown)
                 .subscribe(list::add);
 
         try {
-            latch.await(timeout.toMillis(), java.util.concurrent.TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            var isDone = latch.await(timeout.toMillis(), java.util.concurrent.TimeUnit.MILLISECONDS);
+            isSucesso = isDone && !list.isEmpty();
+        } catch (InterruptedException ignore) {
+            // no-op
         }
 
-        EnderecoDTO enderecoDTO = list.get(0);
-        EntityModel<EnderecoDTO> enderecoModel = assembler.toModel(enderecoDTO);
+        if (isSucesso) {
+            EnderecoDTO enderecoDTO = list.get(0);
+            EntityModel<EnderecoDTO> enderecoModel = assembler.toModel(enderecoDTO);
 
-        if (enderecoDTO.getCep() == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(enderecoModel);
+            if (enderecoDTO.getCep() == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(enderecoModel);
+            }
+            return ResponseEntity.ok().body(enderecoModel);
+        } else {
+            // possivelmente ocorreu um erro ao obter o cep
+            return ResponseEntity
+                    .internalServerError()
+                    .body(assembler.toModel(new EnderecoDTO()));
         }
-
-        return ResponseEntity.ok().body(enderecoModel);
     }
 
 }
