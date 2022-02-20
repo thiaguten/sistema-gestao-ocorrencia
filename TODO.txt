@@ -1,0 +1,2 @@
+LOCALIZACAO-SERVICE
+Ajustar os pacotes conforme projeto tcc (demo), aplicar HATEOS e tratamento de exceçao global

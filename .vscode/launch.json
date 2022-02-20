@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-NamingServerApplication<naming-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.thiaguten.microservices.namingserver.NamingServerApplication",
+            "projectName": "naming-server",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-LocalizacaoServiceApplication<localizacao-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.thiaguten.microservices.localizacaoservice.LocalizacaoServiceApplication",
+            "projectName": "localizacao-service",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-NotificacaoServiceApplication<notificacao-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.thiaguten.microservices.notificacaoservice.NotificacaoServiceApplication",
+            "projectName": "notificacao-service",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-OcorrenciaServiceApplication<ocorrencia-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.thiaguten.microservices.ocorrenciaservice.OcorrenciaServiceApplication",
+            "projectName": "ocorrencia-service",
+            "args": ""
+        }
+    ]
+}
