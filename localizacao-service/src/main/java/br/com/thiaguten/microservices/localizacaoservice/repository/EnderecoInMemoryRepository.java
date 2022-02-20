@@ -5,21 +5,20 @@ import java.time.Duration;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 
-import org.apache.commons.lang3.RegExUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import br.com.thiaguten.microservices.localizacaoservice.dto.EnderecoDTO;
+import br.com.thiaguten.microservices.localizacaoservice.support.util.CEPUtils;
 import reactor.core.publisher.Mono;
 
 @Repository
-public class CEPInMemoryRepository implements CEPRepository {
+public class EnderecoInMemoryRepository implements EnderecoRepository {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CEPInMemoryRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EnderecoInMemoryRepository.class);
 
-    private Cache<String, EnderecoDTO> db = Caffeine.newBuilder()
+    private Cache<String, EnderecoDTO> localInMemoryDB = Caffeine.newBuilder()
             .expireAfterWrite(Duration.ofMinutes(10))
             .maximumSize(1_000)
             .build();
@@ -27,16 +26,15 @@ public class CEPInMemoryRepository implements CEPRepository {
     @Override
     public Mono<EnderecoDTO> obterEnderecoPeloCEP(String cep) {
         LOGGER.info("Pesquisando o CEP: {}", cep);
-        var endereco = db.getIfPresent(cep);
+        var endereco = localInMemoryDB.getIfPresent(cep);
         return Mono.justOrEmpty(endereco);
     }
 
     @Override
     public Mono<EnderecoDTO> salvarEnderecoPeloCEP(EnderecoDTO endereco) {
-        // remove qualquer coisa que não seja dígito da string CEP.
-        var cep = StringUtils.stripToNull(RegExUtils.removeAll(endereco.getCep(), "\\D"));
+        var cep = CEPUtils.apenasDigitos(endereco.getCep());
         LOGGER.info("Salvando o CEP: {}", cep);
-        db.put(cep, endereco);
+        localInMemoryDB.put(cep, endereco);
         return Mono.just(endereco);
     }
 

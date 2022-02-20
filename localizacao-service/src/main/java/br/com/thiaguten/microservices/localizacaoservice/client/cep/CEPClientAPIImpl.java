@@ -1,4 +1,4 @@
-package br.com.thiaguten.microservices.localizacaoservice.client;
+package br.com.thiaguten.microservices.localizacaoservice.client.cep;
 
 import java.time.Duration;
 import java.util.function.Predicate;

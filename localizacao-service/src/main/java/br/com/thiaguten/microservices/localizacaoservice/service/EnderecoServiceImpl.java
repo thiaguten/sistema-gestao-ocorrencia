@@ -3,20 +3,21 @@ package br.com.thiaguten.microservices.localizacaoservice.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.thiaguten.microservices.localizacaoservice.client.CEPClientAPI;
+import br.com.thiaguten.microservices.localizacaoservice.client.cep.CEPClientAPI;
 import br.com.thiaguten.microservices.localizacaoservice.dto.EnderecoDTO;
-import br.com.thiaguten.microservices.localizacaoservice.repository.CEPRepository;
+import br.com.thiaguten.microservices.localizacaoservice.exception.EnderecoNotFoundException;
+import br.com.thiaguten.microservices.localizacaoservice.repository.EnderecoRepository;
 import reactor.core.publisher.Mono;
 
-@Service("cepService")
-public class CEPServiceImpl implements CEPService {
+@Service
+public class EnderecoServiceImpl implements EnderecoService {
 
     private final CEPClientAPI clientAPI;
-    private final CEPRepository repository;
+    private final EnderecoRepository repository;
 
     @Autowired
-    public CEPServiceImpl(CEPRepository repository, CEPClientAPI clientAPI) {
-        this.clientAPI = clientAPI;
+    public EnderecoServiceImpl(EnderecoRepository repository, CEPClientAPI cepClientAPI) {
+        this.clientAPI = cepClientAPI;
         this.repository = repository;
     }
 
@@ -31,10 +32,7 @@ public class CEPServiceImpl implements CEPService {
         return clientAPI
                 .obterEnderecoPeloCEP(cep)
                 .flatMap(repository::salvarEnderecoPeloCEP)
-                // // @formatter:off
-                // .switchIfEmpty(Mono.error(new RuntimeException(
-                //         "Erro: CEP não existe localmente e nem remotamente.")));
-                // // @formatter:on
+                // .switchIfEmpty(Mono.error(new EnderecoNotFoundException(cep)));
                 .defaultIfEmpty(new EnderecoDTO());
     }
 
