@@ -55,10 +55,10 @@ ADD classesLayer4/ /home/springboot/app/
 # This layer is computed automatically from your spring boot application
 
 VOLUME /tmp
-EXPOSE 8180
-ENV TZ="America/Sao_Paulo"
-ENV PROFILE_CONFIG=""
-ENV JAVA_OPTS="-XX:+UseContainerSupport -Dspring.jmx.enabled=false" \
-    SPRING_OUTPUT_ANSI_ENABLED=ALWAYS
+EXPOSE 8100
+ENV JAVA_OPTS="-Dspring.jmx.enabled=false" \
+    SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
+    PROFILE_CONFIG="" \
+    TZ="America/Sao_Paulo"
 ENTRYPOINT ["./bootrunner.sh"]
 # This script will run your Spring Boot packaged jar or war so that OS signals can be trapped by your application when running under Docker.

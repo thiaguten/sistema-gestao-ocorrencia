@@ -55,8 +55,8 @@ ADD classesLayer4/ /home/springboot/app/
 # This layer is computed automatically from your spring boot application
 
 VOLUME /tmp
-EXPOSE 8761
-ENV JAVA_OPTS="-XX:+UseContainerSupport -Dspring.jmx.enabled=false" \
+EXPOSE 8200
+ENV JAVA_OPTS="-Dspring.jmx.enabled=false" \
     SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
     PROFILE_CONFIG="" \
     TZ="America/Sao_Paulo"

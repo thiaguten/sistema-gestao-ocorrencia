@@ -41,44 +41,36 @@ services:
       rabbitmq:
         condition: service_healthy
 
-  naming-server:
-    # image: thiaguten/naming-server:0.0.1-SNAPSHOT
+  sgo-naming-server:
+    image: thiaguten/sgo-naming-server:0.0.1-SNAPSHOT
     # https://github.com/compose-spec/compose-spec/blob/master/build.md#consistency-with-image
-    build: ./naming-server/build/docker
-    container_name: naming-server
-    deploy:
-      resources:
-        limits:
-          memory: 512M
+    # build: ./naming-server/build/docker
+    container_name: sgo-naming-server
     ports:
       - "8761:8761"
     networks:
       - sgo-network
 
-#  localizacao-service:
-#    # image: thiaguten/localizacao-service:0.0.1-SNAPSHOT
-#    # https://github.com/compose-spec/compose-spec/blob/master/build.md#consistency-with-image
-#    build: ./localizacao-service/build/docker
-#    container_name: localizacao-service
-#    deploy:
-#      resources:
-#        limits:
-#          memory: 512M
-#    ports:
-#      - "8000:8000"
-#    environment:
-#      - PROFILE_CONFIG=docker
-#      - SPRING_PROFILES_ACTIVE=docker
-#      # - EUREKA.CLIENT.SERVICEURL.DEFAULTZONE=http://naming-server:8761/eureka
-#      ## - SPRING.ZIPKIN.BASEURL=http://zipkin-server:9411/
-#      # - SPRING.ZIPKIN.SENDER.TYPE=rabbit
-#      # - SPRING.RABBITMQ.HOST=rabbitmq
-#      # - RABBIT_URI=amqp://guest:guest@rabbitmq:5672
-#    networks:
-#      - sgo-network
-#    depends_on:
-#      - naming-server
-#      - rabbitmq
+  sgo-localizacao-service:
+    image: thiaguten/sgo-localizacao-service:0.0.1-SNAPSHOT
+    # https://github.com/compose-spec/compose-spec/blob/master/build.md#consistency-with-image
+    # build: ./localizacao-service/build/docker
+    container_name: sgo-localizacao-service
+    ports:
+      - "8000:8000"
+    environment:
+      - PROFILE_CONFIG=docker
+      - SPRING_PROFILES_ACTIVE=docker
+      # - EUREKA.CLIENT.SERVICEURL.DEFAULTZONE=http://sgo-naming-server:8761/eureka
+      ## - SPRING.ZIPKIN.BASEURL=http://zipkin-server:9411/
+      # - SPRING.ZIPKIN.SENDER.TYPE=rabbit
+      # - SPRING.RABBITMQ.HOST=rabbitmq
+      # - RABBIT_URI=amqp://guest:guest@rabbitmq:5672
+    networks:
+      - sgo-network
+    depends_on:
+      - sgo-naming-server
+      - rabbitmq
 
 networks:
   sgo-network:
