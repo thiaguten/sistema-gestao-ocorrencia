@@ -42,7 +42,7 @@ public class EnderecoController {
     }
 
     @GetMapping(value = "/hateoas/cep/{cep:\\d{8}}", produces = MediaTypes.HAL_JSON_VALUE)
-    public ResponseEntity<EntityModel<EnderecoDTO>> buscarEnderecoPorCEP2(@PathVariable("cep") String cep) {
+    public ResponseEntity<EntityModel<EnderecoDTO>> buscarEnderecoPorCEPHateoas(@PathVariable("cep") String cep) {
         var timeout = java.time.Duration.ofSeconds(5);
 
         // // Implementacao usando o operador block()

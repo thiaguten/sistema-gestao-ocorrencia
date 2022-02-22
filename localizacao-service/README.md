@@ -1,11 +1,11 @@
-# SGO - Integração - Serviço de Localização
+# SGO - Serviço de Localização
 
 ## Escopo
-Serviço responsável por obter informações sobre uma determinada localização, mas especificamente sobre um endereço a partir de CEP fornecido se comunicando com um sistema externo.
+Serviço de integração responsável por obter informações sobre uma determinada localização, mas especificamente sobre um endereço a partir de CEP fornecido se comunicando com um sistema externo.
 
 ## Pré-requisitos para execução do projeto
-* RabbitMQ acessível
-* Zipkin acessível
+* RabbitMQ
+* Zipkin
 * Service Discovery (Eureka)
 
 ## Começando com o projeto
@@ -18,7 +18,7 @@ A ferramenta de build é o [Gradle](https://gradle.org/) execute os comandos aba
     - Windows: ```.\gradlew.bat bootRun```
     - Unix: ```./gradlew bootRun```
 
-3. Criação de [imagem OCI](https://github.com/opencontainers/image-spec) e instalação no Docker Daemon local via [Spring Boot Gradle Plugin](https://docs.spring.io/spring-boot/docs/2.6.3/gradle-plugin/reference/htmlsingle/#build-image);
+3. Conteinerização: Utilização da [especificação](https://github.com/buildpacks/spec/blob/main/buildpack.md) Cloud Native Buildpacks ([CNB](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#container-images.buildpacks)) para transformar o código fonte da aplicação em uma [imagem OCI](https://github.com/opencontainers/image-spec) e instalação no Docker Daemon local via [Spring Boot Gradle Plugin](https://docs.spring.io/spring-boot/docs/2.6.3/gradle-plugin/reference/htmlsingle/#build-image);
     - Windows: ```.\gradlew.bat bootBuildImage```
     - Unix: ```./gradlew bootBuildImage```
 

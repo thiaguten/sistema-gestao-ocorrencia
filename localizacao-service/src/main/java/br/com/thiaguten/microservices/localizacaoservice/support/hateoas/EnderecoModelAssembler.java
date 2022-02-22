@@ -18,7 +18,7 @@ public class EnderecoModelAssembler implements RepresentationModelAssembler<Ende
     public EntityModel<EnderecoDTO> toModel(EnderecoDTO endereco) {
         var cep = CEPUtils.apenasDigitos(endereco.getCep());
         return EntityModel.of(endereco,
-                linkTo(methodOn(EnderecoController.class).buscarEnderecoPorCEP2(cep)).withSelfRel());
+                linkTo(methodOn(EnderecoController.class).buscarEnderecoPorCEPHateoas(cep)).withSelfRel());
     }
 
 }
