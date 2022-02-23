@@ -1,4 +1,4 @@
-@startuml TCC_C4_Container
+@startuml SGO_C4_Container
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 !define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
@@ -27,10 +27,10 @@ System_Ext(sistema_correios, "Sistema de Localização (Correios)", "Gerencia en
 
 System_Boundary(sgo, "Sistema de Gestão de Ocorrência") {
     Container(spa, "Aplicação Web (SPA)", "Javascript, Angular",  "Interface principal com a qual o usuário interage com o sistema via navegador web.", $sprite = "angular")
-    Container(api_localizacao, "API de Localização", "Java, Spring Boot",  "ESCREVER ALGO!!!!!", $sprite = "java")
-    Container(api_notificacao, "API de Notificação", "Java, Spring Boot",  "ESCREVER ALGO!!!!!", $sprite = "java")
-    Container(api_ocorrencia, "API de Ocorrência", "Java, Spring Boot",  "ESCREVER ALGO!!!!!", $sprite = "java")
-    Container(api_relatorio, "API de Relatório", "Java, Spring Boot",  "Cria dados normalizados para fins de relatórios", $sprite = "java")
+    Container(api_localizacao, "API de Localização", "Java, Spring Boot",  "Prover API de busca de endereço a partir de um CEP.", $sprite = "java")
+    Container(api_notificacao, "API de Notificação", "Java, Spring Boot",  "Prover API para notificar usuários e sistemas.", $sprite = "java")
+    Container(api_ocorrencia, "API de Ocorrência", "Java, Spring Boot",  "Prover API para acesso as funcionalidades e informações sobre ocorrências.", $sprite = "java")
+    Container(api_relatorio, "API de Relatório", "Java, Spring Boot",  "Cria dados normalizados para fins de relatórios.", $sprite = "java")
     ContainerDb(db_relacional, "Banco de dados Relacional", "MySQL", "Armazena ocorrências e informações sobre usuários.", $sprite="mysql")
     ContainerDb(db_nosql, "Banco de dados NoSQL", "MongoDB", "Armazena localizações, endereço e CEPs.", $sprite="mongodb")
     ContainerQueue(queue, "Barramento de mensageria", "RabbitMQ", "Fila de transporte e processamento de eventos em segundo plano.")

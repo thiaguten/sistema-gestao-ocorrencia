@@ -1,4 +1,4 @@
-@startuml TCC_C4_Context
+@startuml SGO_C4_Context
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 
 !define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
@@ -10,7 +10,7 @@ SHOW_PERSON_PORTRAIT()
 
 AddRelTag("async", $lineStyle = DashedLine())
 
-title Diagrama de Contexto
+title Diagrama de Contexto do Sistema de Gestão de Ocorrência
 
 Person(usuario, "Usuário", "Pessoa externa que pode interagir com o sistema de ocorrência")
 

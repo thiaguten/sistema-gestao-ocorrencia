@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1413px" preserveAspectRatio="none" style="width:970px;height:1413px;background:#FFFFFF;" version="1.1" viewBox="0 0 970 1413" width="970px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="534" x="211.75" y="16.708">Diagrama de Container do Sistema de Gestão de Ocorrência</text><!--MD5=[0abe474d8e6c027cb75a9b773b80ac53]
+cluster sgo--><rect fill="#FFFFFF" height="1146" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="724" x="7" y="261.2832"/><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="298" x="220" y="288.1348">Sistema de Gestão de Ocorrência</text><text fill="#444444" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="55" x="341.5" y="303.0469">[System]</text><!--MD5=[33573e971ff506c0f246109ca3fd77bd]
+entity spa--><rect fill="#438DD5" height="196.0469" style="stroke:#3C7FC0;stroke-width:1.5;" width="216" x="108" y="322.2832"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="179" y="343.4219">«container»</text><image height="48" width="48" x="192" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACnUlEQVR4Xu1XTWpWQRDM3eYAXiAH8AIewAPoypW4c+HCZXauxJ3gxoVIBCEggUBAUSEhIDyLr6HpdE/VzHvfB7r4ilqE9+b11Nc/NZOT9uTTf8WT+ujf8ihoxKOgEQ8g6MGzz0/fXD4++1ZfbeBegh69vnh7/nMJ+HDxe09lWwQ9fPn17OP3qKNis7IVgkzHr9s/efNl6T5cds/xCRJZozGOBZ2++PLq/fXlj7u8W8Dzd1epdglQhgUzyqgga9Xzq5scuwcshu78tAfLGZJdd1SC0AE5Egfyt+ErpLzuSwXpAiUgN/YVfnd+x7FO0PxvRWfEDydLvOzGsO7bmKDhVDtSN6Bt8woCbFH3bUwQpiYH6AH5qN9Olhtb1G8bEwRPywF68DHGH54qzGZe1wOzzb6gmfaMXYmGiM3EfDKCTX5fEHwlByhAJmyxO5CP20zFsUXdtzFBYA5wH8iBr4QP2cPYp8Mk1R2NVJCO6GaYVnqSXGUXzISaEKQdxROeWtiTpIvOTKgJQeKwjKWpQ+5ahZkxE2pCkMi516XtDCLR34rjNlY8kQpidiKyXcnS7BNaSQWxQ2DmTuNkSRJBqKBurDgdqA4yz+jLuud0LHoiFdR6VhT9XvtCPFXyO25CTQtKW0YzZB3miK2WHCTGqVSCUqB4PmuXMnhd0lHdvSM4laA0I24w3faqYHaV7nSJSlC0IpQA3WBkw1yBI90YQwkTalrQsFG2QZhQ04Lwy/QobQACiplvWlDbnZHiDFkLXSzjQJARssRJOQN8zm5kiVOCjKjgzLQnYBp0jRJXCDJiyuqVowuoZxdnwdWCjPA60e94xf6pGHKjIGO9zEMK+4drknsJavf7fb5zBfcVZETbrupcwcMIOiCPgkY8ChrxL89rtiXB517ZAAAAAElFTkSuQmCC" y="346.252"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="183" x="124.5" y="409.1035">Aplicação Web (SPA)</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="126" x="153" y="424.0156">[Javascript, Angular]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="218" y="439.8408"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="132.5" y="456.1377">Interface principal com a</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="118" y="472.4346">qual o usuário interage com</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="131" y="488.7314">o sistema via navegador</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="199.5" y="505.0283">web.</text><!--MD5=[e3cc5e31f7c8748d8803c0d7420dc8f7]
+entity api_localizacao--><rect fill="#438DD5" height="179.75" style="stroke:#3C7FC0;stroke-width:1.5;" width="190" x="274" y="911.7832"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="332" y="932.9219">«container»</text><image height="48" width="48" x="345" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACsklEQVR4Xu2XT0ocQRTGvVsfYC7gAbyAB8gB4sqVuMvCRZbusgruAm5ciBgICCIIgiEJRASh86M/eBT9OlWvq0oUdPgW3W96pn7z1ftTszV8PH9V2vKhl9U7UElvAGizf7F9+N3Hg+oPhI6+3flgUP2BcOj06o+PB9Uf6MPx9dfLXz4eVH+gy9u/Bye3Ph5UZ6C9LzfjOLJr/q2gegKxWdC02DN0BJI3Leks9QE6Pruf0bBrIOKZfzivViAWJouhscoiQh8iWNcem4BY8ubnIzQ4pAiW/H54stsK1QPhhGisL3PxkklNxqR5oxJraYlSJRD2jNPLEkWZtPPph394lZqA2DKLiG/385V/eJUqgRA05K/dcp3uYLXqgZQ0tmXKaF60H/9wXPVAiBRO249MSm2rUBPQMNWa5Q0X7ZnUCjRMPtl4Vy+o69FSB6Bh8kYXwC22aYiDZ5J1QBqZ9OLFfqMp5uPg8ikaFf4VsaJA1BRfR6kvokizxTbu7wcfB8t/MFUIyMYWFcSm4BDS6QLJM7xB7BfcMsMPNbWGvEkhIIkvkvm2tqRblgcO/zIZDWWxKawAMuV/4v+kplA8sq0GYjsWM9eEQ6w984kI3hRphjogdT9lKLsgca1OrZedGFV6KOjraqBh8kCZpNFhIkJ81qYzVbmoGqBnVQ0QlZWOi1RKoMW3gqoBsjQap85EMulsZMGx4RASBSIVqBGrHWzAJyWyoXCrtplpRUUVgDBfzTdSsXlpN318phwQX6GfTvm0/Gjc1Wzxb3nlgNRCNMXGqfFgFYZpkNkss4lmQ01Zzw5qE4krzXVY8AulygGl4ruURrakVkVQ6kJzzYaa1Zr6lp4pFmAUSBKTJgPaTMcuExEeMO7Z5A9u+jogSempVSUNBxv72s3UpLhqgJ5V70AlvTqgf2H6uTXfTevfAAAAAElFTkSuQmCC" y="935.752"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="163" x="287.5" y="998.6035">API de Localização</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="116" x="311" y="1013.5156">[Java, Spring Boot]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="371" y="1029.3408"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="289.5" y="1045.6377">Prover API de busca de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="284" y="1061.9346">endereço a partir de um</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="353" y="1078.2314">CEP.</text><!--MD5=[08e21f8262a5af7f5362b2da9d41fbcc]
+entity api_notificacao--><rect fill="#438DD5" height="163.4531" style="stroke:#3C7FC0;stroke-width:1.5;" width="189" x="509.5" y="338.7832"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="567" y="359.9219">«container»</text><image height="48" width="48" x="580" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACsklEQVR4Xu2XT0ocQRTGvVsfYC7gAbyAB8gB4sqVuMvCRZbusgruAm5ciBgICCIIgiEJRASh86M/eBT9OlWvq0oUdPgW3W96pn7z1ftTszV8PH9V2vKhl9U7UElvAGizf7F9+N3Hg+oPhI6+3flgUP2BcOj06o+PB9Uf6MPx9dfLXz4eVH+gy9u/Bye3Ph5UZ6C9LzfjOLJr/q2gegKxWdC02DN0BJI3Leks9QE6Pruf0bBrIOKZfzivViAWJouhscoiQh8iWNcem4BY8ubnIzQ4pAiW/H54stsK1QPhhGisL3PxkklNxqR5oxJraYlSJRD2jNPLEkWZtPPph394lZqA2DKLiG/385V/eJUqgRA05K/dcp3uYLXqgZQ0tmXKaF60H/9wXPVAiBRO249MSm2rUBPQMNWa5Q0X7ZnUCjRMPtl4Vy+o69FSB6Bh8kYXwC22aYiDZ5J1QBqZ9OLFfqMp5uPg8ikaFf4VsaJA1BRfR6kvokizxTbu7wcfB8t/MFUIyMYWFcSm4BDS6QLJM7xB7BfcMsMPNbWGvEkhIIkvkvm2tqRblgcO/zIZDWWxKawAMuV/4v+kplA8sq0GYjsWM9eEQ6w984kI3hRphjogdT9lKLsgca1OrZedGFV6KOjraqBh8kCZpNFhIkJ81qYzVbmoGqBnVQ0QlZWOi1RKoMW3gqoBsjQap85EMulsZMGx4RASBSIVqBGrHWzAJyWyoXCrtplpRUUVgDBfzTdSsXlpN318phwQX6GfTvm0/Gjc1Wzxb3nlgNRCNMXGqfFgFYZpkNkss4lmQ01Zzw5qE4krzXVY8AulygGl4ruURrakVkVQ6kJzzYaa1Zr6lp4pFmAUSBKTJgPaTMcuExEeMO7Z5A9u+jogSempVSUNBxv72s3UpLhqgJ5V70AlvTqgf2H6uTXfTevfAAAAAElFTkSuQmCC" y="362.752"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="162" x="523" y="425.6035">API de Notificação</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="116" x="546" y="440.5156">[Java, Spring Boot]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="606" y="456.3408"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="523.5" y="472.6377">Prover API para notificar</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="533" y="488.9346">usuários e sistemas.</text><!--MD5=[27a966e6efcf641e4f83d37bf94d43d1]
+entity api_ocorrencia--><rect fill="#438DD5" height="196.0469" style="stroke:#3C7FC0;stroke-width:1.5;" width="205" x="455.5" y="607.2832"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="521" y="628.4219">«container»</text><image height="48" width="48" x="534" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACsklEQVR4Xu2XT0ocQRTGvVsfYC7gAbyAB8gB4sqVuMvCRZbusgruAm5ciBgICCIIgiEJRASh86M/eBT9OlWvq0oUdPgW3W96pn7z1ftTszV8PH9V2vKhl9U7UElvAGizf7F9+N3Hg+oPhI6+3flgUP2BcOj06o+PB9Uf6MPx9dfLXz4eVH+gy9u/Bye3Ph5UZ6C9LzfjOLJr/q2gegKxWdC02DN0BJI3Leks9QE6Pruf0bBrIOKZfzivViAWJouhscoiQh8iWNcem4BY8ubnIzQ4pAiW/H54stsK1QPhhGisL3PxkklNxqR5oxJraYlSJRD2jNPLEkWZtPPph394lZqA2DKLiG/385V/eJUqgRA05K/dcp3uYLXqgZQ0tmXKaF60H/9wXPVAiBRO249MSm2rUBPQMNWa5Q0X7ZnUCjRMPtl4Vy+o69FSB6Bh8kYXwC22aYiDZ5J1QBqZ9OLFfqMp5uPg8ikaFf4VsaJA1BRfR6kvokizxTbu7wcfB8t/MFUIyMYWFcSm4BDS6QLJM7xB7BfcMsMPNbWGvEkhIIkvkvm2tqRblgcO/zIZDWWxKawAMuV/4v+kplA8sq0GYjsWM9eEQ6w984kI3hRphjogdT9lKLsgca1OrZedGFV6KOjraqBh8kCZpNFhIkJ81qYzVbmoGqBnVQ0QlZWOi1RKoMW3gqoBsjQap85EMulsZMGx4RASBSIVqBGrHWzAJyWyoXCrtplpRUUVgDBfzTdSsXlpN318phwQX6GfTvm0/Gjc1Wzxb3nlgNRCNMXGqfFgFYZpkNkss4lmQ01Zzw5qE4krzXVY8AulygGl4ruURrakVkVQ6kJzzYaa1Zr6lp4pFmAUSBKTJgPaTMcuExEeMO7Z5A9u+jogSempVSUNBxv72s3UpLhqgJ5V70AlvTqgf2H6uTXfTevfAAAAAElFTkSuQmCC" y="631.252"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="161" x="477.5" y="694.1035">API de Ocorrência</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="116" x="500" y="709.0156">[Java, Spring Boot]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="560" y="724.8408"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="177" x="469.5" y="741.1377">Prover API para acesso as</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="495.5" y="757.4346">funcionalidades e</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129" x="491.5" y="773.7314">informações sobre</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="515.5" y="790.0283">ocorrências.</text><!--MD5=[96d6d9d748c72b5aefc347e80956a1fd]
+entity api_relatorio--><rect fill="#438DD5" height="163.4531" style="stroke:#3C7FC0;stroke-width:1.5;" width="197" x="62.5" y="623.7832"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="124" y="644.9219">«container»</text><image height="48" width="48" x="137" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACsklEQVR4Xu2XT0ocQRTGvVsfYC7gAbyAB8gB4sqVuMvCRZbusgruAm5ciBgICCIIgiEJRASh86M/eBT9OlWvq0oUdPgW3W96pn7z1ftTszV8PH9V2vKhl9U7UElvAGizf7F9+N3Hg+oPhI6+3flgUP2BcOj06o+PB9Uf6MPx9dfLXz4eVH+gy9u/Bye3Ph5UZ6C9LzfjOLJr/q2gegKxWdC02DN0BJI3Leks9QE6Pruf0bBrIOKZfzivViAWJouhscoiQh8iWNcem4BY8ubnIzQ4pAiW/H54stsK1QPhhGisL3PxkklNxqR5oxJraYlSJRD2jNPLEkWZtPPph394lZqA2DKLiG/385V/eJUqgRA05K/dcp3uYLXqgZQ0tmXKaF60H/9wXPVAiBRO249MSm2rUBPQMNWa5Q0X7ZnUCjRMPtl4Vy+o69FSB6Bh8kYXwC22aYiDZ5J1QBqZ9OLFfqMp5uPg8ikaFf4VsaJA1BRfR6kvokizxTbu7wcfB8t/MFUIyMYWFcSm4BDS6QLJM7xB7BfcMsMPNbWGvEkhIIkvkvm2tqRblgcO/zIZDWWxKawAMuV/4v+kplA8sq0GYjsWM9eEQ6w984kI3hRphjogdT9lKLsgca1OrZedGFV6KOjraqBh8kCZpNFhIkJ81qYzVbmoGqBnVQ0QlZWOi1RKoMW3gqoBsjQap85EMulsZMGx4RASBSIVqBGrHWzAJyWyoXCrtplpRUUVgDBfzTdSsXlpN318phwQX6GfTvm0/Gjc1Wzxb3nlgNRCNMXGqfFgFYZpkNkss4lmQ01Zzw5qE4krzXVY8AulygGl4ruURrakVkVQ6kJzzYaa1Zr6lp4pFmAUSBKTJgPaTMcuExEeMO7Z5A9u+jogSempVSUNBxv72s3UpLhqgJ5V70AlvTqgf2H6uTXfTevfAAAAAElFTkSuQmCC" y="647.752"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="143" x="89.5" y="710.6035">API de Relatório</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="116" x="103" y="725.5156">[Java, Spring Boot]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="163" y="741.3408"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="76.5" y="757.6377">Cria dados normalizados</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="85" y="773.9346">para fins de relatórios.</text><!--MD5=[33ddceadac47dddc2ee04b2ade8680b2]
+entity db_relacional--><path d="M23,916.2832 C23,906.2832 131,906.2832 131,906.2832 C131,906.2832 239,906.2832 239,916.2832 L239,1087.3613 C239,1097.3613 131,1097.3613 131,1097.3613 C131,1097.3613 23,1097.3613 23,1087.3613 L23,916.2832 " fill="#438DD5" style="stroke:#3C7FC0;stroke-width:1.5;"/><path d="M23,916.2832 C23,926.2832 131,926.2832 131,926.2832 C131,926.2832 239,926.2832 239,916.2832 " fill="none" style="stroke:#3C7FC0;stroke-width:1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="94" y="941.4219">«container»</text><image height="48" width="48" x="107" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACGklEQVR4Xu2YP0oDQRTGc7c5gBfwAF7AA3gArazEzsLCMp2V2Ak2FiIRhIAEAgFFBUUQ1h/zYJB9u/NespNdiw0fYZl9yf7yzTf/MgmH9/9KE900rEYgSyOQpRHIUjPQ0eXi/esH3c4/uNYF21Mz0OL1e3r3cjB9vpq9VVUFGVg7xw+6sriagaBBcr17+ihYvGbLz/Ob1f7FXH+klJqBgMAV3lML9sBxcr2ESci2hNUMhOTZuh3tnT2JZ8nFgmoFQphEjHS7iFsUAF02WzkgHkm6dXsSKABRU5ApBxSiSWZW6L5a4LrIACJJTEW6vSZqSvlkAPEMwut5En3XNgjWkgEUYo94RhNdVmTc2UBikici9C+VTAr6ll82EGJ2dv50ktSx41xA/HQ6TrdrMSQxyRyYGbmAsMe/5ndMtwuIjvAno6NJLiDnyE/qYpINJKNMt2fUxaT1gGRbomu0NjbJBgqxy2QeIt1cM+h0TU1kzllZkwuIpUr2IaS7ii9PpPz0f+UCIg0wyeLAA8BiqtRlWhTLYSGzr6rJBRRiJsQbsCRJHpNEsq/iGzzrjxdI9mLJfzxzzt1J4pZplRdIi6/2z5YiHJrFc4u+lbQ50LqCBl8l6ZmFqA8ggaji4UnOn5n89QfknLj7AApx2wmTmejQG1CIf2DAZI7N/oBCXE/MLWWvQKL80WoAoBCn2bY5bBigjEYgSyOQpRHI0i9RwF9GQ0QZTAAAAABJRU5ErkJggg==" y="944.252"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="141" x="57.5" y="1007.1035">Banco de dados</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="87" x="87.5" y="1025.7285">Relacional</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="49" x="106.5" y="1040.6406">[MySQL]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="133" y="1056.4658"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="47.5" y="1072.7627">Armazena ocorrências e</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="196" x="33" y="1089.0596">informações sobre usuários.</text><!--MD5=[d7341ec17a660c83e24645e2c872b89d]
+entity db_nosql--><path d="M274.5,1210.2832 C274.5,1200.2832 369,1200.2832 369,1200.2832 C369,1200.2832 463.5,1200.2832 463.5,1210.2832 L463.5,1381.3613 C463.5,1391.3613 369,1391.3613 369,1391.3613 C369,1391.3613 274.5,1391.3613 274.5,1381.3613 L274.5,1210.2832 " fill="#438DD5" style="stroke:#3C7FC0;stroke-width:1.5;"/><path d="M274.5,1210.2832 C274.5,1220.2832 369,1220.2832 369,1220.2832 C369,1220.2832 463.5,1220.2832 463.5,1210.2832 " fill="none" style="stroke:#3C7FC0;stroke-width:1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="332" y="1235.4219">«container»</text><image height="48" width="48" x="345" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAB9UlEQVR4XtWZMUpDQRCGc7c5gBfwAF7AA3gArazEzsLCMp2V2Ak2FiIRhIAEAoKigiIIOmRQHjPZffP/u4X+/NX63syX3dnZjZnI7vWf8iQOEd7Yv4mDnPsA7Z0utk/mcZxwB6DNw9uX98/Z8i3+iXArkNIsnj6+VtJ5ig+gbgKyuTEaU/vC8UBayI7GtHV0Fx/Omwe6nL96lpWUUmcuPp80CaTl4kEG0qqKryTNAJUWa6jji4f4YsYM0Nns2edfJ66YYCCtD5+5IK4zwUClWl6rnel9jFA3BpSfHhNR3RiQlqrPOSa0kjCg0c0VpTsgxqkYANLP6rPlFENVDAAdnC99qpygAw4AgvbXUNOrxxitZADo95qBCtprAJDPgyhGKzkLpOeXT4Iof/5ngdCW6JTvRv8WiG5Cpv5AjTPUv4YaizoGLDkLJNRBZtIXY7SSASC6U+uLMVrJAFD9Yl+RHoIxWskAEF1G+S0mEJBQqwYVkKBAepHwCccErZegQIJPEvqvIxgIatnQTcgMA6k1jc+8Tlo96PQIByS5yxrxpUxooNGjjVgsMwkk1R0HtWZnHkgKTC000ggkgQn9WhjdCiSrRmAXAbpuhu4AJD+NIH8Lq7gPkF0E4jjhPkBWSXGccB8gO0/iOOE+QNYn4zjhPkDS7wehb7o3x+8Q4tUaAAAAAElFTkSuQmCC" y="1238.252"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="141" x="295.5" y="1301.1035">Banco de dados</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="59" x="339.5" y="1319.7285">NoSQL</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="69" x="334.5" y="1334.6406">[MongoDB]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="371" y="1350.4658"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="288.5" y="1366.7627">Armazena localizações,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="124" x="307" y="1383.0596">endereço e CEPs.</text><!--MD5=[799e9543975076390d2a6ceafec8df6c]
+entity queue--><path d="M504.5,931.7832 L709.5,931.7832 C714.5,931.7832 714.5,1001.9707 714.5,1001.9707 C714.5,1001.9707 714.5,1072.1582 709.5,1072.1582 L504.5,1072.1582 C499.5,1072.1582 499.5,1001.9707 499.5,1001.9707 C499.5,1001.9707 499.5,931.7832 504.5,931.7832 " fill="#438DD5" style="stroke:#3C7FC0;stroke-width:1.5;"/><path d="M709.5,931.7832 C704.5,931.7832 704.5,1001.9707 704.5,1001.9707 C704.5,1072.1582 709.5,1072.1582 709.5,1072.1582 " fill="none" style="stroke:#3C7FC0;stroke-width:1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="565" y="947.9219">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="133" x="532.5" y="965.6035">Barramento de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="102" x="551" y="984.2285">mensageria</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="69" x="567.5" y="999.1406">[RabbitMQ]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="604" y="1014.9658"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="133" x="535.5" y="1031.2627">Fila de transporte e</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="504.5" y="1047.5596">processamento de eventos</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="535" y="1063.8564">em segundo plano.</text><!--MD5=[add1f11cc0a9945b597266d37d500565]
+entity usuario--><ellipse cx="426" cy="59.752" fill="#08427B" rx="16" ry="16" style="stroke:#073B6F;stroke-width:1.5;"/><path d="M426,79.752 C430,79.752 433,79.752 437,75.752 C445,75.752 453,83.752 453,91.752 L453,95.752 C453,99.752 449,103.752 445,103.752 L407,103.752 C403,103.752 399,99.752 399,95.752 L399,91.752 C399,83.752 407,75.752 415,75.752 C419,79.752 422,79.752 426,79.752 " fill="#08427B" style="stroke:#073B6F;stroke-width:1.5;"/><text fill="#08427B" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="66" x="393" y="120.1035">Usuário</text><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="428" y="136.8721"/><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136" x="358" y="153.1689">Pessoa que precisa</text><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="172" x="340" y="169.4658">registrar uma ocorrência.</text><text fill="#08427B" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="58" x="397" y="39.4219">«person»</text><!--MD5=[459a2c6c1a6176b0517558c579db1d33]
+entity atendente--><ellipse cx="216" cy="59.752" fill="#08427B" rx="16" ry="16" style="stroke:#073B6F;stroke-width:1.5;"/><path d="M216,79.752 C220,79.752 223,79.752 227,75.752 C235,75.752 243,83.752 243,91.752 L243,95.752 C243,99.752 239,103.752 235,103.752 L197,103.752 C193,103.752 189,99.752 189,95.752 L189,91.752 C189,83.752 197,75.752 205,75.752 C209,79.752 212,79.752 216,79.752 " fill="#08427B" style="stroke:#073B6F;stroke-width:1.5;"/><text fill="#08427B" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="94" x="169" y="120.1035">Atendente</text><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="218" y="136.8721"/><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="131.5" y="153.1689">Pessoa que atende uma</text><text fill="#08427B" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="177.5" y="169.4658">ocorrência.</text><text fill="#08427B" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="58" x="187" y="39.4219">«person»</text><!--MD5=[6660a859a31ae5f734a6b8028fa6152d]
+entity sistema_os--><rect fill="#999999" height="120.1094" style="stroke:#8A8A8A;stroke-width:1.5;" width="217" x="747.5" y="645.2832"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="115" x="798.5" y="666.4219">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="195" x="758.5" y="684.1035">Sistema de Gestão de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="159" x="776.5" y="702.7285">Ordem de Serviço</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="858" y="719.4971"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="189" x="761.5" y="735.7939">Gerencia Ordem de Serviço</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="803.5" y="752.0908">para execução.</text><!--MD5=[25258cbb08514c6542f3504479c5e9e4]
+entity sistema_correios--><rect fill="#999999" height="103.8125" style="stroke:#8A8A8A;stroke-width:1.5;" width="214" x="747" y="1243.7832"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="115" x="796.5" y="1264.9219">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="98" x="802" y="1282.6035">Sistema de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="194" x="757" y="1301.2285">Localização (Correios)</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="856" y="1317.9971"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="141" x="785.5" y="1334.2939">Gerencia endereços</text><!--MD5=[c909b865362eb9cd66e899e374b04f00]
+link spa to api_localizacao--><path d="M260.72,518.3232 C296.07,600.3032 342.87,721.8332 364,833.2832 C368.27,855.7832 370.38,880.2832 371.26,903.4232 " fill="none" id="spa-to-api_localizacao" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="371.53,911.5532,374.2714,903.461,368.2745,903.6537,371.53,911.5532" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="27" x="369" y="702.9219">Usa</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="49" x="358" y="716.8906">[HTTPS]</text><!--MD5=[c6b0512bfa27739525c8be50aed2d02b]
+link spa to api_ocorrencia--><path d="M324.21,504.9132 C342.29,519.2332 360.77,534.0732 378,548.2832 C401.29,567.4832 425.92,588.4132 449.25,608.5232 " fill="none" id="spa-to-api_ocorrencia" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="455.47,613.8932,451.3832,606.39,447.4573,610.9273,455.47,613.8932" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="27" x="419" y="560.4219">Usa</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="49" x="408" y="574.3906">[HTTPS]</text><!--MD5=[ac255de4432d751dc43fa84c24247dd5]
+link spa to api_relatorio--><path d="M197.07,518.6732 C190.97,550.0832 184.24,584.7132 178.26,615.4732 " fill="none" id="spa-to-api_relatorio" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="176.68,623.6232,181.1525,616.3433,175.2629,615.1975,176.68,623.6232" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="27" x="202" y="560.4219">Usa</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="49" x="191" y="574.3906">[HTTPS]</text><!--MD5=[dc4e358ec8a65983173e7384c2659cfa]
+link api_ocorrencia to api_localizacao--><path d="M495.59,803.5332 C474.71,836.0632 451.46,872.2932 430.64,904.7332 " fill="none" id="api_ocorrencia-to-api_localizacao" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="426.24,911.6032,433.0912,906.4983,428.0452,903.2521,426.24,911.6032" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="27" x="498.5" y="852.4219">Usa</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="475" y="866.3906">[JSON/HTTP]</text><!--MD5=[f05f0b24ce3d88de14c75626414d53c6]
+link api_localizacao to db_nosql--><path d="M369,1091.9832 C369,1123.5232 369,1159.2532 369,1191.8432 " fill="none" id="api_localizacao-to-db_nosql" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="369,1200.0532,372,1192.0532,366,1192.0532,369,1200.0532" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="27" x="424.5" y="1139.4219">Usa</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="132" x="370" y="1153.3906">[MongoDB protocolo,</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="43" x="416.5" y="1167.3594">TCP/IP]</text><!--MD5=[ce3b1010ef1e5279b67becdf75c9b697]
+link api_ocorrencia to api_notificacao--><path d="M573.79,607.1432 C578.9,575.6932 584.54,540.9832 589.55,510.1632 " fill="none" id="api_ocorrencia-to-api_notificacao" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="590.88,502.0032,586.6339,509.4174,592.556,510.3812,590.88,502.0032" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="27" x="606.5" y="560.4219">Usa</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="74" x="583" y="574.3906">[JSON/HTTP]</text><!--MD5=[4553a605c5af6667b4a38f671f9c07a5]
+link api_ocorrencia to db_relacional--><path d="M455.42,787.7432 C446.39,793.3832 437.18,798.6632 428,803.2832 C386.55,824.1432 368.76,811.1132 328,833.2832 C294.4,851.5532 261.35,876.2132 232.2,900.9832 " fill="none" id="api_ocorrencia-to-db_relacional" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="226.04,906.2732,234.0676,903.3478,230.1646,898.7907,226.04,906.2732" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="114" x="329" y="852.4219">Lê e escreve em</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="84" x="344" y="866.3906">[JDBC, TCP/IP]</text><!--MD5=[b4d4e0d0bc9f5646794655aabc30b437]
+link api_relatorio to db_relacional--><path d="M129.33,786.9132 C124.63,802.1032 120.52,818.0132 118,833.2832 C114.57,854.0832 114.12,876.4832 115.23,897.9332 " fill="none" id="api_relatorio-to-db_relacional" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="115.73,906.0932,118.2388,897.9258,112.2498,898.2901,115.73,906.0932" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="42" x="140" y="852.4219">Lê em</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="84" x="119" y="866.3906">[JDBC, TCP/IP]</text><!--MD5=[41c394ded583152b3d74dab21224c3a0]
+link api_ocorrencia to queue--><path d="M574.18,803.5332 C580.66,842.4732 588.02,886.7032 594.13,923.4032 " fill="none" id="api_ocorrencia-to-queue" style="stroke:#666666;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#666666" points="595.49,931.5932,597.1364,923.2093,591.2178,924.194,595.49,931.5932" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="141" x="586" y="845.4219">Escreve ocorrências</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="100" x="608.5" y="859.3906">aprovadas em</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="45" x="636" y="873.3594">[AMQP]</text><!--MD5=[4c52564ff34c67dd23ea4b648ac49216]
+link usuario to spa--><path d="M397.82,172.4132 C387.23,196.2732 374.26,222.5732 360,245.2832 C345.04,269.1132 327.16,293.2532 309.16,315.6632 " fill="none" id="usuario-to-spa" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="304.08,321.9332,311.4445,317.6014,306.7802,313.8271,304.08,321.9332" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="139" x="384" y="214.4219">Registra ocorrência</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="21" x="445" y="228.3906">em</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="49" x="431" y="242.3594">[HTTPS]</text><!--MD5=[c57f0813b378be8bd2fde440d380293c]
+link atendente to spa--><path d="M216,172.6532 C216,214.2832 216,267.5732 216,313.9532 " fill="none" id="atendente-to-spa" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="216,322.2332,219,314.2332,213,314.2332,216,322.2332" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="130" x="217" y="214.4219">Atende ocorrência</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="21" x="273.5" y="228.3906">em</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="49" x="259.5" y="242.3594">[HTTPS]</text><!--MD5=[9b4b6e7381d77b7b7c9ca3d787995f37]
+link sistema_os to queue--><path d="M820.07,765.6332 C798.54,799.3932 769.65,841.6932 740,876.2832 C725.52,893.1832 708.95,910.1932 692.54,925.9832 " fill="none" id="sistema_os-to-queue" style="stroke:#666666;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#666666" points="686.5,931.7432,694.3608,928.3955,690.2213,924.0522,686.5,931.7432" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="104" x="772" y="845.4219">Lê ocorrências</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="100" x="776" y="859.3906">aprovadas em</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="45" x="803.5" y="873.3594">[AMQP]</text><!--MD5=[7aa7978e3d83ad0b29bd924be442576f]
+link api_localizacao to sistema_correios--><path d="M464.31,1085.7632 C470.18,1089.8332 476.09,1093.7032 482,1097.2832 C584.45,1159.3032 627.29,1140.3932 731,1200.2832 C750.21,1211.3732 769.8,1225.1132 787.52,1238.6532 " fill="none" id="api_localizacao-to-sistema_correios" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="793.97,1243.6232,789.4708,1236.3598,785.8042,1241.1092,793.97,1243.6232" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="27" x="693.5" y="1146.4219">Usa</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="82" x="666" y="1160.3906">[JSON/HTTPS]</text><!--MD5=[e62957f7cfc7e21304902ff0390857b3]
+link api_notificacao to usuario--><path d="M600.35,338.6832 C595.23,295.4632 583.65,242.9032 558,202.2832 C547.69,185.9532 533.74,171.2532 518.77,158.4532 " fill="none" id="api_notificacao-to-usuario" style="stroke:#666666;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#666666" points="512.3,153.0832,516.5473,160.4967,520.3747,155.876,512.3,153.0832" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="149" x="577" y="214.4219">Notifica o usuário via</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="63" x="620" y="228.3906">email em</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="43" x="630" y="242.3594">[SMTP]</text><!--MD5=[8d91de6c66cecfe10901bd123091b878]
+link api_notificacao to spa--><path d="M509.37,420.2832 C456,420.2832 388.9,420.2832 332.34,420.2832 " fill="none" id="api_notificacao-to-spa" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="324.08,420.2832,332.08,423.2832,332.08,417.2832,324.08,420.2832" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="149" x="342.25" y="386.4219">Notifica o usuário via</text><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="115" x="359.25" y="400.3906">sistema web em</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="49" x="392.25" y="414.3594">[HTTPS]</text><!--MD5=[df36f32d01e434b731c7d542d3b79a83]
+link atendente to usuario--><!--MD5=[3ea9142e92cffaf003a24d22f26e8b95]
+link usuario to atendente--><!--MD5=[a04f4534abf0ba98c9fa2c1deb54e495]
+@startuml TCC_C4_Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+
+!include FONTAWESOME/users.puml
+!include DEVICONS/angular.puml
+!include DEVICONS/java.puml
+!include DEVICONS/mysql.puml
+!include DEVICONS/mongodb.puml
+
+title Diagrama de Container do Sistema de Gestão de Ocorrência
+
+' SHOW_PERSON_OUTLINE()
+SHOW_PERSON_PORTRAIT()
+' LAYOUT_LEFT_RIGHT()
+LAYOUT_TOP_DOWN()
+' HIDE_STEREOTYPE()
+
+AddRelTag("async", $lineStyle = DashedLine())
+
+Person(usuario, "Usuário", "Pessoa que precisa registrar uma ocorrência.")
+Person(atendente, "Atendente", "Pessoa que atende uma ocorrência.")
+System_Ext(sistema_os, "Sistema de Gestão de Ordem de Serviço", "Gerencia Ordem de Serviço para execução.")
+System_Ext(sistema_correios, "Sistema de Localização (Correios)", "Gerencia endereços")
+
+System_Boundary(sgo, "Sistema de Gestão de Ocorrência") {
+    Container(spa, "Aplicação Web (SPA)", "Javascript, Angular",  "Interface principal com a qual o usuário interage com o sistema via navegador web.", $sprite = "angular")
+    Container(api_localizacao, "API de Localização", "Java, Spring Boot",  "Prover API de busca de endereço a partir de um CEP.", $sprite = "java")
+    Container(api_notificacao, "API de Notificação", "Java, Spring Boot",  "Prover API para notificar usuários e sistemas.", $sprite = "java")
+    Container(api_ocorrencia, "API de Ocorrência", "Java, Spring Boot",  "Prover API para acesso as funcionalidades e informações sobre ocorrências.", $sprite = "java")
+    Container(api_relatorio, "API de Relatório", "Java, Spring Boot",  "Cria dados normalizados para fins de relatórios.", $sprite = "java")
+    ContainerDb(db_relacional, "Banco de dados Relacional", "MySQL", "Armazena ocorrências e informações sobre usuários.", $sprite="mysql")
+    ContainerDb(db_nosql, "Banco de dados NoSQL", "MongoDB", "Armazena localizações, endereço e CEPs.", $sprite="mongodb")
+    ContainerQueue(queue, "Barramento de mensageria", "RabbitMQ", "Fila de transporte e processamento de eventos em segundo plano.")
+    
+    Rel(spa, api_localizacao, "Usa", "HTTPS")
+    Rel(spa, api_ocorrencia, "Usa", "HTTPS")
+    Rel(spa, api_relatorio, "Usa", "HTTPS")
+    Rel(api_ocorrencia, api_localizacao, "Usa", "JSON/HTTP")
+    Rel(api_localizacao, db_nosql, "Usa", "MongoDB protocolo, TCP/IP")
+    Rel(api_ocorrencia, api_notificacao, "Usa", "JSON/HTTP")
+    Rel(api_ocorrencia, db_relacional, "Lê e escreve em", "JDBC, TCP/IP")
+    Rel(api_relatorio, db_relacional, "Lê em", "JDBC, TCP/IP")
+    Rel(api_ocorrencia, queue, "Escreve ocorrências aprovadas em", "AMQP", $tags = "async")
+}
+Rel(usuario, spa, "Registra ocorrência em", "HTTPS")
+Rel(atendente, spa, "Atende ocorrência em", "HTTPS")
+Rel(sistema_os, queue, "Lê ocorrências aprovadas em", "AMQP", $tags = "async")
+Rel(api_localizacao, sistema_correios, "Usa", "JSON/HTTPS")
+Rel(api_notificacao, usuario, "Notifica o usuário via email em", "SMTP", $tags = "async")
+Rel_R(api_notificacao, spa, "Notifica o usuário via sistema web em", "HTTPS")
+
+Lay_L(usuario, atendente)
+Lay_R(usuario, atendente)
+
+@enduml
+
+@startuml TCC_C4_Container
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam LegendBorderColor transparent
+skinparam LegendBackgroundColor transparent
+skinparam LegendFontColor #FFFFFF
+
+skinparam shadowing<<legendArea>> false
+skinparam rectangle<<legendArea>> {
+    backgroundcolor #00000000
+    bordercolor #00000000
+}
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam queue {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam actor {
+    StereotypeFontSize 12
+    shadowing false
+    style awesome
+}
+
+skinparam person {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam package {
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    FontStyle plain
+    BackgroundColor transparent
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    FontColor #444444
+    BorderColor #444444
+    BackgroundColor transparent
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam database<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam queue<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam actor<<person>> {
+    StereotypeFontColor #08427B
+    FontColor #08427B
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam person<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam database<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_person>> {
+    StereotypeFontColor #686868
+    FontColor #686868
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam person<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam queue<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam actor<<system>> {
+    StereotypeFontColor #1168BD
+    FontColor #1168BD
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam person<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_system>> {
+    StereotypeFontColor #999999
+    FontColor #999999
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam person<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+sprite $person [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000025788300000000005886410000000000000
+000000000007DFFFFFFD9643347BFFFFFFFB400000000000
+0000000004EFFFFFFFFFFFFFFFFFFFFFFFFFFB1000000000
+000000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFD200000000
+00000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE10000000
+0000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB0000000
+000000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5000000
+000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD000000
+000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF200000
+00000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF600000
+00000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00000EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF700000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+0000008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD3000000
+000000014555555555555555555555555555555300000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+sprite $person2 [48x48/16] {
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000002578888300000000005888864100000000000
+0000000007DFFFFFFFFD9643347BFFFFFFFFFB4000000000
+00000004EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB10000000
+0000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD2000000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+00003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+0000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50000
+0003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0000
+0009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+0009FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF2000
+0003FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFD0000
+0000BFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFF50000
+00003FFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFB00000
+000006FFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFE100000
+0000007FFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFD2000000
+00000004EFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFB10000000
+0000000007DF8FFFFFFFFFFFFFFFFFFFFFF8FB4000000000
+000000000002578888888888888888888864100000000000
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam database<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam queue<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam actor<<container>> {
+    StereotypeFontColor #438DD5
+    FontColor #438DD5
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam person<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+
+skinparam rectangle<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam database<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam queue<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam actor<<external_container>> {
+    StereotypeFontColor #B3B3B3
+    FontColor #B3B3B3
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam person<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sprite $users [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000024310000000000000000000000
+000000000000000000018EFFFFC400000000000000000000
+0000000000000000003EFFFFFFFF90000000000000000000
+000000000000000002EFFFFFFFFFF9000000000000000000
+00000000000000000CFFFFFFFFFFFF400000000000000000
+0000006DFE8000004FFFFFFFFFFFFFC000004BFEA2000000
+000009FFFFFC00009FFFFFFFFFFFFFF10005FFFFFE200000
+00003FFFFFFF8000BFFFFFFFFFFFFFF3001FFFFFFFC00000
+00009FFFFFFFD000CFFFFFFFFFFFFFF4005FFFFFFFF10000
+0000AFFFFFFFE000AFFFFFFFFFFFFFF2006FFFFFFFF20000
+00007FFFFFFFC0006FFFFFFFFFFFFFE0004FFFFFFFF00000
+00001FFFFFFF50001FFFFFFFFFFFFF80000DFFFFFF900000
+000004FFFFF8000007FFFFFFFFFFFE100002DFFFFB000000
+000000179830000000AFFFFFFFFFF3000000069940000000
+00000000000000000007FFFFFFFC20000000000000000000
+0000012333310000000016ACB94000000000233332000000
+0001BFFFFFFFD3000000000000000000008FFFFFFFE60000
+000DFFFFFFFFE400000000000000000000AFFFFFFFFF6000
+007FFFFFFFFD1006BEFE8310025BFFD92006FFFFFFFFF000
+00CFFFFFFFE102DFFFFFFFFFFFFFFFFFF8007FFFFFFFF400
+00DFFFFFFF302FFFFFFFFFFFFFFFFFFFFFA00BFFFFFFF500
+00DFFFFFFB00EFFFFFFFFFFFFFFFFFFFFFF603FFFFFFF500
+00CFFFFFF407FFFFFFFFFFFFFFFFFFFFFFFE00CFFFFFF400
+006FFFFFF00DFFFFFFFFFFFFFFFFFFFFFFFF508FFFFFD000
+00037777601FFFFFFFFFFFFFFFFFFFFFFFFF902777761000
+00000000002FFFFFFFFFFFFFFFFFFFFFFFFFB00000000000
+00000000003FFFFFFFFFFFFFFFFFFFFFFFFFB00000000000
+00000000003FFFFFFFFFFFFFFFFFFFFFFFFFB00000000000
+00000000000FFFFFFFFFFFFFFFFFFFFFFFFF800000000000
+000000000009FFFFFFFFFFFFFFFFFFFFFFFF200000000000
+0000000000007DEEEEEEEEEEEEEEEEEEEEB2000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<FA5 USERS>> White
+sprite $angular [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000016500000000000000000000000
+000000000000000000004AFFFFB500000000000000000000
+0000000000000000039FFFFFFFFFFB500000000000000000
+0000000000000039EFFFFFFEFFFFFFFE9400000000000000
+0000000000028DFFFFFFFFF7AFFFFFFFFFEA400000000000
+0000000016CFFFFFFFFFFFF12FFFFFFFFFFFFE9300000000
+0000000BFFFFFFFFFFFFFF800BFFFFFFFFFFFFFFD0000000
+0000000DFFFFFFFFFFFFFF2003FFFFFFFFFFFFFFD0000000
+0000000BFFFFFFFFFFFFFA0000CFFFFFFFFFFFFFB0000000
+00000009FFFFFFFFFFFFF300004FFFFFFFFFFFFF90000000
+00000007FFFFFFFFFFFFC000000DFFFFFFFFFFFF70000000
+00000005FFFFFFFFFFFF40043006FFFFFFFFFFFF50000000
+00000003FFFFFFFFFFFD000BA000EFFFFFFFFFFF30000000
+00000001FFFFFFFFFFF6002FF2007FFFFFFFFFFF10000000
+00000000FFFFFFFFFFE0008FF9000EFFFFFFFFFF00000000
+00000000EFFFFFFFFF8000EFFF2008FFFFFFFFFD00000000
+00000000CFFFFFFFFF1006FFFF9001FFFFFFFFFB00000000
+00000000AFFFFFFFF9000DFFFFF1009FFFFFFFF900000000
+000000008FFFFFFFF20005555552002FFFFFFFF800000000
+000000006FFFFFFFB00000000000000AFFFFFFF600000000
+000000004FFFFFFF4000000000000002FFFFFFF400000000
+000000002FFFFFFD0005888888888000BFFFFFF200000000
+000000000FFFFFF5000EFFFFFFFFF4004FFFFFF000000000
+000000000EFFFFE0006FFFFFFFFFFB000CFFFFE000000000
+000000000CFFFF7000CFFFFFFFFFFF2005FFFFC000000000
+000000000AFFFF1002FFFFFFFFFFFF9000DFFFA000000000
+0000000008FFFB444AFFFFFFFFFFFFF3338FFF8000000000
+0000000006FFFFFFFFFFFFFFFFFFFFFFFFFFFF6000000000
+0000000003EFFFFFFFFFFFFFFFFFFFFFFFFFFE2000000000
+000000000018FFFFFFFFFFFFFFFFFFFFFFFF800000000000
+00000000000019FFFFFFFFFFFFFFFFFFFF91000000000000
+000000000000003CFFFFFFFFFFFFFFFFB200000000000000
+00000000000000004DFFFFFFFFFFFFC30000000000000000
+0000000000000000005EFFFFFFFFE5000000000000000000
+000000000000000000007FFFFFE700000000000000000000
+00000000000000000000019FF91000000000000000000000
+000000000000000000000002200000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<DEV ANGULAR>> White
+sprite $java [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000120000000000000000000
+000000000000000000000000000080000000000000000000
+0000000000000000000000000001B0000000000000000000
+0000000000000000000000000005A0000000000000000000
+000000000000000000000000000C70000000000000000000
+000000000000000000000000006F10000000000000000000
+00000000000000000000000005F700000000000000000000
+0000000000000000000000006FB000000000000000000000
+000000000000000000000009FB0001650000000000000000
+0000000000000000000001CFA0018C200000000000000000
+000000000000000000002DF9005E90000000000000000000
+00000000000000000001DF8008F700000000000000000000
+0000000000000000000BFB005FA000000000000000000000
+0000000000000000001FF200CF3000000000000000000000
+0000000000000000001FD000FF4000000000000000000000
+0000000000000000000DE000EFB000000000000000000000
+00000000000000000005F2008FF600000000000000000000
+00000000000000000000AA001EFE00000000000000000000
+000000000000000000000B4004FF40000000000000000000
+0000000000000000000000A100BF20000000000000000000
+00000000000000000000000400A900000011000000000000
+00000000000000016730000001800000046CB10000000000
+00000000000005BD30000000010000120000DC0000000000
+0000000000001DFEA7765567889BCB7000008F1000000000
+000000000000001468899988753200000000BE0000000000
+000000000000000001000000000000000004F50000000000
+0000000000000000C800000000024200004E500000000000
+0000000000000000CFFDCBBBCEFFFC201881000000000000
+00000000000000000268AAAAA86400003000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000009A10000002410000000000000000000
+00000000000000000CFFFEDDEFFFF6000000000000000000
+00000000000003520049CEEFFCA720000000000000000000
+000000000019B50000000000000000000002400000000000
+0000000002FF820000000000000000000378000000000000
+00000000018DFFDB9766555566789ACCA610160000000000
+00000000000001357899AABAA9875310026AA10000000000
+0000000000000003542211111233579BCB72000000000000
+000000000000000002457778888765310000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<DEV JAVA>> White
+sprite $mysql [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+00000006EEB6000000000000000000000000000000000000
+0000000D95AFE61000000000000000000000000000000000
+000000099002AFFC84000000000000000000000000000000
+00000002E2000147CFC40000000000000000000000000000
+000000007C00000003AF9000000000000000000000000000
+000000000E5000000005EC10000000000000000000000000
+0000000005D0000000001CD1000000000000000000000000
+0000000000E40000000000AE200000000000000000000000
+00000000007B00000000000BD10000000000000000000000
+00000000001F100000000000CC0000000000000000000000
+00000000000A9000000000002F9000000000000000000000
+000000000001F2000000000007F300000000000000000000
+00000000000089000000000000DC00000000000000000000
+0000000000007A0000000000004F40000000000000000000
+000000000000960000000000000CC0000000000000000000
+000000000000D300000000000004F4000000000000000000
+000000000000F100000000000000CC000000000000000000
+000000000001F0000000000000004F400000000000000000
+000000000001F002E000000000000CC00000000000000000
+000000000000F209F7000000000003F70000000000000000
+000000000000B50DFF1000000000009F7000000000000000
+0000000000004B2F7D80000000000007EE50000000000000
+0000000000000CFF22E100000000000005DC200000000000
+00000000000001C7004A0000000000000007E50000000000
+0000000000000000000530000000000000002C8000000000
+00000000000000000000000000000000000249F600000000
+0000000000000000000000000000000009FFC95100000000
+0000000000000000000000000000000009F4000000000000
+0000000000000000000000000000000000AF500000000000
+000000000000000000000000000000000006FA0000000000
+0000000000000000000000000000000000003DC000000000
+000000000000000000000000000000000000007B00000000
+000000000000000000000000000000000000000130000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<DEV MYSQL>> White
+sprite $mongodb [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000001000000000000000000000000
+000000000000000000000006400000000000000000000000
+00000000000000000000002EC00000000000000000000000
+0000000000000000000002DFF60000000000000000000000
+000000000000000000002EFFFF4000000000000000000000
+00000000000000000001EFFFFFF300000000000000000000
+0000000000000000000BFFFFFFFE20000000000000000000
+0000000000000000006FFFFFFFFFD0000000000000000000
+000000000000000001EFFFFFFFFFF8000000000000000000
+00000000000000000AFFFFFFFFFFFF300000000000000000
+00000000000000002FFFFFFFFFFFFFC00000000000000000
+0000000000000000BFFFFFFFFFFFFFF50000000000000000
+0000000000000002FFFFFFFFFFFFFFFD0000000000000000
+0000000000000008FFFFFFFFFFFFFFFF3000000000000000
+000000000000000EFFFFFFFFFFFFFFFFA000000000000000
+000000000000003FFFFFFFFFFFFFFFFFF000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF400000000000000
+00000000000000BFFFFFFFFFFFFFFFFFF900000000000000
+00000000000000DFFFFFFFFFFFFFFFFFFD00000000000000
+00000000000000FFFFFFFFFFFFFFFFFFFF00000000000000
+00000000000001FFFFFFFFFFFFFFFFFFFF20000000000000
+00000000000002FFFFFFFFFFFFFFFFFFFF30000000000000
+00000000000002FFFFFFFFFFFFFFFFFFFF30000000000000
+00000000000003FFFFFFFFFFFFFFFFFFFF30000000000000
+00000000000002FFFFFFFFFFFFFFFFFFFF20000000000000
+00000000000001FFFFFFFFFFFFFFFFFFFF00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000BFFFFFFFFFFFFFFFFFFB00000000000000
+000000000000006FFFFFFFFFFFFFFFFFF700000000000000
+000000000000001FFFFFFFFFFFFFFFFFF300000000000000
+000000000000000BFFFFFFFFFFFFFFFFE000000000000000
+0000000000000004FFFFFFFFFFFFFFFF7000000000000000
+0000000000000000BFFFFFFFFFFFFFFF1000000000000000
+00000000000000003FFFFFFFFFFFFFF90000000000000000
+000000000000000009FFFFFFFFFFFFE10000000000000000
+000000000000000000DFFFFFFFFFFF500000000000000000
+0000000000000000002FFFFFFFFFF9000000000000000000
+00000000000000000004FFFFFFFFB0000000000000000000
+000000000000000000004FFFFFFB00000000000000000000
+0000000000000000000004FFFFA000000000000000000000
+00000000000000000000003EF90000000000000000000000
+000000000000000000000009F20000000000000000000000
+000000000000000000000006F00000000000000000000000
+000000000000000000000004F00000000000000000000000
+000000000000000000000003F00000000000000000000000
+000000000000000000000002F00000000000000000000000
+000000000000000000000000100000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<DEV MONGODB>> White
+
+title Diagrama de Container do Sistema de Gestão de Ocorrência
+
+top to bottom direction
+
+skinparam arrow<<async>> {
+    Color ;line.dashed
+}
+
+
+actor "==Usuário\n\n Pessoa que precisa registrar uma ocorrência." <<person>> as usuario 
+actor "==Atendente\n\n Pessoa que atende uma ocorrência." <<person>> as atendente 
+rectangle "==Sistema de Gestão de Ordem de Serviço\n\n Gerencia Ordem de Serviço para execução." <<external_system>> as sistema_os 
+rectangle "==Sistema de Localização (Correios)\n\n Gerencia endereços" <<external_system>> as sistema_correios 
+
+rectangle "==Sistema de Gestão de Ocorrência\n<size:12>[System]</size>" <<boundary>> as sgo  {
+    rectangle "<$angular>\n==Aplicação Web (SPA)\n//<size:12>[Javascript, Angular]</size>//\n\n Interface principal com a qual o usuário interage com o sistema via navegador web." <<container>> as spa 
+    rectangle "<$java>\n==API de Localização\n//<size:12>[Java, Spring Boot]</size>//\n\n Prover API de busca de endereço a partir de um CEP." <<container>> as api_localizacao 
+    rectangle "<$java>\n==API de Notificação\n//<size:12>[Java, Spring Boot]</size>//\n\n Prover API para notificar usuários e sistemas." <<container>> as api_notificacao 
+    rectangle "<$java>\n==API de Ocorrência\n//<size:12>[Java, Spring Boot]</size>//\n\n Prover API para acesso as funcionalidades e informações sobre ocorrências." <<container>> as api_ocorrencia 
+    rectangle "<$java>\n==API de Relatório\n//<size:12>[Java, Spring Boot]</size>//\n\n Cria dados normalizados para fins de relatórios." <<container>> as api_relatorio 
+    database "<$mysql>\n==Banco de dados Relacional\n//<size:12>[MySQL]</size>//\n\n Armazena ocorrências e informações sobre usuários." <<container>> as db_relacional 
+    database "<$mongodb>\n==Banco de dados NoSQL\n//<size:12>[MongoDB]</size>//\n\n Armazena localizações, endereço e CEPs." <<container>> as db_nosql 
+    queue "==Barramento de mensageria\n//<size:12>[RabbitMQ]</size>//\n\n Fila de transporte e processamento de eventos em segundo plano." <<container>> as queue 
+    
+    spa - ->> api_localizacao : **Usa**\n//<size:12>[HTTPS]</size>//
+    spa - ->> api_ocorrencia : **Usa**\n//<size:12>[HTTPS]</size>//
+    spa - ->> api_relatorio : **Usa**\n//<size:12>[HTTPS]</size>//
+    api_ocorrencia - ->> api_localizacao : **Usa**\n//<size:12>[JSON/HTTP]</size>//
+    api_localizacao - ->> db_nosql : **Usa**\n//<size:12>[MongoDB protocolo, TCP/IP]</size>//
+    api_ocorrencia - ->> api_notificacao : **Usa**\n//<size:12>[JSON/HTTP]</size>//
+    api_ocorrencia - ->> db_relacional : **Lê e escreve em**\n//<size:12>[JDBC, TCP/IP]</size>//
+    api_relatorio - ->> db_relacional : **Lê em**\n//<size:12>[JDBC, TCP/IP]</size>//
+    api_ocorrencia - ->> queue <<async>> : **Escreve ocorrências aprovadas em**\n//<size:12>[AMQP]</size>//
+}
+usuario - ->> spa : **Registra ocorrência em**\n//<size:12>[HTTPS]</size>//
+atendente - ->> spa : **Atende ocorrência em**\n//<size:12>[HTTPS]</size>//
+sistema_os - ->> queue <<async>> : **Lê ocorrências aprovadas em**\n//<size:12>[AMQP]</size>//
+api_localizacao - ->> sistema_correios : **Usa**\n//<size:12>[JSON/HTTPS]</size>//
+api_notificacao - ->> usuario <<async>> : **Notifica o usuário via email em**\n//<size:12>[SMTP]</size>//
+api_notificacao -RIGHT->> spa : **Notifica o usuário via sistema web em**\n//<size:12>[HTTPS]</size>//
+
+usuario -[hidden]L- atendente
+usuario -[hidden]R- atendente
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 13:16:42 BRT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
