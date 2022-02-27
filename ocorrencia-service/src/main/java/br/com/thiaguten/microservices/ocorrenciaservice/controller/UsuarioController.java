@@ -24,11 +24,16 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.thiaguten.microservices.ocorrenciaservice.exception.UsuarioNotFoundException;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
 import br.com.thiaguten.microservices.ocorrenciaservice.service.UsuarioService;
+import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDTO;
+import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDtoMapper;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.hateoas.UsuarioModelAssembler;
 
 @RestController
 @RequestMapping("/api")
 public class UsuarioController {
+
+    @Autowired
+    private UsuarioDtoMapper dtoMapper;
 
     private final UsuarioService service;
     private final UsuarioModelAssembler assembler;
@@ -40,37 +45,37 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "/v1/usuarios", produces = MediaTypes.HAL_JSON_VALUE)
-    public CollectionModel<EntityModel<Usuario>> listar() {
+    public CollectionModel<EntityModel<UsuarioDTO>> listar() {
         List<Usuario> usuarios = service.listar();
-        List<EntityModel<Usuario>> models = usuarios.stream()
+        List<EntityModel<UsuarioDTO>> models = usuarios.stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
         return CollectionModel.of(models, linkTo(methodOn(UsuarioController.class).listar()).withSelfRel());
     }
 
     @PostMapping(value = "/v1/usuarios", produces = MediaTypes.HAL_JSON_VALUE)
-    public ResponseEntity<EntityModel<Usuario>> criar(@RequestBody Usuario usuario) {
-        // Usuario usuario = new Usuario();
-        // TODO popular atraves do DTO
-
-        Usuario usuarioSalva = service.salvar(usuario);
-        EntityModel<Usuario> entityModel = assembler.toModel(usuarioSalva);
+    public ResponseEntity<EntityModel<UsuarioDTO>> criar(@RequestBody UsuarioDTO usuarioDto) {
+        Usuario usuario = dtoMapper.fromDto(usuarioDto);
+        Usuario usuarioSalvo = service.salvar(usuario);
+        EntityModel<UsuarioDTO> entityModel = assembler.toModel(usuarioSalvo);
         return ResponseEntity
                 .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
                 .body(entityModel);
     }
 
     @GetMapping(value = "/v1/usuarios/{id}", produces = MediaTypes.HAL_JSON_VALUE)
-    public EntityModel<Usuario> recuperar(@PathVariable Long id) {
+    public EntityModel<UsuarioDTO> recuperar(@PathVariable Long id) {
         return service.recuperar(id)
                 .map(assembler::toModel)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
     }
 
     @PutMapping(value = "/v1/usuarios/{id}", produces = MediaTypes.HAL_JSON_VALUE)
-    public ResponseEntity<EntityModel<Usuario>> atualizar(@RequestBody Usuario novoUsuario, @PathVariable Long id) {
+    public ResponseEntity<EntityModel<UsuarioDTO>> atualizar(
+            @RequestBody UsuarioDTO usuarioDto, @PathVariable Long id) {
+        Usuario novoUsuario = dtoMapper.fromDto(usuarioDto);
         Usuario usuarioAtualizado = service.atualizar(novoUsuario, id);
-        EntityModel<Usuario> entityModel = assembler.toModel(usuarioAtualizado);
+        EntityModel<UsuarioDTO> entityModel = assembler.toModel(usuarioAtualizado);
         return ResponseEntity
                 .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
                 .body(entityModel);
