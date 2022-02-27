@@ -63,23 +63,23 @@ services:
       - sgo-naming-server
       - rabbitmq
 
-  sgo-ocorrencia-service:
-    image: thiaguten/sgo-ocorrencia-service:0.0.1-SNAPSHOT
-    container_name: sgo-ocorrencia-service
-    ports:
-      - "8200:8200"
-    environment:
-      - PROFILE_CONFIG=docker
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - sgo-network
-    depends_on:
-      sgo-mysql:
-        condition: service_healthy
-      sgo-naming-server:
-        condition: service_started
-      rabbitmq:
-        condition: service_started
+#  sgo-ocorrencia-service:
+#    image: thiaguten/sgo-ocorrencia-service:0.0.1-SNAPSHOT
+#    container_name: sgo-ocorrencia-service
+#    ports:
+#      - "8200:8200"
+#    environment:
+#      - PROFILE_CONFIG=docker
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - sgo-network
+#    depends_on:
+#      sgo-mysql:
+#        condition: service_healthy
+#      sgo-naming-server:
+#        condition: service_started
+#      rabbitmq:
+#        condition: service_started
 
   sgo-mysql:
     image: mysql:5.7

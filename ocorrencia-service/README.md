@@ -4,10 +4,10 @@
 TODO
 
 ## Pré-requisitos para execução do projeto
-TODO
 * RabbitMQ
 * Zipkin
 * Service Discovery (Eureka)
+* MySQL
 
 ## Começando com o projeto
 A ferramenta de build é o [Gradle](https://gradle.org/) execute os comandos abaixo para cada etapa:

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
@@ -26,6 +27,7 @@ public class AtendenteIdentificado implements Serializable {
     // Essa entidade filha mapeia/espelha a mesma PK da entidade pai (atendente)
     @MapsId
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
     private Atendente atendente;
 
     // Chave negocial

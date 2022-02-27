@@ -5,7 +5,7 @@ import javax.persistence.Converter;
 
 import br.com.thiaguten.microservices.ocorrenciaservice.model.SituacaoOcorrecia;
 
-@Converter(autoApply = true)
+@Converter
 public class SituacaoOcorrenciaConverter implements AttributeConverter<SituacaoOcorrecia, Integer> {
 
     @Override

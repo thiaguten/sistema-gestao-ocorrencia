@@ -30,7 +30,7 @@ public class UsuarioModelAssembler implements RepresentationModelAssembler<Usuar
                 linkTo(methodOn(UsuarioController.class).recuperar(id)).withSelfRel()
                         .andAffordance(afford(methodOn(UsuarioController.class).atualizar(null, id)))
                         .andAffordance(afford(methodOn(UsuarioController.class).deletar(id))),
-                linkTo(methodOn(UsuarioController.class).listar()).withRel("/api/usuarios"));
+                linkTo(methodOn(UsuarioController.class).listar()).withRel("/api/v1/usuarios"));
     }
 
 }

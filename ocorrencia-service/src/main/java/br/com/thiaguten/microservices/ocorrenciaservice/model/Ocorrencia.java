@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,7 +46,14 @@ public class Ocorrencia implements Serializable {
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;
 
-    @Column(columnDefinition = "ENUM('DUMMY')")
+    @Column(name = "data_modificacao")
+    private LocalDateTime dataModificacao;
+
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "ENUM('NOVA', 'APROVADA', 'DEVOLVIDA', 'FINALIZADA', 'CANCELADA')")
+    // @Enumerated
+    // @Column(columnDefinition = "SMALLINT")
+    // @Convert(converter = SituacaoOcorrenciaConverter.class)
     private SituacaoOcorrecia situacao;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -134,6 +143,14 @@ public class Ocorrencia implements Serializable {
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public LocalDateTime getDataModificacao() {
+        return dataModificacao;
+    }
+
+    public void setDataModificacao(LocalDateTime dataModificacao) {
+        this.dataModificacao = dataModificacao;
     }
 
     public Set<AtendimentoOcorrencia> getAtendimentos() {

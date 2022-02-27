@@ -50,10 +50,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void deletar(Long id) {
         // repository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
         try {
-            // TODO fazer query na mão?
-            // deletar somente as informações na tabela usuario_identificado por questoes de
+            // TODO
+            // Deletar somente as informações na tabela usuario_identificado por questoes de
             // LGPD, mas não deletar na tabela usuario por causa de referencias com a
             // ocorrencia.
+            //
+            // Fazer query na mão ou criar um Repository dedicado a entidade
+            // UsuarioIdentificado e remover mapeamento @OneToOne e controlar o
+            // relacionamento na mão?
+            //
+            // Ou remover essa funcionalidade da API e deixar que essa limpeza de
+            // informações identificaveis da LGPD seja feita diretamente na base de dados
+            // por um DBA?
             repository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new UsuarioNotFoundException(id);
@@ -62,7 +70,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<Usuario> listar() {
-        return repository.findAll();
+        // return repository.findAll();
+        return repository.findAllJoinFetch();
     }
 
     @Override
