@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import br.com.thiaguten.microservices.ocorrenciaservice.exception.UsuarioNotFoundException;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
 import br.com.thiaguten.microservices.ocorrenciaservice.repository.UsuarioRepository;
 
@@ -46,7 +48,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void deletar(Long id) {
-        repository.deleteById(id);
+        // repository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+        try {
+            // TODO fazer query na mão?
+            // deletar somente as informações na tabela usuario_identificado por questoes de
+            // LGPD, mas não deletar na tabela usuario por causa de referencias com a
+            // ocorrencia.
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new UsuarioNotFoundException(id);
+        }
     }
 
     @Override
