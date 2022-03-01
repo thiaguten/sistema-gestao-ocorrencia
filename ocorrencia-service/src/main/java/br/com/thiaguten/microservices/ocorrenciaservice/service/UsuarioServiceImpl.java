@@ -70,8 +70,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<Usuario> listar() {
-        // return repository.findAll();
-        return repository.findAllJoinFetch();
+        return repository.findAll();
     }
 
     @Override
