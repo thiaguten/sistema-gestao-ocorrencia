@@ -9,6 +9,7 @@
 !include DEVICONS/java.puml
 !include DEVICONS/mysql.puml
 !include DEVICONS/mongodb.puml
+!include DEVICONS/nginx.puml
 
 title Diagrama de Container do Sistema de Gestão de Ocorrência
 
@@ -26,6 +27,7 @@ System_Ext(sistema_os, "Sistema de Gestão de Ordem de Serviço", "Gerencia Orde
 System_Ext(sistema_correios, "Sistema de Localização (Correios)", "Gerencia endereços")
 
 System_Boundary(sgo, "Sistema de Gestão de Ocorrência") {
+    Container(nginx, "Página Web", "nginx",  "Serve ativos estáticos do website para o cliente", $sprite = "nginx")
     Container(spa, "Aplicação Web (SPA)", "Javascript, Angular",  "Interface principal com a qual o usuário interage com o sistema via navegador web.", $sprite = "angular")
     Container(api_localizacao, "API de Localização", "Java, Spring Boot",  "Prover API de busca de endereço a partir de um CEP.", $sprite = "java")
     Container(api_notificacao, "API de Notificação", "Java, Spring Boot",  "Prover API para notificar usuários e sistemas.", $sprite = "java")
@@ -45,6 +47,8 @@ System_Boundary(sgo, "Sistema de Gestão de Ocorrência") {
     Rel(api_relatorio, db_relacional, "Lê em", "JDBC, TCP/IP")
     Rel(api_ocorrencia, queue, "Escreve ocorrências aprovadas em", "AMQP", $tags = "async")
 }
+Rel(usuario, nginx, "Navega no site usando", "HTTPS")
+Rel(atendente, nginx, "Navega no site usando", "HTTPS")
 Rel(usuario, spa, "Registra ocorrência em", "HTTPS")
 Rel(atendente, spa, "Atende ocorrência em", "HTTPS")
 Rel(sistema_os, queue, "Lê ocorrências aprovadas em", "AMQP", $tags = "async")
