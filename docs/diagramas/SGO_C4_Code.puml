@@ -1,0 +1,74 @@
+@startuml SGO_C4_Code
+
+skinparam packageStyle folder
+skinparam groupInheritance 2
+
+title SGO - Diagrama de Código
+
+circle ApiRESTful
+
+namespace br.com.thiaguten.microservices.localizacaoservice #FFFFFF {
+
+    class CEPUtils
+    class EnderecoDTO
+    class CEPClientAPIResponse
+    class CEPClientAPIException
+    interface CEPClientAPI
+    class CEPClientAPIImpl
+    interface EnderecoRepository
+    class EnderecoInMemoryRepository 
+    interface EnderecoService
+    class EnderecoServiceImpl
+    class EnderecoModelAssembler
+    class EnderecoController
+    class HttpStatusException
+    class WebClientFilters
+    class WebClientConfig
+    class EnderecoNotFoundException
+    class LocalizacaoServiceApplication
+
+    .ApiRESTful -- EnderecoController
+    EnderecoDTO <.. EnderecoController : <<create>>
+    EnderecoService <.. EnderecoController
+    EnderecoService "1" <--o "1" EnderecoController
+    EnderecoModelAssembler <..> EnderecoController
+    EnderecoModelAssembler "1" <--o "1" EnderecoController
+    
+    HttpStatusException <.. WebClientFilters : <<create>>
+    WebClientFilters <.. WebClientConfig
+
+    EnderecoDTO <.. CEPClientAPI
+    CEPClientAPI <|.. CEPClientAPIImpl
+    WebClientFilters <.. CEPClientAPIImpl
+    CEPClientAPIException <.. CEPClientAPIImpl : <<create>>
+    CEPClientAPIResponse <.. CEPClientAPIImpl
+    CEPUtils <.. CEPClientAPIImpl
+    EnderecoDTO <.. CEPClientAPIImpl : <<create>>
+
+    EnderecoDTO <.. EnderecoService
+    EnderecoService <|.. EnderecoServiceImpl
+    EnderecoDTO <.. EnderecoServiceImpl : <<create>>
+    CEPClientAPI <.. EnderecoServiceImpl
+    CEPClientAPI "1" <--o "1" EnderecoServiceImpl
+    EnderecoRepository <.. EnderecoServiceImpl
+    EnderecoRepository "1" <--o "1" EnderecoServiceImpl
+
+    EnderecoDTO <.. EnderecoRepository
+    EnderecoRepository <|.. EnderecoInMemoryRepository
+    CEPUtils <.. EnderecoInMemoryRepository
+    EnderecoDTO <.. EnderecoInMemoryRepository
+}
+
+namespace br.com.thiaguten.microservices.notificacaoservice #FFFFFF {
+    
+}
+
+namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
+    
+}
+
+namespace br.com.thiaguten.microservices.relatorioservice #FFFFFF {
+    
+}
+
+@enduml
