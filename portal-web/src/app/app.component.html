@@ -1,35 +1,7 @@
-<style>
-  .spacer {
-    flex: 1;
-  }
-
-  .logo {
-    padding: 0px 5px;
-    font-size: 20px;
-    font-weight: 600;
-  }
-</style>
-
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span class="logo">SGO</span>
-    <div>
-      <button mat-button>
-        <mat-icon>home</mat-icon>
-        <span>Início</span>
-      </button>
-    </div>
-    <div class="spacer"></div>
-    <div>
-      <button mat-button>
-        <mat-icon>person_add</mat-icon>
-        <span>Criar Conta</span>
-      </button>
-      <button mat-button>
-        <mat-icon>login</mat-icon>
-        <span>Entrar</span>
-      </button>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div fxLayout="column" fxFlexFill>
+  <app-navbar></app-navbar>
+  <div fxFlex>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>

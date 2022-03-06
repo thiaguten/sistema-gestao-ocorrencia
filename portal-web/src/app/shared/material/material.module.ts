@@ -1,6 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,19 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatInputModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatTableModule
-  ],
+  imports: [],
   exports: [
     MatToolbarModule,
     MatFormFieldModule,
@@ -37,7 +26,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatRippleModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule,
+    MatCardModule
   ]
 })
 export class MaterialModule { }

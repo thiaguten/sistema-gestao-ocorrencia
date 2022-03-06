@@ -1,0 +1,20 @@
+.logo {
+  // padding: 0 5px;
+  font-size: 30px;
+  vertical-align: middle;
+  margin-right: 50px;
+}
+
+.button-row {
+  // display: flex;
+  display: table-cell;
+}
+
+.button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+mat-icon {
+  // padding: 0 8px 0 0;
+  margin: 0 5px 0 0;
+}
