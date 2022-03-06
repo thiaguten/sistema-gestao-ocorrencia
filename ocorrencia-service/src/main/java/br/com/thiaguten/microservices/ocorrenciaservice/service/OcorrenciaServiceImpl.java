@@ -35,7 +35,7 @@ public class OcorrenciaServiceImpl implements OcorrenciaService {
         return recuperar(id)
                 .map(ocorrencia -> {
                     ocorrencia.setDataModificacao(LocalDateTime.now());
-                    ocorrencia.setObservacao(novaOcorrencia.getObservacao());
+                    ocorrencia.setDescricao(novaOcorrencia.getDescricao());
                     return salvar(ocorrencia);
                 })
                 .orElseGet(() -> {

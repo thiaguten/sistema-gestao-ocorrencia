@@ -3,7 +3,7 @@ package br.com.thiaguten.microservices.ocorrenciaservice.support.dto;
 public class OcorrenciaDTO {
 
     private Long id;
-    private String observacao;
+    private String descricao;
     private Long usuarioId;
     private Long servicoId;
 
@@ -18,12 +18,12 @@ public class OcorrenciaDTO {
         this.id = id;
     }
 
-    public String getObservacao() {
-        return observacao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Long getUsuarioId() {

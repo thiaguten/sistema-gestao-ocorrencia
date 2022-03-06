@@ -20,7 +20,7 @@ public class OcorrenciaDTOMapper implements DTOMapper<OcorrenciaDTO, Ocorrencia>
     public OcorrenciaDTO toDto(Ocorrencia ocorrencia) {
         OcorrenciaDTO dto = new OcorrenciaDTO();
         dto.setId(ocorrencia.getId());
-        dto.setObservacao(ocorrencia.getObservacao());
+        dto.setDescricao(ocorrencia.getDescricao());
         dto.setServicoId(ocorrencia.getServico().getId());
         dto.setUsuarioId(ocorrencia.getUsuario().getId());
         return dto;
@@ -30,7 +30,7 @@ public class OcorrenciaDTOMapper implements DTOMapper<OcorrenciaDTO, Ocorrencia>
     public Ocorrencia fromDto(OcorrenciaDTO ocorrenciaDto) {
         Ocorrencia ocorrencia = new Ocorrencia();
         ocorrencia.setId(ocorrenciaDto.getId());
-        ocorrencia.setObservacao(ocorrenciaDto.getObservacao());
+        ocorrencia.setDescricao(ocorrenciaDto.getDescricao());
         ocorrencia.setServico(servicoService.obterReferencia(ocorrenciaDto.getServicoId()));
         ocorrencia.setUsuario(usuarioService.obterReferencia(ocorrenciaDto.getUsuarioId()));
         return ocorrencia;

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.thiaguten.microservices.localizacaoservice.client.cep.CEPClientAPI;
 import br.com.thiaguten.microservices.localizacaoservice.dto.EnderecoDTO;
-import br.com.thiaguten.microservices.localizacaoservice.exception.EnderecoNotFoundException;
 import br.com.thiaguten.microservices.localizacaoservice.repository.EnderecoRepository;
 import reactor.core.publisher.Mono;
 

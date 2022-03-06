@@ -83,7 +83,7 @@ public class OcorrenciaController {
 
         if (SituacaoOcorrecia.NOVA.equals(ocorrencia.getSituacao())
                 || SituacaoOcorrecia.DEVOLVIDA.equals(ocorrencia.getSituacao())) {
-            ocorrencia.setObservacao(novaOcorrenciaDto.getObservacao());
+            ocorrencia.setDescricao(novaOcorrenciaDto.getDescricao());
             EntityModel<OcorrenciaDTO> entityModel = assembler.toModel(ocorrencia);
             return ResponseEntity
                     .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
