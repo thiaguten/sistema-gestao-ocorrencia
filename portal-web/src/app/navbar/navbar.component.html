@@ -1,25 +1,60 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-  <mat-toolbar-row fxLayoutAlign="space-between center">
-    <div>
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutGap="10px">
       <span class="logo">SGO</span>
-      <button mat-button>
+      <button mat-button routerLink="/">
         <mat-icon>home</mat-icon>
         <span>Início</span>
       </button>
     </div>
-    <div class="button-row">
-      <button mat-flat-button color="accent">
+    <div fxLayout="row" fxLayoutGap="10px" fxShow fxHide.lt-sm>
+      <button mat-raised-button color="accent">
         <mat-icon>person_add</mat-icon>
         <span>Criar Conta</span>
       </button>
-      <button mat-flat-button color="accent">
+      <button mat-raised-button color="accent">
         <mat-icon>login</mat-icon>
         <span>Entrar</span>
       </button>
-      <button mat-flat-button color="warn">
+      <button mat-raised-button color="warn">
         <mat-icon>logout</mat-icon>
         <span>Sair</span>
       </button>
     </div>
+    <div fxHide fxShow.xs>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <!-- <mat-icon>menu</mat-icon> -->
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>person_add</mat-icon>
+    <span>Criar Conta</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>login</mat-icon>
+    <span>Entrar</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>logout</mat-icon>
+    <span>Sair</span>
+  </button>
+  <!-- <div fxLayout="column" fxLayoutGap="10px">
+    <button mat-raised-button color="accent">
+      <mat-icon>person_add</mat-icon>
+      <span>Criar Conta</span>
+    </button>
+    <button mat-raised-button color="accent">
+      <mat-icon>login</mat-icon>
+      <span>Entrar</span>
+    </button>
+    <button mat-raised-button color="warn">
+      <mat-icon>logout</mat-icon>
+      <span>Sair</span>
+    </button>
+  </div> -->
+</mat-menu>
