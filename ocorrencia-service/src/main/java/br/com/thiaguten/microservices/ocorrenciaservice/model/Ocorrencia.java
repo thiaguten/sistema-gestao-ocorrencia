@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.groupon.uuid.UUID;
@@ -41,7 +42,10 @@ public class Ocorrencia implements Serializable {
     @Column(nullable = false, unique = true, updatable = false)
     private String codigo;
 
-    private String observacao;
+    private String descricao;
+
+    @OneToOne(mappedBy = "ocorrencia", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    private Endereco endereco;
 
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;
@@ -129,12 +133,12 @@ public class Ocorrencia implements Serializable {
         this.situacao = situacao;
     }
 
-    public String getObservacao() {
-        return observacao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public LocalDateTime getDataCriacao() {
