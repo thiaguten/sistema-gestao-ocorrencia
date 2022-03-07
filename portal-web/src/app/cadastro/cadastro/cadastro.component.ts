@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { catchError, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,7 +10,7 @@ export class CadastroComponent implements OnInit {
   hide = true;
   cadastroForm: FormGroup;
 
-  constructor(public dialog: MatDialog) {
+  constructor() {
     this.cadastroForm = new FormGroup({
       usuario: new FormControl('', [
         Validators.required
@@ -20,15 +18,14 @@ export class CadastroComponent implements OnInit {
       cpf: new FormControl('', {
         validators: [
           Validators.required,
-          // only positive numbers
-          Validators.pattern(/^\d+$/)
+          Validators.pattern(/^\d{11}$/)
         ],
         updateOn: "blur"
       }),
       email: new FormControl('', [
         Validators.required
       ]),
-      primeroNome: new FormControl('', [
+      primeiroNome: new FormControl('', [
         Validators.required
       ]),
       ultimoNome: new FormControl('', [
@@ -44,35 +41,26 @@ export class CadastroComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // const fromValue = this.cadastroForm.controls['from'].value;
-    // const toValue = this.cadastroForm.controls['to'].value;
-    // const quantityValue = this.cadastroForm.controls['quantity'].value;
+    const usuario = this.cadastroForm.controls['usuario'].value;
+    const cpf = this.cadastroForm.controls['cpf'].value;
+    const email = this.cadastroForm.controls['email'].value;
+    const primeiroNome = this.cadastroForm.controls['primeiroNome'].value;
+    const ultimoNome = this.cadastroForm.controls['ultimoNome'].value;
+    const senha = this.cadastroForm.controls['senha'].value;
 
-    // const currencyConversion$: Observable<CurrencyConversion> = this.currencyService.getCurrencyConversion(fromValue, toValue, quantityValue);
+    console.log('usuario', usuario);
+    console.log('cpf', cpf);
+    console.log('email', email);
+    console.log('primeiroNome', primeiroNome);
+    console.log('ultimoNome', ultimoNome);
+    console.log('senha', senha);
 
-    // currencyConversion$
-    //   .pipe(
-    //     catchError(error => {
-    //       // console.log(error);
-    //       this.onError('Fail to get currency conversion response')
-    //       return of({});
-    //     })
-    //   )
-    //   .subscribe(currencyConversion =>
-    //     this.currencyConversionJson = JSON.stringify(currencyConversion)
-    //   );
-  }
-
-  onError(errorMessage: string): void {
-    // this.dialog.open(ErrorDialogComponent, {
-    //   data: errorMessage
-    // });
+    // TODO através de um service, chamar a API para salvar o novo usuário.
   }
 
   hasError(controlName: string, errorName: string): boolean {
-    // return this.cadastroForm.controls[controlName].touched &&
-    //   this.cadastroForm.controls[controlName].hasError(errorName);
-    return false;
+    return this.cadastroForm.controls[controlName].touched &&
+      this.cadastroForm.controls[controlName].hasError(errorName);
   }
 
 }

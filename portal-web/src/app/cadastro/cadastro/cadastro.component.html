@@ -26,7 +26,7 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Primeiro Nome</mat-label>
-          <input matInput formControlName="primeroNome" id="primeiroNome" required>
+          <input matInput formControlName="primeiroNome" id="primeiroNome" required>
           <mat-error *ngIf="hasError('primeiroNome', 'required')">Campo é obrigatório</mat-error>
         </mat-form-field>
 
@@ -39,10 +39,11 @@
         <mat-form-field appearance="outline">
           <mat-label>Senha</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha" id="senha" required>
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar senha'"
+          <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar senha'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
+          </button> -->
+          <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           <mat-error *ngIf="hasError('senha', 'required')">Campo é obrigatório</mat-error>
         </mat-form-field>
       </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, Observable, of } from 'rxjs';
 import { Ocorrencia } from 'src/app/ocorrencia/model/ocorrencia';
+import { OcorrenciaService } from 'src/app/ocorrencia/service/ocorrencia.service';
+import { ErrorDialogComponent } from 'src/app/shared/error/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -10,18 +13,42 @@ import { Ocorrencia } from 'src/app/ocorrencia/model/ocorrencia';
 export class HomeComponent implements OnInit {
 
   username = '';
-  //isAuthenticated?: boolean;
   isAuthenticated = true;
   displayedColumns = ['codigo', 'data'];
-  ocorrencias$: Ocorrencia[] = [
-    { codigo: '757e5f69-2327-4289-b6ae-6cbbb262bb91', data: '12/01/2022 16:10' },
-    { codigo: '32028ebd-3ccb-43fb-8c09-3864f440a3a3', data: '05/02/2022 10:40' },
-    { codigo: 'd03fa781-30aa-42a3-9b05-7788f3b60701', data: '11/12/2021 13:01' }
-  ];
+  ocorrencias$: Observable<Ocorrencia[]>;
+  ocorrenciasJson?: string;
 
-  constructor() { }
+  constructor(
+    private ocorrenciaService: OcorrenciaService,
+    public dialog: MatDialog
+  ) {
+    this.ocorrencias$ = this.ocorrenciaService.listarOcorrencias()
+      .pipe(
+        catchError(error => {
+          console.log(error);
+          //this.onError('Falha ao listar as ocorrências!');
+          this.onError(`Falha ao listar as ocorrências! - Erro: ${error.message}`);
+          //this.onError('Falha ao listar as ocorrências! - Erro: ' + JSON.stringify(error));
+          return of([]);
+        })
+      );
+
+    //this.ocorrencias$
+    //  .subscribe(ocorrencias =>
+    //    this.ocorrenciasJson = JSON.stringify(ocorrencias)
+    //  );
+  }
 
   ngOnInit(): void {
+
+  }
+
+  onError(errorMessage: string): void {
+    this.dialog.open(ErrorDialogComponent, {
+      data: {
+        message: errorMessage
+      }
+    });
   }
 
 }

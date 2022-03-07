@@ -8,3 +8,15 @@
   border-radius: .2em;
   text-transform: uppercase;
 }
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: lightgray;
+  padding: 25px;
+}
+
+table {
+  width: 100%;
+}
