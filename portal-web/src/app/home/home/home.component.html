@@ -1,12 +1,41 @@
 <div class="container">
+  <mat-toolbar color="primary">
+    <span *ngIf="username; else elseBlock">Bem-vindo, {{ username }}</span>
+    <ng-template #elseBlock>Bem-vindo</ng-template>
+  </mat-toolbar>
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>Bem-vindo</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
+    <div class="content" *ngIf="!isAuthenticated">
       <p>Olá, bem-vindo ao Sistema de Gestão de Ocorrência.</p>
-      <p>Aqui você poderá registrar e acompanhar ocorrências decorrentes de problemas relacionados à infra-estrutura urbana em sua região, tais como: conserto de buracos em calçadas e pistas, vazamento de água em canos da rede pública, falta de iluminação em postes, etc.</p>
-      <p>Caso queira registrar uma ocorrência, por favor efetue o acesso ao sistema através do botão "Entrar" acima. Se você ainda não possui uma conta cadastrada, então primeiro faça seu cadastro.</p>
-    </mat-card-content>
+      <p>Aqui você poderá registrar e acompanhar ocorrências decorrentes de problemas relacionados à infra-estrutura
+        urbana em sua região, tais como: conserto de buracos em calçadas e pistas, vazamento de água em canos da rede
+        pública, falta de iluminação em postes, etc.</p>
+      <p>Caso queira registrar uma ocorrência, por favor efetue o acesso ao sistema através do botão "Entrar" acima. Se
+        você ainda não possui uma conta cadastrada, então primeiro faça seu cadastro.</p>
+    </div>
+
+    <div *ngIf="isAuthenticated">
+      <div fxLayout="column" fxLayoutGap="100px">
+        <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-between start">
+          <button mat-stroked-button>Registrar nova ocorrência</button>
+          <button mat-stroked-button>Acompanhar minhas ocorrências</button>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-between stretch">
+          <span><strong>Suas últimas ocorrências:</strong></span>
+          <table mat-table [dataSource]="ocorrencias$" class="mat-elevation-z6">
+            <ng-container matColumnDef="codigo">
+              <th mat-header-cell *matHeaderCellDef> Código </th>
+              <td mat-cell *matCellDef="let ocorrencia"> {{ ocorrencia.codigo }} </td>
+            </ng-container>
+            <ng-container matColumnDef="data">
+              <th mat-header-cell *matHeaderCellDef> Data </th>
+              <td mat-cell *matCellDef="let ocorrencia"> {{ ocorrencia.data }} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </mat-card>
 </div>

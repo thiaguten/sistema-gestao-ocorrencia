@@ -12,17 +12,18 @@ const routes: Routes = [
     loadChildren: () =>
       import('./ocorrencia/ocorrencia.module').then((m) => m.OcorrenciaModule)
   },
+  {
+    path: 'cadastro',
+    loadChildren: () =>
+      import('./cadastro/cadastro.module').then((m) => m.CadastroModule)
+  },
   { path: '', pathMatch: 'full', redirectTo: '/home' },
-  { path: '**', pathMatch: 'full', redirectTo: '' },
-  //{ path: '**', component: PageNotFoundComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
-      routes,
-      //{ enableTracing: true } // <-- debugging purposes only
-    ),
+    RouterModule.forRoot(routes),
   ],
   exports: [RouterModule]
 })

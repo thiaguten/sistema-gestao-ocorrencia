@@ -1,0 +1,56 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <span>Criar conta</span>
+  </mat-toolbar>
+  <mat-card>
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" novalidate>
+      <div fxLayout="column" fxLayoutAlign="space-between center">
+        <mat-form-field appearance="outline">
+          <mat-label>Usuário</mat-label>
+          <input matInput formControlName="usuario" id="usuario" required>
+          <mat-error *ngIf="hasError('usuario', 'required')">Campo é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>CPF</mat-label>
+          <input matInput #input maxlength="11" placeholder="000.000.000-00" formControlName="cpf" id="cpf" required>
+          <mat-hint align="end">{{ input.value?.length || 0 }}/11</mat-hint>
+          <mat-error *ngIf="hasError('cpf', 'required')">Campo é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" id="email" required>
+          <mat-error *ngIf="hasError('email', 'required')">Campo é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Primeiro Nome</mat-label>
+          <input matInput formControlName="primeroNome" id="primeiroNome" required>
+          <mat-error *ngIf="hasError('primeiroNome', 'required')">Campo é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Último Nome</mat-label>
+          <input matInput formControlName="ultimoNome" id="ultimoNome" required>
+          <mat-error *ngIf="hasError('ultimoNome', 'required')">Campo é obrigatório</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha" id="senha" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar senha'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="hasError('senha', 'required')">Campo é obrigatório</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <button mat-raised-button color="primary" [disabled]="cadastroForm.invalid">Criar</button>
+        <button mat-raised-button routerLink="/">Voltar</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
