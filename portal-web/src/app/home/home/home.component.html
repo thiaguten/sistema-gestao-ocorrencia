@@ -5,7 +5,7 @@
   </mat-toolbar>
   <mat-card>
     <div *ngIf="!isAuthenticated" class="content">
-      <p>Olá, bem-vindo ao Sistema de Gestão de Ocorrência.</p>
+      <p>Olá, bem-vindo ao Sistema de Gestão de Ocorrência.</p><br>
       <p>Aqui você poderá registrar e acompanhar ocorrências decorrentes de problemas relacionados à infra-estrutura
         urbana em sua região, tais como: conserto de buracos em calçadas e pistas, vazamento de água em canos da rede
         pública, falta de iluminação em postes, etc.</p>
@@ -13,17 +13,18 @@
         você ainda não possui uma conta cadastrada, então primeiro faça seu cadastro.</p>
     </div>
 
-    <div *ngIf="isAuthenticated" fxLayout="column" fxLayoutGap="100px">
-      <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-between start">
-        <button mat-stroked-button>Registrar nova ocorrência</button>
-        <button mat-stroked-button>Acompanhar minhas ocorrências</button>
+    <div *ngIf="isAuthenticated" fxLayout="column" fxLayoutGap="100px" fxLayoutAlign="start stretch">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="25px" fxLayoutAlign="start stretch">
+        <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start stretch">
+          <button type="button" mat-stroked-button>Registrar nova ocorrência</button>
+          <button type="button" mat-stroked-button>Acompanhar minhas ocorrências</button>
+        </div>
       </div>
 
-      <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-between stretch">
-        <span><b>Suas últimas ocorrências:</b></span>
+      <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start stretch">
+        <h2>Suas últimas ocorrências:</h2>
         <app-listar-ocorrencia></app-listar-ocorrencia>
       </div>
     </div>
-
   </mat-card>
 </div>
