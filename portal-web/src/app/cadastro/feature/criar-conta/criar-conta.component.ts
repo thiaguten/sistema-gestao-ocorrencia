@@ -2,16 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.scss']
+  selector: 'app-criar-conta',
+  templateUrl: './criar-conta.component.html',
+  styleUrls: ['./criar-conta.component.scss']
 })
-export class CadastroComponent implements OnInit {
+export class CriarContaComponent implements OnInit {
+
   hide = true;
   cadastroForm: FormGroup;
 
   constructor() {
-    this.cadastroForm = new FormGroup({
+    this.cadastroForm = this.createFormGroup();
+  }
+
+  ngOnInit(): void {
+  }
+
+  createFormGroup(): FormGroup {
+    return new FormGroup({
       usuario: new FormControl('', [
         Validators.required
       ]),
@@ -35,9 +43,6 @@ export class CadastroComponent implements OnInit {
         Validators.required
       ])
     });
-  }
-
-  ngOnInit(): void {
   }
 
   onSubmit(): void {

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OcorrenciaComponent } from './ocorrencia.component';
+import { ListarOcorrenciaComponent } from './listar-ocorrencia.component';
 
-describe('OcorrenciaComponent', () => {
-  let component: OcorrenciaComponent;
-  let fixture: ComponentFixture<OcorrenciaComponent>;
+describe('ListarOcorrenciaComponent', () => {
+  let component: ListarOcorrenciaComponent;
+  let fixture: ComponentFixture<ListarOcorrenciaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OcorrenciaComponent ]
+      declarations: [ ListarOcorrenciaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OcorrenciaComponent);
+    fixture = TestBed.createComponent(ListarOcorrenciaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

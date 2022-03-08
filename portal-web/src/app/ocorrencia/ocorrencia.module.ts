@@ -1,19 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
+import { ListarOcorrenciaComponent } from './feature/listar-ocorrencia/listar-ocorrencia.component';
 import { OcorrenciaRoutingModule } from './ocorrencia-routing.module';
-import { OcorrenciaComponent } from './ocorrencia/ocorrencia.component';
 
 
 @NgModule({
   declarations: [
-    OcorrenciaComponent
+    ListarOcorrenciaComponent
   ],
   imports: [
     CommonModule,
     OcorrenciaRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    ListarOcorrenciaComponent
   ]
 })
 export class OcorrenciaModule { }

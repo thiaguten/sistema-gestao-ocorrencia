@@ -39,18 +39,19 @@
         <mat-form-field appearance="outline">
           <mat-label>Senha</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha" id="senha" required>
-          <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar senha'"
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar senha'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button> -->
-          <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon> -->
           <mat-error *ngIf="hasError('senha', 'required')">Campo é obrigatório</mat-error>
         </mat-form-field>
       </div>
 
       <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-        <button mat-raised-button color="primary" [disabled]="cadastroForm.invalid">Criar</button>
-        <button mat-raised-button routerLink="/">Voltar</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="cadastroForm.invalid">Criar</button>
+        <button type="reset" mat-raised-button color="accent">Limpar</button>
+        <button type="button" mat-raised-button routerLink="/">Voltar</button>
       </div>
     </form>
   </mat-card>

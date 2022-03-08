@@ -4,12 +4,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { CadastroRoutingModule } from './cadastro-routing.module';
-import { CadastroComponent } from './cadastro/cadastro.component';
+import { CriarContaComponent } from './feature/criar-conta/criar-conta.component';
 
 
 @NgModule({
   declarations: [
-    CadastroComponent
+    CriarContaComponent
   ],
   imports: [
     CommonModule,

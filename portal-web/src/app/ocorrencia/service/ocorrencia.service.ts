@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, first, Observable, take, tap } from 'rxjs';
+import { delay, first, Observable } from 'rxjs';
 
 import { Ocorrencia } from '../model/ocorrencia';
 
@@ -10,7 +10,7 @@ import { Ocorrencia } from '../model/ocorrencia';
 export class OcorrenciaService {
 
   private readonly API = '/assets/mock_ocorrencias.json';
-  //private readonly API = 'http://localhost:4200/api/v1/ocorrencias';
+  //private readonly API = '/api/v1/ocorrencias';
 
   constructor(private httpClient: HttpClient) { }
 
