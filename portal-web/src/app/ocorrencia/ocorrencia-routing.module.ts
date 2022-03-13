@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { RegistrarOcorrenciaComponent } from './feature/registrar-ocorrencia/registrar-ocorrencia.component';
+
+const routes: Routes = [
+  { path: 'registrar', component: RegistrarOcorrenciaComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/ocorrencia/registrar' }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
