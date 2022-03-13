@@ -17,8 +17,8 @@ export class ServicoService {
   listarServicos(): Observable<Servico[]> {
     return this.httpClient.get<Servico[]>(this.API)
       .pipe(
-        first()
-        //tap(servicos => console.log(servicos))
+        first(),
+        //tap(servicos => console.log('servicos', servicos))
       );
   }
 }

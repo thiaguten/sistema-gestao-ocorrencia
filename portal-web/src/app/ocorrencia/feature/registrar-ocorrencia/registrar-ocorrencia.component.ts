@@ -25,6 +25,8 @@ export class RegistrarOcorrenciaComponent implements OnInit {
     private servicoService: ServicoService,
     private localizacaoService: LocalizacaoService
   ) {
+    this.registroForm = this.createFormGroup();
+
     this.servicos$ = this.servicoService.listarServicos()
       .pipe(
         catchError(error => {
@@ -38,7 +40,14 @@ export class RegistrarOcorrenciaComponent implements OnInit {
 
     // this.servicos$.subscribe(servicos => this.servicos = servicos);
 
-    this.registroForm = this.formBuilder.group({
+  }
+
+  ngOnInit(): void {
+    this.onChangeInputCEP();
+  }
+
+  createFormGroup(): FormGroup {
+    return this.formBuilder.group({
       servico: ['', Validators.required],
       cep: ['', {
         validators: [
@@ -54,13 +63,6 @@ export class RegistrarOcorrenciaComponent implements OnInit {
       quantidadeIncidentes: ['', Validators.required],
       descricao: ['', Validators.required]
     });
-
-    // LER: https://angular.io/guide/reactive-forms#updating-parts-of-the-data-model
-    // Tlvz precise para preencher o endereco a partir do CEP digitado.
-  }
-
-  ngOnInit(): void {
-    this.onChangeInputCEP();
   }
 
   hasError(controlName: string, errorName: string): boolean {
@@ -98,29 +100,46 @@ export class RegistrarOcorrenciaComponent implements OnInit {
   onChangeInputCEP(): void {
     // Observar mudanças no campo de CEP para ativar a busca de endereço por CEP.
     this.cepFormControl?.valueChanges.subscribe(cepValue => {
+
       if (this.cepFormControl?.valid) {
-        console.log(`Buscando endereco para o CEP: ${cepValue}`);
+        //console.log(`Buscando endereco para o CEP: ${cepValue}`);
+
+        // Buscar endereco para o CEP informado.
         this.localizacaoService.getEnderecoByCEP(cepValue)
           .pipe(
             catchError(error => {
-              console.log(`Falha ao buscar o endereço para o CEP: ${cepValue} - Erro: ${error.message}`);
+              console.warn(`Falha ao buscar o endereço para o CEP: ${cepValue} - Erro: ${error.message}`);
               //this.onError(`Falha ao buscar o endereço para o CEP: ${cepValue} - Erro: ${error.message}`);
-              return of(ReadonlyEmptyEndereco);
-              //return EMPTY;
+              //return of(ReadonlyEmptyEndereco);
+              return EMPTY;
             })
           )
-          .subscribe((endereco: Endereco) => {
-            console.log('endereco', endereco);
+          .subscribe((endereco: Endereco) => this.popularCamposLocalizacao(endereco))
 
-            // Alterar o valor dos inputs dos outros form controls relacionados a localizacao.
-            // TODO fazer funcao getter desses campos?
-            this.estadoFormControl?.setValue(endereco.uf);
-            this.cidadeFormControl?.setValue(endereco.localidade);
-            this.bairroFormControl?.setValue(endereco.bairro);
-            this.enderecoFormControl?.setValue(endereco.logradouro);
-          });
+      } else {
+        this.popularCamposLocalizacao(ReadonlyEmptyEndereco);
       }
+
     });
+  }
+
+  popularCamposLocalizacao(endereco: Endereco): void {
+    if (endereco) {
+      // Alterar o valor dos inputs dos outros form controls relacionados a localizacao.
+      // https://angular.io/guide/reactive-forms#updating-parts-of-the-data-model
+
+      // this.estadoFormControl?.setValue(endereco.uf);
+      // this.cidadeFormControl?.setValue(endereco.localidade);
+      // this.bairroFormControl?.setValue(endereco.bairro);
+      // this.enderecoFormControl?.setValue(endereco.logradouro);
+
+      this.registroForm.patchValue({
+        estado: endereco.uf,
+        cidade: endereco.localidade,
+        bairro: endereco.bairro,
+        endereco: endereco.logradouro
+      });
+    }
   }
 
   // FORM CONTROL GETTERS

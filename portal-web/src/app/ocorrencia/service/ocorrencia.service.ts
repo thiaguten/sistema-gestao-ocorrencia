@@ -19,7 +19,7 @@ export class OcorrenciaService {
       .pipe(
         first(),
         delay(500), // para testar o spinner de carregando na listagem na tela.
-        //tap(ocorrencias => console.log(ocorrencias))
+        //tap(ocorrencias => console.log('ocorrencias', ocorrencias))
       );
   }
 
@@ -27,7 +27,7 @@ export class OcorrenciaService {
   //   return this.httpClient.get<Ocorrencia>('')
   //     .pipe(
   //       take(count),
-  //       //tap(ocorrencias => console.log(ocorrencias))
+  //       //tap(ocorrencias => console.log('ocorrencias', ocorrencias))
   //     );
   // }
 

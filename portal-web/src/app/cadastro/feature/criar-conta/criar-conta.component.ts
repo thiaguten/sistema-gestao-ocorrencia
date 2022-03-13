@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-criar-conta',
@@ -8,13 +8,18 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CriarContaComponent implements OnInit {
 
-  hide = true;
+  hidePassword = true;
   cadastroForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
-    // this.cadastroForm = this.createFormGroup();
+    this.cadastroForm = this.createFormGroup();
+  }
 
-    this.cadastroForm = this.formBuilder.group({
+  ngOnInit(): void {
+  }
+
+  createFormGroup(): FormGroup {
+    return this.formBuilder.group({
       usuario: ['', Validators.required],
       cpf: ['', {
         validators: [
@@ -33,36 +38,13 @@ export class CriarContaComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
-
-  createFormGroup(): FormGroup {
-    return new FormGroup({
-      usuario: new FormControl('', Validators.required),
-      cpf: new FormControl('', {
-        validators: [
-          Validators.required,
-          Validators.pattern(/^\d{11}$/)
-        ],
-        updateOn: 'blur'
-      }),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.email
-      ]),
-      primeiroNome: new FormControl('', Validators.required),
-      ultimoNome: new FormControl('', Validators.required),
-      senha: new FormControl('', Validators.required)
-    });
-  }
-
   onSubmit(): void {
-    const usuario = this.getValue('usuario');
-    const cpf = this.getValue('cpf');
-    const email = this.getValue('email');
-    const primeiroNome = this.getValue('primeiroNome');
-    const ultimoNome = this.getValue('ultimoNome');
-    const senha = this.getValue('senha');
+    const usuario = this.usuarioFormControl?.value;
+    const cpf = this.cpfFormControl?.value;
+    const email = this.emailFormControl?.value;
+    const primeiroNome = this.primeiroNomeFormControl?.value;
+    const ultimoNome = this.ultimoNomeFormControl?.value;
+    const senha = this.senhaFormControl?.value;
 
     console.log('usuario', usuario);
     console.log('cpf', cpf);
@@ -71,20 +53,44 @@ export class CriarContaComponent implements OnInit {
     console.log('ultimoNome', ultimoNome);
     console.log('senha', senha);
 
-    const isValid = this.cadastroForm.valid;
-    console.log('isValid', isValid);
-
+    console.log('cadastroFormIsValid', this.cadastroForm.valid);
     // TODO através de um service, chamar a API para salvar o novo usuário.
   }
 
   hasError(controlName: string, errorName: string): boolean {
-    return this.cadastroForm.controls[controlName].hasError(errorName) &&
-      this.cadastroForm.controls[controlName].touched;
+    const formControl = this.cadastroForm.controls[controlName];
+    return formControl.touched && formControl.hasError(errorName);
   }
 
-  getValue(controlName: string) {
-    // return this.cadastroForm.get(controlName)?.value;
-    return this.cadastroForm.controls[controlName].value;
+  getFormControl(controlName: string) {
+    return this.cadastroForm.get(controlName);
+    //return this.cadastroForm.controls[controlName];
+  }
+
+  // FORM CONTROL GETTERS
+
+  get usuarioFormControl() {
+    return this.getFormControl('usuario');
+  }
+
+  get cpfFormControl() {
+    return this.getFormControl('cpf');
+  }
+
+  get emailFormControl() {
+    return this.getFormControl('email');
+  }
+
+  get primeiroNomeFormControl() {
+    return this.getFormControl('primeiroNome');
+  }
+
+  get ultimoNomeFormControl() {
+    return this.getFormControl('ultimoNome');
+  }
+
+  get senhaFormControl() {
+    return this.getFormControl('senha');
   }
 
 }
