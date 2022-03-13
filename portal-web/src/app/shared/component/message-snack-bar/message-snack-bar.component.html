@@ -1,0 +1,13 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <span>{{ data.message }}</span>
+  <div fxLayout="row" fxLayoutAlign="end start">
+    <ng-container *ngIf="data.action as action; else closeIcon">
+      <button mat-raised-button (click)="snackBarRef.dismiss()">{{ action }}</button>
+    </ng-container>
+    <ng-template #closeIcon>
+      <button mat-icon-button (click)="snackBarRef.dismiss()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </ng-template>
+  </div>
+</div>

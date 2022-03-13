@@ -4,11 +4,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ErrorDialogComponent } from './component/error-dialog/error-dialog.component';
 import { MaterialModule } from './material/material.module';
+import { MessageSnackBarComponent } from './component/message-snack-bar/message-snack-bar.component';
 
 
 @NgModule({
   declarations: [
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    MessageSnackBarComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { MaterialModule } from './material/material.module';
   exports: [
     MaterialModule,
     FlexLayoutModule,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    MessageSnackBarComponent
   ]
 })
 export class SharedModule { }

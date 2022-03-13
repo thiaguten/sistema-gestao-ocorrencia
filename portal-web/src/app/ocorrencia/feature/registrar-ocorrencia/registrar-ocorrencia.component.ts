@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, EMPTY, Observable, of } from 'rxjs';
 import { Endereco } from 'src/app/localizacao/model/endereco';
 import { LocalizacaoService, ReadonlyEmptyEndereco } from 'src/app/localizacao/service/localizacao.service';
 import { Servico } from 'src/app/servico/model/servico';
 import { ServicoService } from 'src/app/servico/service/servico.service';
 import { ErrorDialogComponent } from 'src/app/shared/component/error-dialog/error-dialog.component';
+import { MessageSnackBarComponent } from 'src/app/shared/component/message-snack-bar/message-snack-bar.component';
 
 @Component({
   selector: 'app-registrar-ocorrencia',
@@ -21,6 +23,7 @@ export class RegistrarOcorrenciaComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private servicoService: ServicoService,
     private localizacaoService: LocalizacaoService
@@ -87,6 +90,8 @@ export class RegistrarOcorrenciaComponent implements OnInit {
 
     console.log('registroFormIsValid', this.registroForm.valid);
     // TODO através de um service, chamar a API para salvar a nova ocorrência.
+
+    this.onSuccess('Ocorrência registrada com sucesso!');
   }
 
   onError(errorMessage: string): void {
@@ -94,6 +99,19 @@ export class RegistrarOcorrenciaComponent implements OnInit {
       data: {
         message: errorMessage
       }
+    });
+  }
+
+  onSuccess(successMessage: string): void {
+    this.snackBar.openFromComponent(MessageSnackBarComponent, {
+      data: {
+        message: successMessage,
+        //action: 'Fechar'
+      },
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 10 * 1000,
+      panelClass: ['green-snackbar']
     });
   }
 
