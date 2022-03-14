@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessageSnackBarComponent } from 'src/app/shared/component/message-snack-bar/message-snack-bar.component';
 
 @Component({
   selector: 'app-criar-conta',
@@ -11,7 +13,10 @@ export class CriarContaComponent implements OnInit {
   hidePassword = true;
   cadastroForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder
+    ) {
     this.cadastroForm = this.createFormGroup();
   }
 
@@ -55,6 +60,7 @@ export class CriarContaComponent implements OnInit {
 
     console.log('cadastroFormIsValid', this.cadastroForm.valid);
     // TODO através de um service, chamar a API para salvar o novo usuário.
+    this.onSuccess('Usuário cadastrado com sucesso!');
   }
 
   hasError(controlName: string, errorName: string): boolean {
@@ -65,6 +71,19 @@ export class CriarContaComponent implements OnInit {
   getFormControl(controlName: string) {
     return this.cadastroForm.get(controlName);
     //return this.cadastroForm.controls[controlName];
+  }
+
+  onSuccess(successMessage: string): void {
+    this.snackBar.openFromComponent(MessageSnackBarComponent, {
+      data: {
+        message: successMessage,
+        //action: 'Fechar'
+      },
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 10 * 1000,
+      panelClass: ['green-snackbar']
+    });
   }
 
   // FORM CONTROL GETTERS

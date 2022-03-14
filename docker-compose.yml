@@ -103,6 +103,40 @@ services:
       retries: 5
       start_period: 30s
 
+  keycloak-server:
+    image: quay.io/keycloak/keycloak:16.1.1
+    container_name: keycloak-server
+    # restart: unless-stopped
+    ports:
+      - "8080:8080"
+    #volumes:
+    #  - ./realm-export.json:/tmp/realm-export.json
+    environment:
+      #- KEYCLOAK_IMPORT=/tmp/realm-export.json
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=MYSQL
+      - DB_ADDR=sgo-mysql
+      - DB_DATABASE=db_keycloak
+      #- DB_USER=user_keycloak
+      #- DB_PASSWORD=Kcp@SsWd
+      - DB_USER=user_sgo
+      - DB_PASSWORD=Sg0p@SsWd
+      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the MySQL JDBC driver documentation in order to use it.
+      - JDBC_PARAMS=connectTimeout=60000
+      #- JDBC_PARAMS=useSSL=false&allowPublicKeyRetrieval=true&connectTimeout=60000
+    networks:
+      - sgo-network
+    depends_on:
+      sgo-mysql:
+        condition: service_healthy
+    healthcheck:
+      test: curl --silent --fail http://keycloak-server:8080/auth || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 1m
+
 volumes:
   sgo_mysql_data:
 
