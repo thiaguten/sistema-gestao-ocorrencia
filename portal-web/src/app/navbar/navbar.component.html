@@ -12,11 +12,11 @@
         <mat-icon>person_add</mat-icon>
         <span>Criar Conta</span>
       </button>
-      <button mat-raised-button color="accent">
+      <button mat-raised-button color="accent" (click)="entrar()">
         <mat-icon>login</mat-icon>
         <span>Entrar</span>
       </button>
-      <button mat-raised-button color="warn">
+      <button mat-raised-button color="warn" (click)="sair()">
         <mat-icon>logout</mat-icon>
         <span>Sair</span>
       </button>
@@ -35,26 +35,14 @@
     <mat-icon>person_add</mat-icon>
     <span>Criar Conta</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="entrar()">
     <mat-icon>login</mat-icon>
     <span>Entrar</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="sair()">
     <mat-icon>logout</mat-icon>
     <span>Sair</span>
   </button>
-  <!-- <div fxLayout="column" fxLayoutGap="10px">
-    <button mat-raised-button color="accent">
-      <mat-icon>person_add</mat-icon>
-      <span>Criar Conta</span>
-    </button>
-    <button mat-raised-button color="accent">
-      <mat-icon>login</mat-icon>
-      <span>Entrar</span>
-    </button>
-    <button mat-raised-button color="warn">
-      <mat-icon>logout</mat-icon>
-      <span>Sair</span>
-    </button>
-  </div> -->
 </mat-menu>
+
+<app-login-info [userProfile]="userProfile"></app-login-info>

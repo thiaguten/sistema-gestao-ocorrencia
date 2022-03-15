@@ -1,0 +1,14 @@
+<div>
+  <p><b>access_token_expiration:</b> {{ loginService.access_token_expiration }}</p>
+  <p><b>id_token_expiration:</b> {{ loginService.id_token_expiration }}</p>
+  <p><b>hasValidAccessToken:</b> {{ loginService.hasValidAccessToken }}</p>
+  <p><b>hasValidIdToken:</b> {{ loginService.hasValidIdToken }}</p>
+  <div>
+    <p><b>access_token:</b> {{ loginService.access_token }}</p>
+    <p><b>id_token:</b> {{ loginService.id_token }}</p>
+  </div>
+</div>
+<div *ngIf="userProfile">
+  <b>user profile:</b>
+  <pre>{{ userProfile | json }}</pre>
+</div>
