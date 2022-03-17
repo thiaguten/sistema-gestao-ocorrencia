@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.thiaguten.microservices.ocorrenciaservice.exception.UsuarioNotFoundException;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
+import br.com.thiaguten.microservices.ocorrenciaservice.service.KeycloakService;
 import br.com.thiaguten.microservices.ocorrenciaservice.service.UsuarioService;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDTO;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDtoMapper;
@@ -35,11 +36,16 @@ public class UsuarioController {
     @Autowired
     private UsuarioDtoMapper dtoMapper;
 
+    @Autowired
+    private KeycloakService keycloakService;
+
     private final UsuarioService service;
     private final UsuarioModelAssembler assembler;
 
     @Autowired
-    public UsuarioController(UsuarioService service, UsuarioModelAssembler assembler) {
+    public UsuarioController(
+            UsuarioService service,
+            UsuarioModelAssembler assembler) {
         this.service = service;
         this.assembler = assembler;
     }
@@ -55,7 +61,12 @@ public class UsuarioController {
 
     @PostMapping(value = "/v1/usuarios", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<UsuarioDTO>> criar(@RequestBody UsuarioDTO usuarioDto) {
+        // primeiro tentar salvar o usuário no keycloak.
+        String kcUserId = keycloakService.criarUsuario(usuarioDto);
+
         Usuario usuario = dtoMapper.fromDto(usuarioDto);
+        usuario.setIdpId(kcUserId);
+
         Usuario usuarioSalvo = service.salvar(usuario);
         EntityModel<UsuarioDTO> entityModel = assembler.toModel(usuarioSalvo);
         return ResponseEntity

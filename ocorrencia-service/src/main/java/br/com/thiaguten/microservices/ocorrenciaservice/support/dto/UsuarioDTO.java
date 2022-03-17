@@ -8,6 +8,9 @@ public class UsuarioDTO {
     private String ultimoNome;
     private String email;
     private Boolean notificacaoEmailAtiva;
+    private String idpId;
+    private String username;
+    private String senha;
 
     public Long getId() {
         return id;
@@ -55,6 +58,30 @@ public class UsuarioDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getIdpId() {
+        return idpId;
+    }
+
+    public void setIdpId(String idpId) {
+        this.idpId = idpId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
 }

@@ -3,6 +3,7 @@ package br.com.thiaguten.microservices.ocorrenciaservice.model;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * Entidade que representa um usuario anonimizado, ou seja,
+ * nao contem nenhuma informacao que possa identificar uma pessoa.
+ * O ID dessa entidade que será referenciados em outras tabelas, pois com isso
+ * as informações pessoais do usuario podem ser exlcuídas sem termos problemas
+ * de contraints, etc.
+ */
 @Entity
 public class Usuario implements Serializable {
 
@@ -19,9 +27,17 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // ID criado para o usuario no provedor de identidade (keycloak)
+    // @NaturalId
+    @Column(nullable = false, unique = true, updatable = false)
+    private String idpId;
+
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     private UsuarioIdentificado detalhe;
 
+    // informação de opt-in, de aceite de recebimento de email, poderia existir uma
+    // tabela de aceites, com data e hora, etc, ou seja mais especifica para isso,
+    // mas nao deu tempo de fazer.
     private Boolean emailAtivo = false;
 
     // @formatter:off
@@ -65,6 +81,14 @@ public class Usuario implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getIdpId() {
+        return idpId;
+    }
+
+    public void setIdpId(String idpId) {
+        this.idpId = idpId;
     }
 
     public UsuarioIdentificado getDetalhe() {
