@@ -8,15 +8,15 @@
       </button>
     </div>
     <div fxLayout="row" fxLayoutGap="10px" fxShow fxHide.lt-sm>
-      <button mat-raised-button color="accent" routerLink="/cadastro">
+      <button mat-raised-button color="accent" routerLink="/cadastro" *ngIf="!isAuthenticated()">
         <mat-icon>person_add</mat-icon>
         <span>Criar Conta</span>
       </button>
-      <button mat-raised-button color="accent" (click)="entrar()">
+      <button mat-raised-button color="accent" (click)="signIn()" *ngIf="!isAuthenticated()">
         <mat-icon>login</mat-icon>
         <span>Entrar</span>
       </button>
-      <button mat-raised-button color="warn" (click)="sair()">
+      <button mat-raised-button color="warn" (click)="signOut()" *ngIf="isAuthenticated()">
         <mat-icon>logout</mat-icon>
         <span>Sair</span>
       </button>
@@ -31,15 +31,15 @@
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/cadastro">
+  <button mat-menu-item routerLink="/cadastro" *ngIf="!isAuthenticated()">
     <mat-icon>person_add</mat-icon>
     <span>Criar Conta</span>
   </button>
-  <button mat-menu-item (click)="entrar()">
+  <button mat-menu-item (click)="signIn()" *ngIf="!isAuthenticated()">
     <mat-icon>login</mat-icon>
     <span>Entrar</span>
   </button>
-  <button mat-menu-item (click)="sair()">
+  <button mat-menu-item (click)="signOut()" *ngIf="isAuthenticated()">
     <mat-icon>logout</mat-icon>
     <span>Sair</span>
   </button>

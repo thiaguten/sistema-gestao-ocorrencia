@@ -1,11 +1,10 @@
 <div class="container">
   <mat-toolbar color="primary">
-    <!-- <span *ngIf="loginService.givenName; else elseBlock">Bem-vindo, {{ loginService.givenName }} {{ loginService.familyName }}!</span> -->
-    <span *ngIf="loginService.preferredUsername; else elseBlock">Bem-vindo, {{ loginService.preferredUsername }}!</span>
+    <span *ngIf="userName; else elseBlock">Bem-vindo, {{ userName }}!</span>
     <ng-template #elseBlock>Bem-vindo!</ng-template>
   </mat-toolbar>
   <mat-card>
-    <div *ngIf="!loginService.isLogged()" class="content">
+    <div *ngIf="!isAuthenticated()" class="content">
       <p>Olá, bem-vindo ao Sistema de Gestão de Ocorrência.</p><br>
       <p>Aqui você poderá registrar e acompanhar ocorrências decorrentes de problemas relacionados à infra-estrutura
         urbana em sua região, tais como: conserto de buracos em calçadas e pistas, vazamento de água em canos da rede
@@ -14,7 +13,7 @@
         você ainda não possui uma conta cadastrada, então primeiro faça seu cadastro.</p>
     </div>
 
-    <div *ngIf="loginService.isLogged()" fxLayout="column" fxLayoutGap="100px" fxLayoutAlign="start stretch">
+    <div *ngIf="isAuthenticated()" fxLayout="column" fxLayoutGap="100px" fxLayoutAlign="start stretch">
       <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="25px" fxLayoutAlign="start stretch">
         <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start stretch">
           <button type="button" mat-stroked-button routerLink="/ocorrencia/registrar">Registrar nova ocorrência</button>

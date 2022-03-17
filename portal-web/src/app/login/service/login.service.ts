@@ -6,7 +6,21 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class LoginService {
 
+  // private isAuthenticatedSubject$ = new BehaviorSubject<boolean>(false);
+
   constructor(private oauthService: OAuthService) { }
+
+  // isAuthenticated(): Observable<boolean> {
+  //   return this.isAuthenticatedSubject$.asObservable();
+  // }
+
+  // setAuthenticated(isAuthenticated: boolean): void {
+  //   this.isAuthenticatedSubject$.next(isAuthenticated);
+  // }
+
+  isLoggedIn(): boolean {
+    return this.hasValidAccessToken && this.hasValidIdToken;
+  }
 
   login(): void {
     // this.oauthService.initImplicitFlowInternal();
@@ -19,8 +33,12 @@ export class LoginService {
     this.oauthService.revokeTokenAndLogout();
   }
 
-  isLogged(): boolean {
-    return this.hasValidAccessToken && this.hasValidIdToken;
+  hasRole(role: string): boolean {
+    const token = this.oauthService.getAccessToken();
+    const payloadEncoded = token.split('.')[1];
+    const payloadDecodedJSON = window.atob(payloadEncoded);
+    const payloadDecoded = JSON.parse(payloadDecodedJSON);
+    return payloadDecoded.realm_access.roles.indexOf(role) !== -1;
   }
 
   // GETTERS
@@ -49,26 +67,27 @@ export class LoginService {
     return this.oauthService.getAccessTokenExpiration();
   }
 
-  get givenName() {
+  get identityClaims() {
     // fix for Typescript error: TS7053.
     // define what kind of index type the object has. In this case it is a string based index.
     const claims: { [index: string]: any } = this.oauthService.getIdentityClaims();
+    return claims;
+  }
+
+  get givenName() {
+    const claims = this.identityClaims;
     if (!claims) return null;
     return claims['given_name'];
   }
 
   get preferredUsername() {
-    // fix for Typescript error: TS7053.
-    // define what kind of index type the object has. In this case it is a string based index.
-    const claims: { [index: string]: any } = this.oauthService.getIdentityClaims();
+    const claims = this.identityClaims;
     if (!claims) return null;
     return claims['preferred_username'];
   }
 
   get familyName() {
-    // fix for Typescript error: TS7053.
-    // define what kind of index type the object has. In this case it is a string based index.
-    const claims: { [index: string]: any } = this.oauthService.getIdentityClaims();
+    const claims = this.identityClaims;
     if (!claims) return null;
     return claims['family_name'];
   }

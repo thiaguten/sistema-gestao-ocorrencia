@@ -8,11 +8,20 @@ import { LoginService } from 'src/app/login/service/login.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-    public loginService: LoginService
-  ) { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+  }
+
+  get userName(): string {
+    if (this.loginService.givenName && this.loginService.familyName) {
+      return `${this.loginService.givenName} ${this.loginService.familyName}`;
+    }
+    return this.loginService.preferredUsername;
+  }
+
+  isAuthenticated(): boolean {
+    return this.loginService.isLoggedIn();
   }
 
 }
