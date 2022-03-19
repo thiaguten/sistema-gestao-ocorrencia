@@ -38,7 +38,7 @@ public class Usuario implements Serializable {
     // informação de opt-in, de aceite de recebimento de email, poderia existir uma
     // tabela de aceites, com data e hora, etc, ou seja mais especifica para isso,
     // mas nao deu tempo de fazer.
-    private Boolean emailAtivo = false;
+    private Boolean notificacaoEmailAtivo = false;
 
     // @formatter:off
     /*
@@ -72,7 +72,7 @@ public class Usuario implements Serializable {
     // @formatter:on
 
     public Usuario() {
-        this.emailAtivo = false;
+        this.notificacaoEmailAtivo = false;
     }
 
     public Long getId() {
@@ -106,12 +106,12 @@ public class Usuario implements Serializable {
         this.detalhe = detalhe;
     }
 
-    public Boolean getEmailAtivo() {
-        return emailAtivo;
+    public Boolean getNotificacaoEmailAtivo() {
+        return notificacaoEmailAtivo;
     }
 
-    public void setEmailAtivo(Boolean emailAtivo) {
-        this.emailAtivo = emailAtivo;
+    public void setNotificacaoEmailAtivo(Boolean notificacaoEmailAtivo) {
+        this.notificacaoEmailAtivo = notificacaoEmailAtivo;
     }
 
     // @formatter:off

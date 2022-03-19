@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, first, Observable } from 'rxjs';
+import { first, Observable, tap } from 'rxjs';
 
 import { Ocorrencia } from '../model/ocorrencia';
+import { Usuario } from '../model/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class OcorrenciaService {
 
   private readonly API = '/assets/mock_ocorrencias.json';
   //private readonly API = '/api/v1/ocorrencias';
+  private readonly API_USUARIOS = '/api/v1/usuarios';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,7 +20,7 @@ export class OcorrenciaService {
     return this.httpClient.get<Ocorrencia[]>(this.API)
       .pipe(
         first(),
-        delay(500), // para testar o spinner de carregando na listagem na tela.
+        //delay(500), // para testar o spinner de carregando na listagem na tela.
         //tap(ocorrencias => console.log('ocorrencias', ocorrencias))
       );
   }
@@ -30,5 +32,18 @@ export class OcorrenciaService {
   //       //tap(ocorrencias => console.log('ocorrencias', ocorrencias))
   //     );
   // }
+
+  criarUsuario(usuario: Usuario): Observable<Usuario> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.httpClient.post<Usuario>(this.API_USUARIOS, usuario, httpOptions)
+      .pipe(
+        first(),
+        tap((usuarioCriado: Usuario) => console.log('Usuário criado', usuarioCriado))
+      );
+  }
 
 }

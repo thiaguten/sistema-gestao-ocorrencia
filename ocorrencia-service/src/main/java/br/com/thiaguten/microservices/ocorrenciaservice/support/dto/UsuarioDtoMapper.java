@@ -12,16 +12,16 @@ public class UsuarioDtoMapper {
         UsuarioDTO dto = new UsuarioDTO();
         dto.setId(usuario.getId());
         dto.setIdpId(usuario.getIdpId());
-        dto.setNotificacaoEmailAtiva(usuario.getEmailAtivo());
+        dto.setNotificacaoEmailAtivo(usuario.getNotificacaoEmailAtivo());
 
         UsuarioIdentificado detalhe = usuario.getDetalhe();
         if (detalhe != null) {
             dto.setCpf(detalhe.getCpf());
             dto.setEmail(detalhe.getEmail());
-            dto.setPrimeroNome(detalhe.getPrimeroNome());
+            dto.setPrimeiroNome(detalhe.getPrimeiroNome());
             dto.setUltimoNome(detalhe.getUltimoNome());
-            // essas informacoes nao sao persistidas aqui, somente no keycloak
-            // dto.setUsername(username);
+            dto.setNomeUsuario(detalhe.getNomeUsuario());
+            // Essa(s) informacao(oes) nao e/sao persistida(s) aqui, somente no keycloak.
             // dto.setSenha(senha);
         }
         return dto;
@@ -31,16 +31,16 @@ public class UsuarioDtoMapper {
         Usuario usuario = new Usuario();
         usuario.setId(usuarioDTO.getId());
         usuario.setIdpId(usuarioDTO.getIdpId());
-        usuario.setEmailAtivo(usuarioDTO.getNotificacaoEmailAtiva());
+        usuario.setNotificacaoEmailAtivo(usuarioDTO.getNotificacaoEmailAtivo());
 
         UsuarioIdentificado detalhe = new UsuarioIdentificado();
         detalhe.setCpf(usuarioDTO.getCpf());
         detalhe.setEmail(usuarioDTO.getEmail());
         detalhe.setId(usuario.getId());
-        detalhe.setPrimeroNome(usuarioDTO.getPrimeroNome());
+        detalhe.setPrimeiroNome(usuarioDTO.getPrimeiroNome());
         detalhe.setUltimoNome(usuarioDTO.getUltimoNome());
-        // essas informacoes nao sao persistidas aqui, somente no keycloak
-        // detalhe.setUsername(usuarioDTO.getUsername());
+        detalhe.setNomeUsuario(usuarioDTO.getNomeUsuario());
+        // Essa(s) informacao(oes) nao e/sao persistida(s) aqui, somente no keycloak.
         // detalhe.setSenha(usuarioDTO.getSenha());
 
         usuario.setDetalhe(detalhe);

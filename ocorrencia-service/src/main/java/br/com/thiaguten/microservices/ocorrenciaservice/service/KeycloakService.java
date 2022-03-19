@@ -48,9 +48,9 @@ public class KeycloakService {
 
             // cria o usuario
             var userRepresentation = new UserRepresentation();
-            userRepresentation.setUsername(usuario.getUsername());
+            userRepresentation.setUsername(usuario.getNomeUsuario());
             userRepresentation.setEmail(usuario.getEmail());
-            userRepresentation.setFirstName(usuario.getPrimeroNome());
+            userRepresentation.setFirstName(usuario.getPrimeiroNome());
             userRepresentation.setLastName(usuario.getUltimoNome());
             userRepresentation.setEnabled(true);
             userRepresentation.setEmailVerified(false);

@@ -34,13 +34,14 @@ public class UsuarioIdentificado implements Serializable {
     @NaturalId
     @Column(nullable = false, unique = true, updatable = false)
     private String cpf;
-
-    private String primeroNome;
+    @Column(nullable = false, unique = true, updatable = false)
+    private String nomeUsuario;
+    private String primeiroNome;
     private String ultimoNome;
     private String email;
 
     public UsuarioIdentificado() {
-
+        super();
     }
 
     public Long getId() {
@@ -67,12 +68,20 @@ public class UsuarioIdentificado implements Serializable {
         this.cpf = cpf;
     }
 
-    public String getPrimeroNome() {
-        return primeroNome;
+    public String getNomeUsuario() {
+        return nomeUsuario;
     }
 
-    public void setPrimeroNome(String primeroNome) {
-        this.primeroNome = primeroNome;
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getPrimeiroNome() {
+        return primeiroNome;
+    }
+
+    public void setPrimeiroNome(String primeiroNome) {
+        this.primeiroNome = primeiroNome;
     }
 
     public String getUltimoNome() {

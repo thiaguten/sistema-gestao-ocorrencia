@@ -1,6 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { catchError, EMPTY } from 'rxjs';
+import { Usuario } from 'src/app/ocorrencia/model/usuario';
+import { OcorrenciaService } from 'src/app/ocorrencia/service/ocorrencia.service';
 import { MessageSnackBarComponent } from 'src/app/shared/component/message-snack-bar/message-snack-bar.component';
 
 @Component({
@@ -15,15 +19,16 @@ export class CriarContaComponent implements OnInit {
 
   constructor(
     private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder
-    ) {
+    private formBuilder: FormBuilder,
+    private ocorrenciaService: OcorrenciaService
+  ) {
     this.cadastroForm = this.createFormGroup();
   }
 
   ngOnInit(): void {
   }
 
-  createFormGroup(): FormGroup {
+  private createFormGroup(): FormGroup {
     return this.formBuilder.group({
       usuario: ['', Validators.required],
       cpf: ['', {
@@ -43,24 +48,36 @@ export class CriarContaComponent implements OnInit {
     });
   }
 
+  private criarNovoUsuario(): Usuario {
+    const usuario: Usuario = {
+      nomeUsuario: this.usuarioFormControl?.value,
+      cpf: this.cpfFormControl?.value,
+      email: this.emailFormControl?.value,
+      primeiroNome: this.primeiroNomeFormControl?.value,
+      ultimoNome: this.ultimoNomeFormControl?.value,
+      senha: this.senhaFormControl?.value,
+      notificacaoEmailAtivo: false
+    };
+    return usuario;
+  }
+
   onSubmit(): void {
-    const usuario = this.usuarioFormControl?.value;
-    const cpf = this.cpfFormControl?.value;
-    const email = this.emailFormControl?.value;
-    const primeiroNome = this.primeiroNomeFormControl?.value;
-    const ultimoNome = this.ultimoNomeFormControl?.value;
-    const senha = this.senhaFormControl?.value;
+    if (this.cadastroForm.valid) {
+      const usuario: Usuario = this.criarNovoUsuario();
+      console.log('usuario', usuario);
 
-    console.log('usuario', usuario);
-    console.log('cpf', cpf);
-    console.log('email', email);
-    console.log('primeiroNome', primeiroNome);
-    console.log('ultimoNome', ultimoNome);
-    console.log('senha', senha);
-
-    console.log('cadastroFormIsValid', this.cadastroForm.valid);
-    // TODO através de um service, chamar a API para salvar o novo usuário.
-    this.onSuccess('Usuário cadastrado com sucesso!');
+      this.ocorrenciaService.criarUsuario(usuario)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.onError(`Falha ao cadastrar usuário! - Erro: ${error.message}`);
+            //return of({});
+            return EMPTY;
+          })
+        )
+        .subscribe((u: Usuario) => {
+          this.onSuccess(`Usuário cadastrado com sucesso! - ID: ${u.id} - IDP_ID: ${u.idpId}`);
+        });
+    }
   }
 
   hasError(controlName: string, errorName: string): boolean {
@@ -68,22 +85,46 @@ export class CriarContaComponent implements OnInit {
     return formControl.touched && formControl.hasError(errorName);
   }
 
-  getFormControl(controlName: string) {
+  private getFormControl(controlName: string) {
     return this.cadastroForm.get(controlName);
     //return this.cadastroForm.controls[controlName];
   }
 
-  onSuccess(successMessage: string): void {
-    this.snackBar.openFromComponent(MessageSnackBarComponent, {
-      data: {
+  private onSuccess(successMessage: string): void {
+    this.mostrarSnapBar(this.createMatSnackBarConfig(
+      {
         message: successMessage,
         //action: 'Fechar'
       },
+      ['green-snackbar']
+    ));
+  }
+
+  private onError(errorMessage: string): void {
+    this.mostrarSnapBar(this.createMatSnackBarConfig(
+      {
+        message: errorMessage,
+        //action: 'Fechar'
+      },
+      ['red-snackbar']
+    ));
+  }
+
+  private createMatSnackBarConfig<D = any>(
+    data?: D,
+    panelClass?: string | string[]
+  ): MatSnackBarConfig {
+    return {
+      data: data,
       horizontalPosition: 'center',
       verticalPosition: 'top',
       duration: 10 * 1000,
-      panelClass: ['green-snackbar']
-    });
+      panelClass: panelClass
+    };
+  }
+
+  private mostrarSnapBar(config?: MatSnackBarConfig): void {
+    this.snackBar.openFromComponent(MessageSnackBarComponent, config);
   }
 
   // FORM CONTROL GETTERS

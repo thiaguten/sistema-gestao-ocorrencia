@@ -4,13 +4,13 @@ public class UsuarioDTO {
 
     private Long id;
     private String cpf;
-    private String primeroNome;
+    private String nomeUsuario;
+    private String primeiroNome;
     private String ultimoNome;
     private String email;
-    private Boolean notificacaoEmailAtiva;
     private String idpId;
-    private String username;
     private String senha;
+    private Boolean notificacaoEmailAtivo;
 
     public Long getId() {
         return id;
@@ -18,14 +18,6 @@ public class UsuarioDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Boolean getNotificacaoEmailAtiva() {
-        return notificacaoEmailAtiva;
-    }
-
-    public void setNotificacaoEmailAtiva(Boolean notificacaoEmailAtiva) {
-        this.notificacaoEmailAtiva = notificacaoEmailAtiva;
     }
 
     public String getCpf() {
@@ -36,12 +28,20 @@ public class UsuarioDTO {
         this.cpf = cpf;
     }
 
-    public String getPrimeroNome() {
-        return primeroNome;
+    public String getNomeUsuario() {
+        return nomeUsuario;
     }
 
-    public void setPrimeroNome(String primeroNome) {
-        this.primeroNome = primeroNome;
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getPrimeiroNome() {
+        return primeiroNome;
+    }
+
+    public void setPrimeiroNome(String primeiroNome) {
+        this.primeiroNome = primeiroNome;
     }
 
     public String getUltimoNome() {
@@ -68,20 +68,20 @@ public class UsuarioDTO {
         this.idpId = idpId;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Boolean getNotificacaoEmailAtivo() {
+        return notificacaoEmailAtivo;
+    }
+
+    public void setNotificacaoEmailAtivo(Boolean notificacaoEmailAtivo) {
+        this.notificacaoEmailAtivo = notificacaoEmailAtivo;
     }
 
 }

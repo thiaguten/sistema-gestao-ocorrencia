@@ -37,7 +37,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         return recuperar(id)
                 .map(usuario -> {
                     usuario.setDetalhe(novoUsuario.getDetalhe());
-                    usuario.setEmailAtivo(novoUsuario.getEmailAtivo());
+                    usuario.setNotificacaoEmailAtivo(novoUsuario.getNotificacaoEmailAtivo());
                     return salvar(usuario);
                 })
                 .orElseGet(() -> {
