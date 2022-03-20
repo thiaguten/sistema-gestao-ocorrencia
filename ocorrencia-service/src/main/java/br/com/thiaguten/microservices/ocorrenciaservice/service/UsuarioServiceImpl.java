@@ -33,6 +33,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public Optional<Usuario> recuperar(String idpId) {
+        return repository.findByIdpIdJoinFetch(idpId);
+    }
+
+    @Override
     public Usuario atualizar(Usuario novoUsuario, Long id) {
         return recuperar(id)
                 .map(usuario -> {

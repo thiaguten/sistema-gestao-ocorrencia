@@ -1,14 +1,17 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { catchError, EMPTY, Observable, of } from 'rxjs';
 import { Endereco } from 'src/app/localizacao/model/endereco';
 import { LocalizacaoService, ReadonlyEmptyEndereco } from 'src/app/localizacao/service/localizacao.service';
+import { LoginService } from 'src/app/login/service/login.service';
 import { Servico } from 'src/app/servico/model/servico';
 import { ServicoService } from 'src/app/servico/service/servico.service';
-import { ErrorDialogComponent } from 'src/app/shared/component/error-dialog/error-dialog.component';
 import { MessageSnackBarComponent } from 'src/app/shared/component/message-snack-bar/message-snack-bar.component';
+
+import { Ocorrencia } from '../../model/ocorrencia';
+import { OcorrenciaService } from '../../service/ocorrencia.service';
 
 @Component({
   selector: 'app-registrar-ocorrencia',
@@ -18,38 +21,31 @@ import { MessageSnackBarComponent } from 'src/app/shared/component/message-snack
 export class RegistrarOcorrenciaComponent implements OnInit {
 
   registroForm: FormGroup;
-  // servicos?: Servico[];
   servicos$: Observable<Servico[]>;
 
   constructor(
-    public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private servicoService: ServicoService,
-    private localizacaoService: LocalizacaoService
+    private ocorrenciaService: OcorrenciaService,
+    private localizacaoService: LocalizacaoService,
+    private loginService: LoginService
   ) {
     this.registroForm = this.createFormGroup();
-
     this.servicos$ = this.servicoService.listarServicos()
       .pipe(
         catchError(error => {
           console.log(error);
-          ////this.onError('Falha ao listar os serviços!');
-          //this.onError(`Falha ao listar os serviços! - Erro: ${error.message}`);
-          ////this.onError('Falha ao listar os serviços! - Erro: ' + JSON.stringify(error));
           return of([]);
         })
       );
-
-    // this.servicos$.subscribe(servicos => this.servicos = servicos);
-
   }
 
   ngOnInit(): void {
     this.onChangeInputCEP();
   }
 
-  createFormGroup(): FormGroup {
+  private createFormGroup(): FormGroup {
     return this.formBuilder.group({
       servico: ['', Validators.required],
       cep: ['', {
@@ -73,12 +69,13 @@ export class RegistrarOcorrenciaComponent implements OnInit {
     return formControl.touched && formControl.hasError(errorName);
   }
 
-  getFormControl(controlName: string) {
+  private getFormControl(controlName: string) {
     return this.registroForm.get(controlName);
     //return this.registroForm.controls[controlName];
   }
 
-  onSubmit(): void {
+  private criarNovaOcorrencia(): Ocorrencia {
+    console.log('usuario', this.loginService.subject);
     console.log('servico', this.servicoFormControl?.value);
     console.log('cep', this.cepFormControl?.value);
     console.log('estado', this.estadoFormControl?.value);
@@ -88,34 +85,69 @@ export class RegistrarOcorrenciaComponent implements OnInit {
     console.log('quantidadeIncidentes', this.quantidadeFormControl?.value);
     console.log('descricao', this.descricaoFormControl?.value);
 
-    console.log('registroFormIsValid', this.registroForm.valid);
-    // TODO através de um service, chamar a API para salvar a nova ocorrência.
-
-    this.onSuccess('Ocorrência registrada com sucesso!');
+    const ocorrencia: Ocorrencia = {
+      codigo: '',
+      data: ''
+    };
+    return ocorrencia;
   }
 
-  onError(errorMessage: string): void {
-    this.dialog.open(ErrorDialogComponent, {
-      data: {
-        message: errorMessage
-      }
-    });
+  onSubmit(): void {
+    if (this.registroForm.valid) {
+      const ocorrencia: Ocorrencia = this.criarNovaOcorrencia();
+      // this.ocorrenciaService.criarOcorrencia(ocorrencia)
+      //   .pipe(
+      //     catchError((error: HttpErrorResponse) => {
+      //       this.onError(`Falha ao registrar ocorrência! - Erro: ${error.message}`);
+      //       //return of({});
+      //       return EMPTY;
+      //     })
+      //   )
+      //   .subscribe((o: Ocorrencia) => {
+      //     this.onSuccess(`Ocorrência registrada com sucesso! - Código: ${o.codigo}`);
+      //     this.registroForm.reset();
+      //   });
+    }
   }
 
-  onSuccess(successMessage: string): void {
-    this.snackBar.openFromComponent(MessageSnackBarComponent, {
-      data: {
+  private onSuccess(successMessage: string): void {
+    this.mostrarSnapBar(this.createMatSnackBarConfig(
+      {
         message: successMessage,
         //action: 'Fechar'
       },
+      ['green-snackbar']
+    ));
+  }
+
+  private onError(errorMessage: string): void {
+    this.mostrarSnapBar(this.createMatSnackBarConfig(
+      {
+        message: errorMessage,
+        //action: 'Fechar'
+      },
+      ['red-snackbar']
+    ));
+  }
+
+  private createMatSnackBarConfig<D = any>(
+    data?: D,
+    panelClass?: string | string[]
+  ): MatSnackBarConfig {
+    return {
+      data: data,
       horizontalPosition: 'center',
       verticalPosition: 'top',
       duration: 10 * 1000,
-      panelClass: ['green-snackbar']
-    });
+      panelClass: panelClass
+    };
   }
 
-  onChangeInputCEP(): void {
+  private mostrarSnapBar(config?: MatSnackBarConfig): void {
+    this.snackBar.openFromComponent(MessageSnackBarComponent, config);
+  }
+
+  private onChangeInputCEP(): void {
     // Observar mudanças no campo de CEP para ativar a busca de endereço por CEP.
     this.cepFormControl?.valueChanges.subscribe(cepValue => {
 
@@ -141,7 +173,7 @@ export class RegistrarOcorrenciaComponent implements OnInit {
     });
   }
 
-  popularCamposLocalizacao(endereco: Endereco): void {
+  private popularCamposLocalizacao(endereco: Endereco): void {
     if (endereco) {
       // Alterar o valor dos inputs dos outros form controls relacionados a localizacao.
       // https://angular.io/guide/reactive-forms#updating-parts-of-the-data-model

@@ -64,8 +64,6 @@ export class CriarContaComponent implements OnInit {
   onSubmit(): void {
     if (this.cadastroForm.valid) {
       const usuario: Usuario = this.criarNovoUsuario();
-      console.log('usuario', usuario);
-
       this.ocorrenciaService.criarUsuario(usuario)
         .pipe(
           catchError((error: HttpErrorResponse) => {
@@ -76,6 +74,7 @@ export class CriarContaComponent implements OnInit {
         )
         .subscribe((u: Usuario) => {
           this.onSuccess(`Usuário cadastrado com sucesso! - ID: ${u.id} - IDP_ID: ${u.idpId}`);
+          this.cadastroForm.reset();
         });
     }
   }

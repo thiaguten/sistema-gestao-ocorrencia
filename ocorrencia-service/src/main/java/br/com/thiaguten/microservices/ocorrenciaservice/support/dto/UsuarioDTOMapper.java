@@ -6,7 +6,7 @@ import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.UsuarioIdentificado;
 
 @Component
-public class UsuarioDtoMapper {
+public class UsuarioDTOMapper {
 
     public UsuarioDTO toDto(Usuario usuario) {
         UsuarioDTO dto = new UsuarioDTO();

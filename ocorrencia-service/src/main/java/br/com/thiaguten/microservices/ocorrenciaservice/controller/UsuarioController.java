@@ -26,7 +26,7 @@ import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
 import br.com.thiaguten.microservices.ocorrenciaservice.service.KeycloakService;
 import br.com.thiaguten.microservices.ocorrenciaservice.service.UsuarioService;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDTO;
-import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDtoMapper;
+import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDTOMapper;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.hateoas.UsuarioModelAssembler;
 
 @RestController
@@ -34,7 +34,7 @@ import br.com.thiaguten.microservices.ocorrenciaservice.support.hateoas.UsuarioM
 public class UsuarioController {
 
     @Autowired
-    private UsuarioDtoMapper dtoMapper;
+    private UsuarioDTOMapper dtoMapper;
 
     @Autowired
     private KeycloakService keycloakService;

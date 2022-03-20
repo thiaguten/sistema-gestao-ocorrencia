@@ -15,4 +15,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query("SELECT u FROM Usuario u LEFT JOIN FETCH u.detalhe WHERE u.id = :id")
     Optional<Usuario> findByIdJoinFetch(@Param("id") Long id);
 
+    @Query("SELECT u FROM Usuario u LEFT JOIN FETCH u.detalhe WHERE u.idpId = :idpId")
+    Optional<Usuario> findByIdpIdJoinFetch(@Param("idpId") String idpId);
+
 }

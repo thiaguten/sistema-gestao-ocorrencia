@@ -11,6 +11,8 @@ public interface UsuarioService {
 
     Optional<Usuario> recuperar(Long id);
 
+    Optional<Usuario> recuperar(String idpId);
+
     Usuario atualizar(Usuario novoUsuario, Long id);
 
     void deletar(Long id);

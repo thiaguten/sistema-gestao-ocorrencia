@@ -11,7 +11,6 @@ import { LoginService } from './login/service/login.service';
 })
 export class AppComponent {
   title = 'portal-web';
-  userProfile?: object;
 
   private readonly authCodeFlowConfig: AuthConfig = {
     issuer: 'http://localhost:8080/auth/realms/sgo',
@@ -39,7 +38,7 @@ export class AppComponent {
     this.oauthService.events
       .pipe(filter((e) => ['token_received'].includes(e.type)))
       .subscribe((e) => this.oauthService.loadUserProfile()
-        .then((up: object) => this.userProfile = up));
+        .then((up: object) => this.loginService.userProfile = up));
 
     // iniciar fluxo oauth
     this.configureCodeFlow();
@@ -52,8 +51,8 @@ export class AppComponent {
       .then(() => {
         if (this.oauthService.hasValidAccessToken() && this.oauthService.hasValidIdToken()) {
 
-          // this.oauthService.loadUserProfile()
-          //   .then((up: object) => this.userProfile = up);
+          this.oauthService.loadUserProfile()
+            .then((up: object) => this.loginService.userProfile = up);
 
           const scopes = this.oauthService.getGrantedScopes();
           console.log('scopes', scopes);

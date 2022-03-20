@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { LoginService } from '../login/service/login.service';
 
@@ -8,8 +8,6 @@ import { LoginService } from '../login/service/login.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  @Input() userProfile?: object;
 
   constructor(private loginService: LoginService) { }
 

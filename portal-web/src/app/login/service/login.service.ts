@@ -6,6 +6,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class LoginService {
 
+  private _userProfile: object = {};
   // private isAuthenticatedSubject$ = new BehaviorSubject<boolean>(false);
 
   constructor(private oauthService: OAuthService) { }
@@ -42,6 +43,14 @@ export class LoginService {
   }
 
   // GETTERS
+
+  get userProfile(): object {
+    return this._userProfile;
+  }
+
+  set userProfile(up: object) {
+    this._userProfile = up;
+  }
 
   get hasValidAccessToken() {
     return this.oauthService.hasValidAccessToken();
@@ -92,4 +101,9 @@ export class LoginService {
     return claims['family_name'];
   }
 
+  get subject() {
+    const claims = this.identityClaims;
+    if (!claims) return null;
+    return claims['sub'];
+  }
 }

@@ -61,6 +61,8 @@ public class OcorrenciaController {
     @PostMapping(value = "/v1/ocorrencias", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<OcorrenciaDTO>> criar(@RequestBody OcorrenciaDTO ocorrenciaDto) {
         Ocorrencia ocorrencia = dtoMapper.fromDto(ocorrenciaDto);
+        // // obter a propriedade 'sub' a partir do token de autenticacao;
+        // ocorrencia.getUsuario().setIdpId(idpId);
         Ocorrencia ocorrenciaSalva = service.salvar(ocorrencia);
         EntityModel<OcorrenciaDTO> entityModel = assembler.toModel(ocorrenciaSalva);
         return ResponseEntity

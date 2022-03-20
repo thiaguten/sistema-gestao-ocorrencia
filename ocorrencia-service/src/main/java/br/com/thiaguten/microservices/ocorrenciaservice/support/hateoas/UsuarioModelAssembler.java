@@ -1,12 +1,10 @@
 package br.com.thiaguten.microservices.ocorrenciaservice.support.hateoas;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.afford;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.afford;
-
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
@@ -14,13 +12,13 @@ import org.springframework.stereotype.Component;
 import br.com.thiaguten.microservices.ocorrenciaservice.controller.UsuarioController;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDTO;
-import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDtoMapper;
+import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDTOMapper;
 
 @Component
 public class UsuarioModelAssembler implements RepresentationModelAssembler<Usuario, EntityModel<UsuarioDTO>> {
 
     @Autowired
-    private UsuarioDtoMapper dtoMapper;
+    private UsuarioDTOMapper dtoMapper;
 
     @Override
     public EntityModel<UsuarioDTO> toModel(Usuario usuario) {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { LoginService } from '../service/login.service';
 
@@ -8,8 +8,6 @@ import { LoginService } from '../service/login.service';
   styleUrls: ['./login-info.component.scss']
 })
 export class LoginInfoComponent implements OnInit {
-
-  @Input() userProfile?: object;
 
   constructor(
     public loginService: LoginService

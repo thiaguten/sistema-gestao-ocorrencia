@@ -3,9 +3,9 @@
 const PROXY_CONFIG = [
   {
     context: [
-      // "/api/v1/ocorrencias",
+      "/api/v1/ocorrencias",
       "/api/v1/usuarios",
-      // "/api/v1/servicos"
+      "/api/v1/servicos"
     ],
     target: "http://localhost:8200",
     secure: false,

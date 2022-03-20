@@ -109,10 +109,10 @@ services:
     # restart: unless-stopped
     ports:
       - "8080:8080"
-    #volumes:
-    #  - ./realm-export.json:/tmp/realm-export.json
+    volumes:
+      - ./realm-export.json:/tmp/realm-export.json
     environment:
-      #- KEYCLOAK_IMPORT=/tmp/realm-export.json
+      - KEYCLOAK_IMPORT=/tmp/realm-export.json
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
       - DB_VENDOR=MYSQL

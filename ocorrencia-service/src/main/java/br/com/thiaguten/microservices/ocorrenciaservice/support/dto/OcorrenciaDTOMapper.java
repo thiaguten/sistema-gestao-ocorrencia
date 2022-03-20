@@ -1,5 +1,7 @@
 package br.com.thiaguten.microservices.ocorrenciaservice.support.dto;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,7 @@ public class OcorrenciaDTOMapper implements DTOMapper<OcorrenciaDTO, Ocorrencia>
         dto.setDescricao(ocorrencia.getDescricao());
         dto.setServicoId(ocorrencia.getServico().getId());
         dto.setUsuarioId(ocorrencia.getUsuario().getId());
+        dto.setUsuarioIdpId(ocorrencia.getUsuario().getIdpId());
         return dto;
     }
 
@@ -33,6 +36,9 @@ public class OcorrenciaDTOMapper implements DTOMapper<OcorrenciaDTO, Ocorrencia>
         ocorrencia.setDescricao(ocorrenciaDto.getDescricao());
         ocorrencia.setServico(servicoService.obterReferencia(ocorrenciaDto.getServicoId()));
         ocorrencia.setUsuario(usuarioService.obterReferencia(ocorrenciaDto.getUsuarioId()));
+        if (Objects.isNull(ocorrencia.getUsuario())) {
+            ocorrencia.setUsuario(usuarioService.recuperar(ocorrenciaDto.getUsuarioIdpId()).orElse(null));
+        }
         return ocorrencia;
     }
 

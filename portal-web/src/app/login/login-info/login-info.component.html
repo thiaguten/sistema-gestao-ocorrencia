@@ -23,8 +23,8 @@
     <b>has_valid_id_token:</b>
     <pre>{{ loginService.hasValidIdToken }}</pre>
   </div>
-  <div *ngIf="userProfile">
+  <div *ngIf="loginService.userProfile">
     <b>user_profile:</b>
-    <pre>{{ userProfile | json }}</pre>
+    <pre>{{ loginService.userProfile | json }}</pre>
   </div>
 </div>

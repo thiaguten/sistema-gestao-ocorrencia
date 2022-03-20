@@ -5,6 +5,7 @@ public class OcorrenciaDTO {
     private Long id;
     private String descricao;
     private Long usuarioId;
+    private String usuarioIdpId;
     private Long servicoId;
 
     public OcorrenciaDTO() {
@@ -32,6 +33,14 @@ public class OcorrenciaDTO {
 
     public void setUsuarioId(Long usuarioId) {
         this.usuarioId = usuarioId;
+    }
+
+    public String getUsuarioIdpId() {
+        return usuarioIdpId;
+    }
+
+    public void setUsuarioIdpId(String usuarioIdpId) {
+        this.usuarioIdpId = usuarioIdpId;
     }
 
     public Long getServicoId() {
