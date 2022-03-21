@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
@@ -86,8 +85,13 @@ export class RegistrarOcorrenciaComponent implements OnInit {
     console.log('descricao', this.descricaoFormControl?.value);
 
     const ocorrencia: Ocorrencia = {
-      codigo: '',
-      data: ''
+      descricao: this.descricaoFormControl?.value,
+      cep: this.cepFormControl?.value,
+      logradouro: this.enderecoFormControl?.value,
+      bairro: this.bairroFormControl?.value,
+      localidade: this.cidadeFormControl?.value,
+      uf: this.estadoFormControl?.value,
+      servicoId: this.servicoFormControl?.value
     };
     return ocorrencia;
   }

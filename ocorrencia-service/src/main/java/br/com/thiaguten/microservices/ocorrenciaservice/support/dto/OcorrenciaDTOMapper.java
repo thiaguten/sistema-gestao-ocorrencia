@@ -1,13 +1,11 @@
 package br.com.thiaguten.microservices.ocorrenciaservice.support.dto;
 
-import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.thiaguten.microservices.ocorrenciaservice.model.Endereco;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.Ocorrencia;
 import br.com.thiaguten.microservices.ocorrenciaservice.service.ServicoService;
-import br.com.thiaguten.microservices.ocorrenciaservice.service.UsuarioService;
 
 @Component
 public class OcorrenciaDTOMapper implements DTOMapper<OcorrenciaDTO, Ocorrencia> {
@@ -15,30 +13,46 @@ public class OcorrenciaDTOMapper implements DTOMapper<OcorrenciaDTO, Ocorrencia>
     @Autowired
     private ServicoService servicoService;
 
-    @Autowired
-    private UsuarioService usuarioService;
-
     @Override
     public OcorrenciaDTO toDto(Ocorrencia ocorrencia) {
         OcorrenciaDTO dto = new OcorrenciaDTO();
         dto.setId(ocorrencia.getId());
+        dto.setCodigo(ocorrencia.getCodigo());
         dto.setDescricao(ocorrencia.getDescricao());
+
+        // TODO tlvz aqui ocorra um LazyInicializationException...
+        // tlvz esse relacionamento aqui, tenha que ser sempre EAGER.
+        Endereco endereco = ocorrencia.getEndereco();
+
+        dto.setCep(endereco.getCep());
+        dto.setLogradouro(endereco.getLogradouro());
+        dto.setBairro(endereco.getBairro());
+        dto.setLocalidade(endereco.getLocalidade());
+        dto.setUf(endereco.getUf());
+
+        dto.setDataCriacao(ocorrencia.getDataCriacao());
+        dto.setDataModificacao(ocorrencia.getDataModificacao());
+        dto.setSituacao(ocorrencia.getSituacao().getDescricao());
         dto.setServicoId(ocorrencia.getServico().getId());
-        dto.setUsuarioId(ocorrencia.getUsuario().getId());
-        dto.setUsuarioIdpId(ocorrencia.getUsuario().getIdpId());
+
         return dto;
     }
 
     @Override
     public Ocorrencia fromDto(OcorrenciaDTO ocorrenciaDto) {
         Ocorrencia ocorrencia = new Ocorrencia();
-        ocorrencia.setId(ocorrenciaDto.getId());
         ocorrencia.setDescricao(ocorrenciaDto.getDescricao());
+
+        Endereco endereco = new Endereco();
+        endereco.setId(ocorrencia.getId());
+        endereco.setCep(ocorrenciaDto.getCep());
+        endereco.setLogradouro(ocorrenciaDto.getLogradouro());
+        endereco.setBairro(ocorrenciaDto.getBairro());
+        endereco.setLocalidade(ocorrenciaDto.getLocalidade());
+        endereco.setUf(ocorrenciaDto.getUf());
+
+        ocorrencia.setEndereco(endereco);
         ocorrencia.setServico(servicoService.obterReferencia(ocorrenciaDto.getServicoId()));
-        ocorrencia.setUsuario(usuarioService.obterReferencia(ocorrenciaDto.getUsuarioId()));
-        if (Objects.isNull(ocorrencia.getUsuario())) {
-            ocorrencia.setUsuario(usuarioService.recuperar(ocorrenciaDto.getUsuarioIdpId()).orElse(null));
-        }
         return ocorrencia;
     }
 

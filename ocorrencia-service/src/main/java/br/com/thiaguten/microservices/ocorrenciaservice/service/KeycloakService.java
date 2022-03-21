@@ -1,5 +1,7 @@
 package br.com.thiaguten.microservices.ocorrenciaservice.service;
 
+import static br.com.thiaguten.microservices.ocorrenciaservice.support.security.RolesAllowedConstants.REALM_ROLE_SGO_USER;
+
 import java.util.List;
 
 import javax.ws.rs.core.Response;
@@ -76,7 +78,7 @@ public class KeycloakService {
                 userResource.resetPassword(credentialRepresentation);
 
                 // aplicar role de usuario ao usuario
-                var roleRepresentation = realmResource.roles().get("sgo-user").toRepresentation();
+                var roleRepresentation = realmResource.roles().get(REALM_ROLE_SGO_USER).toRepresentation();
                 userResource.roles().realmLevel().add(List.of(roleRepresentation));
 
                 return kcUserId;

@@ -1,0 +1,14 @@
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  //white-space: -moz-pre-wrap;
+  white-space: -moz-pre-wrap !important;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  font-size: 12px;
+  //text-align: left;
+  background: #FCF7EC;
+  margin: 0px 0px 0px 0px;
+  padding: 5px 5px 5px 5px;
+}

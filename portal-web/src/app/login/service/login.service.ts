@@ -30,6 +30,13 @@ export class LoginService {
   }
 
   logout(): void {
+
+    // String endSessionEndpoint = user.getIssuer() + "/protocol/openid-connect/logout";
+
+    // UriComponentsBuilder builder = UriComponentsBuilder //
+    //     .fromUriString(endSessionEndpoint) //
+    //     .queryParam("id_token_hint", user.getIdToken().getTokenValue());
+
     // this.oauthService.logOut();
     this.oauthService.revokeTokenAndLogout();
   }

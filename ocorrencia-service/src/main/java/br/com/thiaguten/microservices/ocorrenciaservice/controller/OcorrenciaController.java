@@ -15,6 +15,8 @@ import org.springframework.hateoas.mediatype.problem.Problem;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,9 +26,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.thiaguten.microservices.ocorrenciaservice.exception.OcorrenciaNotFoundException;
+import br.com.thiaguten.microservices.ocorrenciaservice.exception.UsuarioNotFoundException;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.Ocorrencia;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.SituacaoOcorrecia;
 import br.com.thiaguten.microservices.ocorrenciaservice.service.OcorrenciaService;
+import br.com.thiaguten.microservices.ocorrenciaservice.service.UsuarioService;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.OcorrenciaDTO;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.OcorrenciaDTOMapper;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.hateoas.OcorrenciaModelAssembler;
@@ -34,6 +38,9 @@ import br.com.thiaguten.microservices.ocorrenciaservice.support.hateoas.Ocorrenc
 @RestController
 @RequestMapping("/api")
 public class OcorrenciaController {
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     private final OcorrenciaService service;
     private final OcorrenciaDTOMapper dtoMapper;
@@ -59,10 +66,18 @@ public class OcorrenciaController {
     }
 
     @PostMapping(value = "/v1/ocorrencias", produces = MediaTypes.HAL_JSON_VALUE)
-    public ResponseEntity<EntityModel<OcorrenciaDTO>> criar(@RequestBody OcorrenciaDTO ocorrenciaDto) {
+    public ResponseEntity<EntityModel<OcorrenciaDTO>> criar(
+            @AuthenticationPrincipal Jwt jwt,
+            @RequestBody OcorrenciaDTO ocorrenciaDto) {
+
+        // Obter subject a partir do token de autenticacao;
+        final var oauth2SubjectClaim = jwt.getSubject();
+        final var usuario = usuarioService.recuperar(oauth2SubjectClaim)
+                .orElseThrow(() -> new UsuarioNotFoundException(oauth2SubjectClaim));
+
         Ocorrencia ocorrencia = dtoMapper.fromDto(ocorrenciaDto);
-        // // obter a propriedade 'sub' a partir do token de autenticacao;
-        // ocorrencia.getUsuario().setIdpId(idpId);
+        ocorrencia.setUsuario(usuario);
+
         Ocorrencia ocorrenciaSalva = service.salvar(ocorrencia);
         EntityModel<OcorrenciaDTO> entityModel = assembler.toModel(ocorrenciaSalva);
         return ResponseEntity

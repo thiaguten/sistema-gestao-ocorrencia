@@ -90,6 +90,7 @@ public class Ocorrencia implements Serializable {
     public Ocorrencia() {
         setSituacao(SituacaoOcorrecia.NOVA);
         setDataCriacao(LocalDateTime.now());
+        setDataModificacao(getDataCriacao());
         setCodigo(new UUID().toString());
     }
 
@@ -163,6 +164,21 @@ public class Ocorrencia implements Serializable {
 
     public void setAtendimentos(Set<AtendimentoOcorrencia> atendimentos) {
         this.atendimentos = atendimentos;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        if (endereco == null) {
+            if (this.endereco != null) {
+                this.endereco.setOcorrencia(null);
+            }
+        } else {
+            endereco.setOcorrencia(this);
+        }
+        this.endereco = endereco;
     }
 
 }

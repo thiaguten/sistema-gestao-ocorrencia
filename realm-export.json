@@ -2,7 +2,7 @@
   "id": "sgo",
   "realm": "sgo",
   "displayName": "Sistema de Gestão de Ocorrências",
-  "notBefore": 0,
+  "notBefore": 1647793947,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
   "refreshTokenMaxReuse": 0,
@@ -83,7 +83,9 @@
         "composites": {
           "client": {
             "sgo-ocorrencia-service": [
-              "ocorrencia-user"
+              "ocorrencias_write",
+              "servicos_read",
+              "ocorrencias_read"
             ]
           }
         },
@@ -107,7 +109,10 @@
         "composites": {
           "client": {
             "sgo-ocorrencia-service": [
-              "ocorrencia-admin"
+              "servicos_write",
+              "ocorrencias_write",
+              "servicos_read",
+              "ocorrencias_read"
             ]
           }
         },
@@ -331,16 +336,36 @@
       ],
       "sgo-ocorrencia-service": [
         {
-          "id": "45e4067a-cbb8-451f-b056-d3d6ddec887b",
-          "name": "ocorrencia-user",
+          "id": "c5cb96d1-9241-4d76-837d-da21255c1ba2",
+          "name": "ocorrencias_write",
+          "description": "Criar/Atualizar as ocorrências.",
           "composite": false,
           "clientRole": true,
           "containerId": "639a73c1-95df-4b3c-b383-03b453273cbb",
           "attributes": {}
         },
         {
-          "id": "97af9ef5-de0d-4c43-b286-8860eb15303a",
-          "name": "ocorrencia-admin",
+          "id": "1df28e3e-5ee4-4058-b2af-ab07508f9844",
+          "name": "servicos_write",
+          "description": "Criar/Atualizar os serviços.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "639a73c1-95df-4b3c-b383-03b453273cbb",
+          "attributes": {}
+        },
+        {
+          "id": "335d610c-2b91-438d-a942-10f8601d4e19",
+          "name": "servicos_read",
+          "description": "Obter os serviços.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "639a73c1-95df-4b3c-b383-03b453273cbb",
+          "attributes": {}
+        },
+        {
+          "id": "cdd77638-6efa-4a45-9f10-8d977730dc0d",
+          "name": "ocorrencias_read",
+          "description": "Obter as ocorrências.",
           "composite": false,
           "clientRole": true,
           "containerId": "639a73c1-95df-4b3c-b383-03b453273cbb",

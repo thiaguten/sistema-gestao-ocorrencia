@@ -3,6 +3,7 @@ package br.com.thiaguten.microservices.ocorrenciaservice.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -21,7 +22,7 @@ public class Endereco implements Serializable {
     @JsonIgnore
     // Essa entidade filha mapeia/espelha a mesma PK da entidade pai (ocorrencia)
     @MapsId
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Ocorrencia ocorrencia;
 
@@ -32,7 +33,7 @@ public class Endereco implements Serializable {
     private String uf;
 
     public Endereco() {
-
+        super();
     }
 
     public Long getId() {
@@ -43,7 +44,13 @@ public class Endereco implements Serializable {
         this.id = id;
     }
 
+    public Ocorrencia getOcorrencia() {
+        return ocorrencia;
+    }
 
+    public void setOcorrencia(Ocorrencia ocorrencia) {
+        this.ocorrencia = ocorrencia;
+    }
 
     public String getCep() {
         return cep;
