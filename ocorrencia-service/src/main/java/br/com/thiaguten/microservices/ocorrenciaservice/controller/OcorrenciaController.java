@@ -35,6 +35,7 @@ import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.OcorrenciaDT
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.OcorrenciaDTOMapper;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.hateoas.OcorrenciaModelAssembler;
 
+//@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class OcorrenciaController {

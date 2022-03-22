@@ -1,6 +1,6 @@
 package br.com.thiaguten.microservices.ocorrenciaservice.configuration;
 
-import static br.com.thiaguten.microservices.ocorrenciaservice.support.security.RolesAllowedConstants.*;
+import static br.com.thiaguten.microservices.ocorrenciaservice.support.security.RolesAllowedConstants.REALM_ROLE_SGO_USER;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,6 +32,10 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -41,7 +45,22 @@ public class SecurityResourceServerConfig {
     String jwkSetUri;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    CorsFilter corsFilter() {
+        return new CorsFilter(corsConfigurationSource());
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        var configuration = new CorsConfiguration();
+        configuration.applyPermitDefaultValues();
+        configuration.setAllowedMethods(List.of("*"));
+        var source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // @formatter:off
         
         // Excluir as requisições preflight da autorização.
@@ -51,8 +70,8 @@ public class SecurityResourceServerConfig {
 
                     // Aplica uma restrição mais global, através de roles focadas no realm_access.
 
-                    .mvcMatchers("/api/v1/servicos/*").hasRole(REALM_ROLE_SGO_USER)
-                    .mvcMatchers("/api/v1/ocorrencias/*").hasRole(REALM_ROLE_SGO_USER)
+                    .mvcMatchers("/api/v1/servicos/**").hasRole(REALM_ROLE_SGO_USER)
+                    .mvcMatchers("/api/v1/ocorrencias/**").hasRole(REALM_ROLE_SGO_USER)
 
                     // Restrição mais granular através de roles focadas mais no resource_access.
 
@@ -78,7 +97,7 @@ public class SecurityResourceServerConfig {
                 );
 
         // Desativar o CSRF para prevenir conflitos com o serviço de CSRF.
-        http.csrf().disable();                
+        //http.csrf().disable();                
 
         return http.build();
         // @formatter:on

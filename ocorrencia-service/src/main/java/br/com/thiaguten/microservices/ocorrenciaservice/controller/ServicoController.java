@@ -29,6 +29,7 @@ import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.ServicoDTO;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.ServicoDTOMapper;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.hateoas.ServicoModelAssembler;
 
+//@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ServicoController {

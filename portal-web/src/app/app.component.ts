@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { filter } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { LoginService } from './login/service/login.service';
 
@@ -13,7 +14,7 @@ export class AppComponent {
   title = 'portal-web';
 
   private readonly authCodeFlowConfig: AuthConfig = {
-    issuer: 'http://localhost:8080/auth/realms/sgo',
+    issuer: `${environment.idp_base_url}/realms/sgo`,
     redirectUri: window.location.origin + '/home',
     clientId: 'sgo-portal-web',
     responseType: 'code',

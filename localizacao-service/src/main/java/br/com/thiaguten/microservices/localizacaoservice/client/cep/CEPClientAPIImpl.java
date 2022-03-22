@@ -25,18 +25,18 @@ public class CEPClientAPIImpl implements CEPClientAPI {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CEPClientAPIImpl.class);
 
-    @Value("${api-cep.path:}")
+    @Value("${cep.api.path:}")
     private String apiCEPPath;
 
-    @Value("${api-cep.timeout-in-millis:30000}")
-    private long apiCEPTimeout;
+    @Value("${cep.api.timeout:30s}")
+    private Duration apiCEPTimeout;
 
     private final WebClient webClient;
 
     @Autowired
     public CEPClientAPIImpl(
             WebClient.Builder builder,
-            @Value("${api-cep.base-url:}") String baseUrl) {
+            @Value("${cep.api.baseUrl:}") String baseUrl) {
         this.webClient = builder.baseUrl(baseUrl).build();
     }
 
@@ -55,7 +55,7 @@ public class CEPClientAPIImpl implements CEPClientAPI {
                 .bodyToMono(CEPClientAPIResponse.class)
                 // Uma exceção TimeoutException será lançada caso nenhum evento chegue dentro da
                 // duração parametrizada.
-                .timeout(Duration.ofMillis(apiCEPTimeout))
+                .timeout(apiCEPTimeout)
                 // Transforma a exceção em uma mais especializada.
                 .onErrorMap(cause -> new CEPClientAPIException("Falha ao obter endereço pelo CEP.", cause))
                 .doOnError(WebClientFilters::logOnError)

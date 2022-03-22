@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { Ocorrencia } from '../model/ocorrencia';
 import { Usuario } from '../model/usuario';
@@ -11,8 +12,8 @@ import { Usuario } from '../model/usuario';
 export class OcorrenciaService {
 
   private readonly API = '/assets/mock_ocorrencias.json';
-  private readonly API_OCORRENCIAS = '/api/v1/ocorrencias';
-  private readonly API_USUARIOS = '/api/v1/usuarios';
+  private readonly API_OCORRENCIAS = `${environment.api_ocorrencia_base_url}/api/v1/ocorrencias`;
+  private readonly API_USUARIOS = `${environment.api_usuarios_base_url}/api/v1/usuarios`;
 
   constructor(private httpClient: HttpClient) { }
 

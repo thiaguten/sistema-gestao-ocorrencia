@@ -20,8 +20,6 @@ public class OcorrenciaDTOMapper implements DTOMapper<OcorrenciaDTO, Ocorrencia>
         dto.setCodigo(ocorrencia.getCodigo());
         dto.setDescricao(ocorrencia.getDescricao());
 
-        // TODO tlvz aqui ocorra um LazyInicializationException...
-        // tlvz esse relacionamento aqui, tenha que ser sempre EAGER.
         Endereco endereco = ocorrencia.getEndereco();
 
         dto.setCep(endereco.getCep());

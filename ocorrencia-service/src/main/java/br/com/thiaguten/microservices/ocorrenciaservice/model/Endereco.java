@@ -3,7 +3,6 @@ package br.com.thiaguten.microservices.ocorrenciaservice.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -19,10 +18,13 @@ public class Endereco implements Serializable {
     @Id
     private Long id;
 
+    // Usando @JsonIgnore para evitar referencia circular durante a serialização da
+    // entidade Ocorrência em JSON.
     @JsonIgnore
-    // Essa entidade filha mapeia/espelha a mesma PK da entidade pai (ocorrencia)
+    // Essa entidade filha mapeia/espelha a mesma PK da entidade pai (ocorrencia).
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
+    // Usando @JoinColumn apenas para renomear a chave primária de post_id para id.
     @JoinColumn(name = "id")
     private Ocorrencia ocorrencia;
 

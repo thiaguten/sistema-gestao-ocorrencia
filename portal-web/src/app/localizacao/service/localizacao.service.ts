@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { Endereco } from '../model/endereco';
 
@@ -19,7 +20,7 @@ export const ReadonlyEmptyEndereco: Readonly<Endereco> = {
 export class LocalizacaoService {
 
   //private readonly API = '/assets/mock_endereco.json';
-  private readonly API = '/api/v1/endereco';
+  private readonly API = `${environment.api_localizacao_base_url}/api/v1/enderecos`;
 
   constructor(private httpClient: HttpClient) { }
 
