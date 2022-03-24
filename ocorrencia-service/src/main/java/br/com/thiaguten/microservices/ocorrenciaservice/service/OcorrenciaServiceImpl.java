@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.thiaguten.microservices.ocorrenciaservice.model.Ocorrencia;
+import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
 import br.com.thiaguten.microservices.ocorrenciaservice.repository.OcorrenciaRepository;
 
 @Service("ocorrenciaService")
@@ -48,6 +49,11 @@ public class OcorrenciaServiceImpl implements OcorrenciaService {
     @Override
     public List<Ocorrencia> listar() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Ocorrencia> listarPorUsuario(Usuario usuario) {
+        return repository.findAllByUsuario(usuario.getId());
     }
 
     @Override

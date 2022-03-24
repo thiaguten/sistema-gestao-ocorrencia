@@ -30,6 +30,7 @@ import org.springframework.security.oauth2.jwt.MappedJwtClaimSetConverter;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.web.cors.CorsConfiguration;
@@ -63,43 +64,47 @@ public class SecurityResourceServerConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // @formatter:off
         
-        // Excluir as requisições preflight da autorização.
-        http.cors().and()
-                .authorizeHttpRequests(authorize -> authorize
-                    .antMatchers(HttpMethod.POST, "/api/v1/usuarios").permitAll()
+        http
+            // Excluir as requisições preflight da autorização.
+            .cors().and()
+            // Desativar proteção do CSRF apenas localmente!
+            //.csrf().disable()
+            .csrf()
+                // URI de cadastro onde a proteção do CSRF não será aplicada.
+                .ignoringAntMatchers("/api/v1/usuarios/**")
+                // Define um repositório onde os tokens são armazenadas.
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
+            .authorizeHttpRequests(authorize -> authorize
+                .mvcMatchers(HttpMethod.POST, "/api/v1/usuarios/**").permitAll()
 
-                    // Aplica uma restrição mais global, através de roles focadas no realm_access.
+                // Aplica uma restrição mais global, através de roles focadas no realm_access.
+                .mvcMatchers("/api/v1/servicos/**").hasRole(REALM_ROLE_SGO_USER)
+                .mvcMatchers("/api/v1/ocorrencias/**").hasRole(REALM_ROLE_SGO_USER)
 
-                    .mvcMatchers("/api/v1/servicos/**").hasRole(REALM_ROLE_SGO_USER)
-                    .mvcMatchers("/api/v1/ocorrencias/**").hasRole(REALM_ROLE_SGO_USER)
-
-                    // Restrição mais granular através de roles focadas mais no resource_access.
-
-                    // .mvcMatchers(HttpMethod.GET, "/api/v1/servicos/**")
-                    //     .hasAnyRole(REALM_ROLE_SGO_USER, CLIENT_ROLE_SERVICOS_READ)
-                    // .mvcMatchers(HttpMethod.GET, "/api/v1/ocorrencias/**")
-                    //     .hasAnyRole(REALM_ROLE_SGO_USER, CLIENT_ROLE_OCORRENCIAS_READ)
-                    // .mvcMatchers(HttpMethod.POST, "/api/v1/ocorrencias/**")
-                    //     .hasAnyRole(REALM_ROLE_SGO_USER, CLIENT_ROLE_OCORRENCIAS_WRITE)
-                    
-                    // Any other request requires the user to be authenticated.
-                    .anyRequest().authenticated()
+                // Restrição mais granular através de roles focadas mais no resource_access.
+                // .mvcMatchers(HttpMethod.GET, "/api/v1/servicos/**")
+                //     .hasAnyRole(REALM_ROLE_SGO_USER, CLIENT_ROLE_SERVICOS_READ)
+                // .mvcMatchers(HttpMethod.GET, "/api/v1/ocorrencias/**")
+                //     .hasAnyRole(REALM_ROLE_SGO_USER, CLIENT_ROLE_OCORRENCIAS_READ)
+                // .mvcMatchers(HttpMethod.POST, "/api/v1/ocorrencias/**")
+                //     .hasAnyRole(REALM_ROLE_SGO_USER, CLIENT_ROLE_OCORRENCIAS_WRITE)
+                
+                // Any other request requires the user to be authenticated.
+                .anyRequest().authenticated()
+            )
+            // .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+            .oauth2ResourceServer(oauth2 -> oauth2
+                // Indica o tipo de token suportado por essa aplicação (JWT) para validação
+                // através do provedor OpenID configurado. Além disso, configura uma
+                // customização de conversão do token JWT para obter as ROLES a partir de um
+                // claim específico.
+                .jwt(jwt -> jwt
+                    .jwtAuthenticationConverter(jwtAuthenticationConverter())
                 )
-                // .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
-                .oauth2ResourceServer(oauth2 -> oauth2
-                    // Indica o tipo de token suportado por essa aplicação (JWT) para validação
-                    // através do provedor OpenID configurado. Além disso, configura uma
-                    // customização de conversão do token JWT para obter as ROLES a partir de um
-                    // claim específico.
-                    .jwt(jwt -> jwt
-                        .jwtAuthenticationConverter(jwtAuthenticationConverter())
-                    )
-                );
-
-        // Desativar o CSRF para prevenir conflitos com o serviço de CSRF.
-        //http.csrf().disable();                
-
+            );
+        
         return http.build();
+
         // @formatter:on
     }
 

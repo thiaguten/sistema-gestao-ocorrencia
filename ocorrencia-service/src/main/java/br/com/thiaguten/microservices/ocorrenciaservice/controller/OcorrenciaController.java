@@ -3,7 +3,6 @@ package br.com.thiaguten.microservices.ocorrenciaservice.controller;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.thiaguten.microservices.ocorrenciaservice.exception.OcorrenciaNotFoundException;
 import br.com.thiaguten.microservices.ocorrenciaservice.exception.UsuarioNotFoundException;
-import br.com.thiaguten.microservices.ocorrenciaservice.model.Ocorrencia;
 import br.com.thiaguten.microservices.ocorrenciaservice.model.SituacaoOcorrecia;
+import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
 import br.com.thiaguten.microservices.ocorrenciaservice.service.OcorrenciaService;
 import br.com.thiaguten.microservices.ocorrenciaservice.service.UsuarioService;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.OcorrenciaDTO;
@@ -57,30 +56,33 @@ public class OcorrenciaController {
         this.assembler = assembler;
     }
 
+    private Usuario getAuthenticatedUser(Jwt jwt) {
+        // Obter subject a partir do token de autenticacao;
+        final var oauth2SubjectClaim = jwt.getSubject();
+        return usuarioService.recuperar(oauth2SubjectClaim)
+                .orElseThrow(() -> new UsuarioNotFoundException(oauth2SubjectClaim));
+    }
+
     @GetMapping(value = "/v1/ocorrencias", produces = MediaTypes.HAL_JSON_VALUE)
-    public CollectionModel<EntityModel<OcorrenciaDTO>> listar() {
-        List<Ocorrencia> ocorrencias = service.listar();
-        List<EntityModel<OcorrenciaDTO>> models = ocorrencias.stream()
-                .map(assembler::toModel)
-                .collect(Collectors.toList());
-        return CollectionModel.of(models, linkTo(methodOn(OcorrenciaController.class).listar()).withSelfRel());
+    public CollectionModel<EntityModel<OcorrenciaDTO>> listar(
+            @AuthenticationPrincipal Jwt jwt) {
+        var usuario = getAuthenticatedUser(jwt);
+        // var ocorrencias = service.listar();
+        var ocorrencias = service.listarPorUsuario(usuario);
+        var models = ocorrencias.stream().map(assembler::toModel).collect(Collectors.toList());
+        return CollectionModel.of(models, linkTo(methodOn(OcorrenciaController.class).listar(null)).withSelfRel());
     }
 
     @PostMapping(value = "/v1/ocorrencias", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<OcorrenciaDTO>> criar(
             @AuthenticationPrincipal Jwt jwt,
             @RequestBody OcorrenciaDTO ocorrenciaDto) {
-
-        // Obter subject a partir do token de autenticacao;
-        final var oauth2SubjectClaim = jwt.getSubject();
-        final var usuario = usuarioService.recuperar(oauth2SubjectClaim)
-                .orElseThrow(() -> new UsuarioNotFoundException(oauth2SubjectClaim));
-
-        Ocorrencia ocorrencia = dtoMapper.fromDto(ocorrenciaDto);
+        var usuario = getAuthenticatedUser(jwt);
+        var ocorrencia = dtoMapper.fromDto(ocorrenciaDto);
         ocorrencia.setUsuario(usuario);
 
-        Ocorrencia ocorrenciaSalva = service.salvar(ocorrencia);
-        EntityModel<OcorrenciaDTO> entityModel = assembler.toModel(ocorrenciaSalva);
+        var ocorrenciaSalva = service.salvar(ocorrencia);
+        var entityModel = assembler.toModel(ocorrenciaSalva);
         return ResponseEntity
                 .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
                 .body(entityModel);
@@ -95,14 +97,13 @@ public class OcorrenciaController {
 
     @PutMapping(value = "/v1/ocorrencias/{id}", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<?> atualizar(@RequestBody OcorrenciaDTO novaOcorrenciaDto, @PathVariable Long id) {
-
-        Ocorrencia ocorrencia = service.recuperar(id)
+        var ocorrencia = service.recuperar(id)
                 .orElseThrow(() -> new OcorrenciaNotFoundException(id));
 
         if (SituacaoOcorrecia.NOVA.equals(ocorrencia.getSituacao())
                 || SituacaoOcorrecia.DEVOLVIDA.equals(ocorrencia.getSituacao())) {
             ocorrencia.setDescricao(novaOcorrenciaDto.getDescricao());
-            EntityModel<OcorrenciaDTO> entityModel = assembler.toModel(ocorrencia);
+            var entityModel = assembler.toModel(ocorrencia);
             return ResponseEntity
                     .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
                     .body(entityModel);
@@ -116,4 +117,5 @@ public class OcorrenciaController {
                         .withDetail("Não se pode atualizar uma ocorrência que esteja na situação "
                                 + ocorrencia.getSituacao()));
     }
+
 }

@@ -7,7 +7,6 @@ import java.util.List;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status.Family;
 
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
@@ -18,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import br.com.thiaguten.microservices.ocorrenciaservice.exception.KeycloakIntegrationException;
+import br.com.thiaguten.microservices.ocorrenciaservice.exception.KeycloakUserAlreadyExistsException;
 import br.com.thiaguten.microservices.ocorrenciaservice.support.dto.UsuarioDTO;
 
 @Service
@@ -44,59 +44,53 @@ public class KeycloakService {
     }
 
     public String criarUsuario(UsuarioDTO usuario) {
-        try {
-            var realmResource = getRealmResource();
-            var usersResource = realmResource.users();
+        var realmResource = getRealmResource();
+        var usersResource = realmResource.users();
 
-            // cria o usuario
-            var userRepresentation = new UserRepresentation();
-            userRepresentation.setUsername(usuario.getNomeUsuario());
-            userRepresentation.setEmail(usuario.getEmail());
-            userRepresentation.setFirstName(usuario.getPrimeiroNome());
-            userRepresentation.setLastName(usuario.getUltimoNome());
-            userRepresentation.setEnabled(true);
-            userRepresentation.setEmailVerified(false);
-            var response = usersResource.create(userRepresentation);
+        // cria o usuario
+        var userRepresentation = new UserRepresentation();
+        userRepresentation.setUsername(usuario.getNomeUsuario());
+        userRepresentation.setEmail(usuario.getEmail());
+        userRepresentation.setFirstName(usuario.getPrimeiroNome());
+        userRepresentation.setLastName(usuario.getUltimoNome());
+        userRepresentation.setEnabled(true);
+        userRepresentation.setEmailVerified(false);
+        var response = usersResource.create(userRepresentation);
 
-            var status = response.getStatusInfo();
-            var statusFamily = status.getFamily();
-            var statusCode = status.getStatusCode();
+        var status = response.getStatusInfo();
+        var statusFamily = status.getFamily();
+        var statusCode = status.getStatusCode();
 
-            if (Family.SUCCESSFUL.equals(statusFamily)) {
-                // obtem o id do usuario recem criado
-                var locationPath = response.getLocation().getPath();
-                var kcUserId = locationPath.substring(locationPath.lastIndexOf('/') + 1);
+        if (Family.SUCCESSFUL.equals(statusFamily)) {
+            // obtem o id do usuario recem criado
+            var locationPath = response.getLocation().getPath();
+            var kcUserId = locationPath.substring(locationPath.lastIndexOf('/') + 1);
 
-                // obter referencia do usuario criado
-                var userResource = usersResource.get(kcUserId);
+            // obter referencia do usuario criado
+            var userResource = usersResource.get(kcUserId);
 
-                // resetar a senha do usuario
-                var credentialRepresentation = new CredentialRepresentation();
-                credentialRepresentation.setTemporary(false);
-                credentialRepresentation.setValue(usuario.getSenha());
-                credentialRepresentation.setType(CredentialRepresentation.PASSWORD);
-                userResource.resetPassword(credentialRepresentation);
+            // resetar a senha do usuario
+            var credentialRepresentation = new CredentialRepresentation();
+            credentialRepresentation.setTemporary(false);
+            credentialRepresentation.setValue(usuario.getSenha());
+            credentialRepresentation.setType(CredentialRepresentation.PASSWORD);
+            userResource.resetPassword(credentialRepresentation);
 
-                // aplicar role de usuario ao usuario
-                var roleRepresentation = realmResource.roles().get(REALM_ROLE_SGO_USER).toRepresentation();
-                userResource.roles().realmLevel().add(List.of(roleRepresentation));
+            // aplicar role de usuario ao usuario
+            var roleRepresentation = realmResource.roles().get(REALM_ROLE_SGO_USER).toRepresentation();
+            userResource.roles().realmLevel().add(List.of(roleRepresentation));
 
-                return kcUserId;
+            return kcUserId;
+
+        } else if (Family.CLIENT_ERROR.equals(statusFamily)) {
+            if (Response.Status.CONFLICT.equals(status)) {
+                throw new KeycloakUserAlreadyExistsException("Usuário já existente!");
             }
-            // else if (Family.CLIENT_ERROR.equals(statusFamily)) {
-            // if (Response.Status.CONFLICT.equals(status)) {
-            // // TODO lançar exceção de usuário já existente?
-            // }
-            // }
-
-            throw new KeycloakIntegrationException(statusCode, "Create method returned status " +
-                    status.getReasonPhrase() + " (Code: " + statusCode + "); expected status: Created (201)");
-
-        } catch (Exception e) {
-            throw new KeycloakIntegrationException(
-                    Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),
-                    ExceptionUtils.getMessage(e));
         }
+
+        throw new KeycloakIntegrationException(
+                "Falha inesperada! Causa: O método de criar usuário retornou o status: " +
+                        status.getReasonPhrase() + "(" + statusCode + ")" + ". Status esperado: OK/Created (200/201).");
     }
 
 }

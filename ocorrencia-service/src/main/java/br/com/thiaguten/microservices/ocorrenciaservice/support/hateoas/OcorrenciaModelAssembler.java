@@ -28,7 +28,7 @@ public class OcorrenciaModelAssembler implements RepresentationModelAssembler<Oc
 
         EntityModel<OcorrenciaDTO> ocorrenciaModel = EntityModel.of(ocorrenciaDto,
                 linkTo(methodOn(OcorrenciaController.class).recuperar(id)).withSelfRel(),
-                linkTo(methodOn(OcorrenciaController.class).listar()).withRel("/api/v1/ocorrencias"));
+                linkTo(methodOn(OcorrenciaController.class).listar(null)).withRel("/api/v1/ocorrencias"));
 
         // Links condicionais baseados na situacao da ocorrencia.
 

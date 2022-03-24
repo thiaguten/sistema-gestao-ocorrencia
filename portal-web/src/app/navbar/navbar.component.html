@@ -8,7 +8,7 @@
       </button>
     </div>
     <div fxLayout="row" fxLayoutGap="10px" fxShow fxHide.lt-sm>
-      <button mat-raised-button color="accent" routerLink="/cadastro" *ngIf="!isAuthenticated()">
+      <button mat-raised-button color="accent" routerLink="/usuario/cadastro" *ngIf="!isAuthenticated()">
         <mat-icon>person_add</mat-icon>
         <span>Criar Conta</span>
       </button>
@@ -31,7 +31,7 @@
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/cadastro" *ngIf="!isAuthenticated()">
+  <button mat-menu-item routerLink="/usuario/cadastro" *ngIf="!isAuthenticated()">
     <mat-icon>person_add</mat-icon>
     <span>Criar Conta</span>
   </button>

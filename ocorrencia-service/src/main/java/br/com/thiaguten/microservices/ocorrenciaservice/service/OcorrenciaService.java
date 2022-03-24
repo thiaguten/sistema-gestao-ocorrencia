@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.thiaguten.microservices.ocorrenciaservice.model.Ocorrencia;
+import br.com.thiaguten.microservices.ocorrenciaservice.model.Usuario;
 
 public interface OcorrenciaService {
 
@@ -15,8 +16,7 @@ public interface OcorrenciaService {
 
     List<Ocorrencia> listar();
 
-    // pesquisar todas as ocorrencia para o usuario logado
-    // List<Ocorrencia> pesquisarPorUsuario(Long usuarioId);
+    List<Ocorrencia> listarPorUsuario(Usuario usuario);
 
     Optional<Ocorrencia> pesquisarPorCodigo(String codigo);
 

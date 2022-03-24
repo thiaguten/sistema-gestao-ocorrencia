@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
@@ -27,8 +28,7 @@ export class RegistrarOcorrenciaComponent implements OnInit {
     private formBuilder: FormBuilder,
     private servicoService: ServicoService,
     private ocorrenciaService: OcorrenciaService,
-    private localizacaoService: LocalizacaoService,
-    private loginService: LoginService
+    private localizacaoService: LocalizacaoService
   ) {
     this.registroForm = this.createFormGroup();
     this.servicos$ = this.servicoService.listarServicos()
@@ -58,7 +58,6 @@ export class RegistrarOcorrenciaComponent implements OnInit {
       cidade: ['', Validators.required],
       bairro: ['', Validators.required],
       endereco: ['', Validators.required],
-      quantidadeIncidentes: ['', Validators.required],
       descricao: ['', Validators.required]
     });
   }
@@ -74,16 +73,6 @@ export class RegistrarOcorrenciaComponent implements OnInit {
   }
 
   private criarNovaOcorrencia(): Ocorrencia {
-    console.log('usuario', this.loginService.subject);
-    console.log('servico', this.servicoFormControl?.value);
-    console.log('cep', this.cepFormControl?.value);
-    console.log('estado', this.estadoFormControl?.value);
-    console.log('cidade', this.cidadeFormControl?.value);
-    console.log('bairro', this.bairroFormControl?.value);
-    console.log('endereco', this.enderecoFormControl?.value);
-    console.log('quantidadeIncidentes', this.quantidadeFormControl?.value);
-    console.log('descricao', this.descricaoFormControl?.value);
-
     const ocorrencia: Ocorrencia = {
       descricao: this.descricaoFormControl?.value,
       cep: this.cepFormControl?.value,
@@ -99,18 +88,18 @@ export class RegistrarOcorrenciaComponent implements OnInit {
   onSubmit(): void {
     if (this.registroForm.valid) {
       const ocorrencia: Ocorrencia = this.criarNovaOcorrencia();
-      // this.ocorrenciaService.criarOcorrencia(ocorrencia)
-      //   .pipe(
-      //     catchError((error: HttpErrorResponse) => {
-      //       this.onError(`Falha ao registrar ocorrência! - Erro: ${error.message}`);
-      //       //return of({});
-      //       return EMPTY;
-      //     })
-      //   )
-      //   .subscribe((o: Ocorrencia) => {
-      //     this.onSuccess(`Ocorrência registrada com sucesso! - Código: ${o.codigo}`);
-      //     this.registroForm.reset();
-      //   });
+      this.ocorrenciaService.criarOcorrencia(ocorrencia)
+        .pipe(
+          catchError((error: HttpErrorResponse) => {
+            this.onError(`Falha ao registrar ocorrência! - Erro: ${error.message}`);
+            //return of({});
+            return EMPTY;
+          })
+        )
+        .subscribe((o: Ocorrencia) => {
+          this.onSuccess(`Ocorrência registrada com sucesso! - Código: ${o.codigo}`);
+          this.registroForm.reset();
+        });
     }
   }
 
@@ -220,10 +209,6 @@ export class RegistrarOcorrenciaComponent implements OnInit {
 
   get enderecoFormControl() {
     return this.getFormControl('endereco');
-  }
-
-  get quantidadeFormControl() {
-    return this.getFormControl('quantidadeIncidentes');
   }
 
   get descricaoFormControl() {

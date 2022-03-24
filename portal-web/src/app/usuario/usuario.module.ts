@@ -3,19 +3,18 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
-import { CadastroRoutingModule } from './cadastro-routing.module';
-import { CriarContaComponent } from './feature/criar-conta/criar-conta.component';
-
+import { CadastroComponent } from './feature/cadastro/cadastro.component';
+import { UsuarioRoutingModule } from './usuario-routing.module';
 
 @NgModule({
   declarations: [
-    CriarContaComponent
+    CadastroComponent
   ],
   imports: [
     CommonModule,
-    CadastroRoutingModule,
+    UsuarioRoutingModule,
     SharedModule,
     ReactiveFormsModule
   ]
 })
-export class CadastroModule { }
+export class UsuarioModule { }

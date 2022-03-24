@@ -3,16 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { catchError, EMPTY } from 'rxjs';
-import { Usuario } from 'src/app/ocorrencia/model/usuario';
-import { OcorrenciaService } from 'src/app/ocorrencia/service/ocorrencia.service';
 import { MessageSnackBarComponent } from 'src/app/shared/component/message-snack-bar/message-snack-bar.component';
+import { Usuario } from 'src/app/usuario/model/usuario';
+import { UsuarioService } from 'src/app/usuario/service/usuario.service';
 
 @Component({
-  selector: 'app-criar-conta',
-  templateUrl: './criar-conta.component.html',
-  styleUrls: ['./criar-conta.component.scss']
+  selector: 'app-cadastro',
+  templateUrl: './cadastro.component.html',
+  styleUrls: ['./cadastro.component.scss']
 })
-export class CriarContaComponent implements OnInit {
+export class CadastroComponent implements OnInit {
 
   hidePassword = true;
   cadastroForm: FormGroup;
@@ -20,7 +20,7 @@ export class CriarContaComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
-    private ocorrenciaService: OcorrenciaService
+    private usuarioService: UsuarioService
   ) {
     this.cadastroForm = this.createFormGroup();
   }
@@ -64,7 +64,7 @@ export class CriarContaComponent implements OnInit {
   onSubmit(): void {
     if (this.cadastroForm.valid) {
       const usuario: Usuario = this.criarNovoUsuario();
-      this.ocorrenciaService.criarUsuario(usuario)
+      this.usuarioService.criarUsuario(usuario)
         .pipe(
           catchError((error: HttpErrorResponse) => {
             this.onError(`Falha ao cadastrar usuário! - Erro: ${error.message}`);

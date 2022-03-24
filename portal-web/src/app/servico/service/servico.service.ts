@@ -19,7 +19,12 @@ export class ServicoService {
       .pipe(
         first(),
         //tap(console.log),
-        map(({ _embedded }) => _embedded.servicoDTOList)
+        map(({ _embedded }) => {
+          if (_embedded) {
+            return _embedded.servicoDTOList;
+          }
+          return [];
+        })
       );
   }
 }

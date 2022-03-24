@@ -49,19 +49,19 @@ services:
     networks:
       - sgo-network
 
-#  sgo-localizacao-service:
-#    image: thiaguten/sgo-localizacao-service:0.0.1-SNAPSHOT
-#    container_name: sgo-localizacao-service
-#    ports:
-#      - "8000:8000"
-#    environment:
-#      - PROFILE_CONFIG=docker
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - sgo-network
-#    depends_on:
-#      - sgo-naming-server
-#      - rabbitmq
+  sgo-localizacao-service:
+    image: thiaguten/sgo-localizacao-service:0.0.1-SNAPSHOT
+    container_name: sgo-localizacao-service
+    ports:
+      - "8000:8000"
+    environment:
+      - PROFILE_CONFIG=docker
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - sgo-network
+    depends_on:
+      - sgo-naming-server
+      - rabbitmq
 
 #  sgo-ocorrencia-service:
 #    image: thiaguten/sgo-ocorrencia-service:0.0.1-SNAPSHOT

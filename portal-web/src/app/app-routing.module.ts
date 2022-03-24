@@ -17,9 +17,9 @@ const routes: Routes = [
       import('./ocorrencia/ocorrencia.module').then((m) => m.OcorrenciaModule)
   },
   {
-    path: 'cadastro',
+    path: 'usuario',
     loadChildren: () =>
-      import('./cadastro/cadastro.module').then((m) => m.CadastroModule)
+      import('./usuario/usuario.module').then((m) => m.UsuarioModule)
   },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

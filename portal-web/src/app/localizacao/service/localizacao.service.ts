@@ -19,14 +19,13 @@ export const ReadonlyEmptyEndereco: Readonly<Endereco> = {
 })
 export class LocalizacaoService {
 
-  //private readonly API = '/assets/mock_endereco.json';
-  private readonly API = `${environment.api_localizacao_base_url}/api/v1/enderecos`;
+  private readonly API_ENDERECOS = `${environment.api_localizacao_base_url}/api/v1/enderecos`;
 
   constructor(private httpClient: HttpClient) { }
 
   getEnderecoByCEP(cepCode: number): Observable<Endereco> {
     //return this.httpClient.get<Endereco>(this.API)
-    return this.httpClient.get<Endereco>(`${this.API}/hateoas/cep/${cepCode}`)
+    return this.httpClient.get<Endereco>(`${this.API_ENDERECOS}/hateoas/cep/${cepCode}`)
       .pipe(
         first(),
         //tap(console.log)

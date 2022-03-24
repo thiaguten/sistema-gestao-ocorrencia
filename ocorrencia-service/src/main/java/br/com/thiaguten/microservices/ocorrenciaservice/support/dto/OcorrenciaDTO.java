@@ -14,9 +14,11 @@ public class OcorrenciaDTO {
     private String bairro;
     private String localidade;
     private String uf;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    //@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataCriacao;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    //@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataModificacao;
     private String situacao;
     private Long servicoId;
