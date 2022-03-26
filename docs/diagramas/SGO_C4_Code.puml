@@ -5,7 +5,10 @@ skinparam groupInheritance 2
 
 title SGO - Diagrama de Código
 
-circle ApiRESTful
+circle ApiRESTfulLocalizacao
+circle ApiRESTfulUsuario
+circle ApiRESTfulServico
+circle ApiRESTfulOcorrencia
 
 namespace br.com.thiaguten.microservices.localizacaoservice #FFFFFF {
 
@@ -24,46 +27,46 @@ namespace br.com.thiaguten.microservices.localizacaoservice #FFFFFF {
     class HttpStatusException
     class WebClientFilters
     class WebClientConfig
+    class CEPClientConfig
     class EnderecoNotFoundException
     class LocalizacaoServiceApplication
 
-    .ApiRESTful -- EnderecoController
+    .ApiRESTfulLocalizacao -- EnderecoController
+
+    WebClientFilters <.. WebClientConfig
+    HttpStatusException <.. WebClientFilters : <<create>>
+    CEPClientAPI <|.. CEPClientAPIImpl
+    CEPUtils <.. CEPClientAPIImpl
+    CEPClientAPIResponse <.. CEPClientAPIImpl
+    EnderecoDTO <.. CEPClientAPIImpl : <<create>>
+    WebClientFilters <.. CEPClientAPIImpl
+    CEPClientAPIException <.. CEPClientAPIImpl
+    EnderecoRepository <|.. EnderecoInMemoryRepository
+    EnderecoDTO <.. EnderecoInMemoryRepository
+    CEPUtils <.. EnderecoInMemoryRepository
+    EnderecoDTO <.. EnderecoRepository
+    EnderecoRepository <.. EnderecoServiceImpl
+    EnderecoRepository "1" <--o "1" EnderecoServiceImpl
+    CEPClientAPI <.. EnderecoServiceImpl
+    CEPClientAPI "1" <--o "1" EnderecoServiceImpl
+    EnderecoService <|.. EnderecoServiceImpl
+    EnderecoDTO <.. EnderecoServiceImpl : <<create>>
+    EnderecoDTO <.. EnderecoService
+    EnderecoDTO <.. EnderecoModelAssembler
+    CEPUtils <.. EnderecoModelAssembler
     EnderecoDTO <.. EnderecoController : <<create>>
     EnderecoService <.. EnderecoController
     EnderecoService "1" <--o "1" EnderecoController
     EnderecoModelAssembler <..> EnderecoController
     EnderecoModelAssembler "1" <--o "1" EnderecoController
-    
-    HttpStatusException <.. WebClientFilters : <<create>>
-    WebClientFilters <.. WebClientConfig
-
     EnderecoDTO <.. CEPClientAPI
-    CEPClientAPI <|.. CEPClientAPIImpl
-    WebClientFilters <.. CEPClientAPIImpl
-    CEPClientAPIException <.. CEPClientAPIImpl : <<create>>
-    CEPClientAPIResponse <.. CEPClientAPIImpl
-    CEPUtils <.. CEPClientAPIImpl
-    EnderecoDTO <.. CEPClientAPIImpl : <<create>>
-
-    EnderecoDTO <.. EnderecoService
-    EnderecoService <|.. EnderecoServiceImpl
-    EnderecoDTO <.. EnderecoServiceImpl : <<create>>
-    CEPClientAPI <.. EnderecoServiceImpl
-    CEPClientAPI "1" <--o "1" EnderecoServiceImpl
-    EnderecoRepository <.. EnderecoServiceImpl
-    EnderecoRepository "1" <--o "1" EnderecoServiceImpl
-
-    EnderecoDTO <.. EnderecoRepository
-    EnderecoRepository <|.. EnderecoInMemoryRepository
-    CEPUtils <.. EnderecoInMemoryRepository
-    EnderecoDTO <.. EnderecoInMemoryRepository
 }
 
 namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
+    
     class KeycloakService
     class KeycloakIntegrationException
     class KeycloakUserAlreadyExistsException
-
     class Usuario
     class UsuarioIdentificado
     class UsuarioDTO
@@ -74,7 +77,6 @@ namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
     class UsuarioServiceImpl
     interface UsuarioRepository
     class UsuarioNotFoundException
-
     class Ocorrencia
     class OcorrenciaController
     interface OcorrenciaService
@@ -84,25 +86,33 @@ namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
     class OcorrenciaDTOMapper
     class OcorrenciaNotFoundException
     class OcorrenciaModelAssembler
-
     class Atendente
     class AtendenteIdentificado
     class AtendimentoOcorrencia
     class AtendimentoOcorrenciaPK
-
     class Endereco
     class SituacaoOcorrencia
     class SituacaoOcorrenciaConverter
     class SituacaoOcorrenciaNotFoundException
     interface DTOMapper
-
     class Servico
     interface ServicoService
     class ServicoServiceImpl
     class ServicoDTO
     class ServicoDTOMapper
-    interface ServiceRepository
     class ServicoController
+    class ServicoNotFoundException
+    class ServicoModelAssembler
+    interface ServicoRepository
+    class SecurityResourceServerConfig
+    class OcorrenciaServiceApplication
+    class RolesAllowedConstants
+    class KeycloakConfig
+    class JacksonConfig
+
+    .ApiRESTfulUsuario -- UsuarioController
+    .ApiRESTfulServico -- ServicoController
+    .ApiRESTfulOcorrencia -- OcorrenciaController
 
     KeycloakIntegrationException <.. KeycloakService : <<create>>
     KeycloakUserAlreadyExistsException <.. KeycloakService : <<create>>
@@ -188,19 +198,34 @@ namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
     SituacaoOcorrencia <.. SituacaoOcorrenciaConverter
     DTOMapper <|.. OcorrenciaDTOMapper
     DTOMapper <|.. UsuarioDTOMapper
-    DTOMapper <|.. ServicoDTOMapper
     Servico <.. OcorrenciaDTOMapper
     Servico "1" <--o "1" OcorrenciaDTOMapper
-    ServicoService <.. OcorrenciaDTOMapper
-    Servico <|.. ServicoServiceImpl
-    ServiceRepository <.. ServicoServiceImpl
-    ServiceRepository "1" <--o "1" ServicoServiceImpl
     Servico <.. Ocorrencia
     Servico "1" <--o "1" Ocorrencia
-    Servico <.. ServiceRepository
+    ServicoService <.. OcorrenciaDTOMapper
+    ServicoService "1" <--o "1" OcorrenciaDTOMapper
+    ServicoNotFoundException <.. ServicoController : <<create>>
+    Servico <.. ServicoController
+    ServicoDTO <.. ServicoController
+    ServicoDTOMapper <.. ServicoController
+    ServicoDTOMapper "1" <--o "1" ServicoController
+    ServicoService <.. ServicoController
+    ServicoService "1" <--o "1" ServicoController
+    ServicoModelAssembler "1" <--o "1" ServicoController
+    ServicoModelAssembler <.. ServicoController
+    ServicoController <.. ServicoModelAssembler
+    Servico <.. ServicoModelAssembler
+    ServicoDTO <.. ServicoModelAssembler
+    ServicoDTOMapper <.. ServicoModelAssembler
+    ServicoDTOMapper "1" <--o "1" ServicoModelAssembler
+    DTOMapper <|.. ServicoDTOMapper
     Servico <.. ServicoDTOMapper : <<create>>
     ServicoDTO <.. ServicoDTOMapper : <<create>>
-    Service <.. ServicoService
+    ServicoService <|.. ServicoServiceImpl
+    ServicoRepository <.. ServicoServiceImpl
+    ServicoRepository "1" <--o "1" ServicoServiceImpl
+    Servico <.. ServicoRepository
+    Servico <.. ServicoService
 }
 
 ' namespace br.com.thiaguten.microservices.notificacaoservice #FFFFFF {
