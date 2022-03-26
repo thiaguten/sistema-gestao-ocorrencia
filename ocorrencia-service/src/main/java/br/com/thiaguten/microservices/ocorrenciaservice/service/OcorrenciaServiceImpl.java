@@ -28,8 +28,8 @@ public class OcorrenciaServiceImpl implements OcorrenciaService {
 
     @Override
     public Optional<Ocorrencia> recuperar(Long id) {
-        // TODO recuperar a ocorrencia e seu endereco relacionado? Tlvz o servico tbm?
-        return repository.findById(id);
+        // return repository.findById(id);
+        return repository.findByIdJoinFetch(id);
     }
 
     @Override

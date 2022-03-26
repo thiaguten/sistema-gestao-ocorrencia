@@ -59,16 +59,156 @@ namespace br.com.thiaguten.microservices.localizacaoservice #FFFFFF {
     EnderecoDTO <.. EnderecoInMemoryRepository
 }
 
-namespace br.com.thiaguten.microservices.notificacaoservice #FFFFFF {
-    
-}
-
 namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
-    
+    class KeycloakService
+    class KeycloakIntegrationException
+    class KeycloakUserAlreadyExistsException
+
+    class Usuario
+    class UsuarioIdentificado
+    class UsuarioDTO
+    class UsuarioDTOMapper
+    class UsuarioModelAssembler
+    class UsuarioController
+    interface UsuarioService
+    class UsuarioServiceImpl
+    interface UsuarioRepository
+    class UsuarioNotFoundException
+
+    class Ocorrencia
+    class OcorrenciaController
+    interface OcorrenciaService
+    class OcorrenciaServiceImpl
+    interface OcorrenciaRepository
+    class OcorrenciaDTO
+    class OcorrenciaDTOMapper
+    class OcorrenciaNotFoundException
+    class OcorrenciaModelAssembler
+
+    class Atendente
+    class AtendenteIdentificado
+    class AtendimentoOcorrencia
+    class AtendimentoOcorrenciaPK
+
+    class Endereco
+    class SituacaoOcorrencia
+    class SituacaoOcorrenciaConverter
+    class SituacaoOcorrenciaNotFoundException
+    interface DTOMapper
+
+    class Servico
+    interface ServicoService
+    class ServicoServiceImpl
+    class ServicoDTO
+    class ServicoDTOMapper
+    interface ServiceRepository
+    class ServicoController
+
+    KeycloakIntegrationException <.. KeycloakService : <<create>>
+    KeycloakUserAlreadyExistsException <.. KeycloakService : <<create>>
+    UsuarioDTO <.. KeycloakService
+    Usuario <.. UsuarioController
+    UsuarioDTO <.. UsuarioController
+    UsuarioDTOMapper <.. UsuarioController
+    UsuarioService <.. UsuarioController
+    UsuarioNotFoundException <.. UsuarioController : <<create>>
+    KeycloakService <.. UsuarioController
+    KeycloakService "1" <--o "1" UsuarioController
+    UsuarioDTOMapper "1" <--o "1" UsuarioController
+    UsuarioService "1" <--o "1" UsuarioController
+    UsuarioModelAssembler "1" <--o "1" UsuarioController
+    UsuarioModelAssembler <..> UsuarioController
+    Usuario <.. UsuarioModelAssembler
+    UsuarioDTO <..> UsuarioModelAssembler
+    UsuarioDTOMapper <..> UsuarioModelAssembler
+    UsuarioDTOMapper "1" <--o "1" UsuarioModelAssembler
+    Usuario <.. UsuarioDTOMapper : <<create>>
+    UsuarioIdentificado <.. UsuarioDTOMapper : <<create>>
+    UsuarioDTO <.. UsuarioDTOMapper : <<create>>
+    Usuario <.. UsuarioRepository
+    UsuarioRepository <.. UsuarioServiceImpl
+    UsuarioRepository "1" <--o "1" UsuarioServiceImpl
+    Usuario <.. UsuarioService
+    Usuario <.. UsuarioServiceImpl
+    UsuarioService <|.. UsuarioServiceImpl
+    UsuarioNotFoundException <.. UsuarioServiceImpl : <<create>>
+    UsuarioService <.. OcorrenciaController
+    UsuarioService "1" <--o "1" OcorrenciaController
+    Usuario <..> UsuarioIdentificado
+    Usuario "1" <--o "1" UsuarioIdentificado
+    UsuarioIdentificado "1" <--o "1" Usuario
+    Usuario "1" <--o "1" Ocorrencia
+    Usuario <.. Ocorrencia
+    Usuario <.. OcorrenciaController
+    Usuario <.. OcorrenciaService
+    Usuario <.. OcorrenciaServiceImpl
+    OcorrenciaService <|.. OcorrenciaServiceImpl
+    UsuarioNotFoundException <.. OcorrenciaController : <<create>>
+    Atendente <..> AtendenteIdentificado
+    Atendente "1" <--o "1" AtendenteIdentificado
+    AtendenteIdentificado "1" <--o "1" Atendente
+    AtendimentoOcorrenciaPK "1" <--o "1" AtendimentoOcorrencia
+    AtendimentoOcorrenciaPK <.. AtendimentoOcorrencia : <<create>>
+    Atendente <.. AtendimentoOcorrencia
+    Ocorrencia <.. AtendimentoOcorrencia
+    AtendimentoOcorrencia <.. Ocorrencia
+    AtendimentoOcorrencia <.. Atendente : <<create>>
+    AtendimentoOcorrencia "many" <--o "1" Atendente
+    Atendente "1" <--o "many" AtendimentoOcorrencia
+    AtendimentoOcorrencia "1" <--o "1" Ocorrencia
+    Ocorrencia "1" <--o "1" AtendimentoOcorrencia
+    OcorrenciaRepository <.. OcorrenciaServiceImpl
+    OcorrenciaRepository "1" <--o "1" OcorrenciaServiceImpl
+    Ocorrencia <.. OcorrenciaServiceImpl
+    Ocorrencia <.. OcorrenciaService
+    OcorrenciaService <.. OcorrenciaController
+    OcorrenciaService "1" <--o "1" OcorrenciaController
+    OcorrenciaNotFoundException <.. OcorrenciaController : <<create>>
+    Ocorrencia <.. OcorrenciaController
+    OcorrenciaModelAssembler <.. OcorrenciaController
+    OcorrenciaModelAssembler "1" <--o "1" OcorrenciaController
+    OcorrenciaDTO <.. OcorrenciaController
+    SituacaoOcorrencia <.. OcorrenciaController
+    OcorrenciaDTOMapper <.. OcorrenciaController
+    OcorrenciaDTOMapper "1" <--o "1" OcorrenciaController
+    Endereco <..> Ocorrencia
+    Endereco "1" <--o "1" Ocorrencia
+    Ocorrencia "1" <--o "1" Endereco
+    Endereco <.. OcorrenciaDTOMapper : <<create>>
+    Ocorrencia <.. OcorrenciaDTOMapper : <<create>>
+    OcorrenciaDTO <.. OcorrenciaDTOMapper : <<create>>
+    OcorrenciaDTOMapper <.. OcorrenciaModelAssembler
+    OcorrenciaDTOMapper "1" <--o "1" OcorrenciaModelAssembler
+    SituacaoOcorrencia <.. OcorrenciaModelAssembler
+    OcorrenciaDTO <.. OcorrenciaModelAssembler
+    Ocorrencia <.. OcorrenciaModelAssembler
+    SituacaoOcorrenciaNotFoundException <.. SituacaoOcorrencia : <<create>>
+    SituacaoOcorrencia <.. Ocorrencia
+    SituacaoOcorrencia <.. OcorrenciaDTOMapper
+    SituacaoOcorrencia <.. SituacaoOcorrenciaConverter
+    DTOMapper <|.. OcorrenciaDTOMapper
+    DTOMapper <|.. UsuarioDTOMapper
+    DTOMapper <|.. ServicoDTOMapper
+    Servico <.. OcorrenciaDTOMapper
+    Servico "1" <--o "1" OcorrenciaDTOMapper
+    ServicoService <.. OcorrenciaDTOMapper
+    Servico <|.. ServicoServiceImpl
+    ServiceRepository <.. ServicoServiceImpl
+    ServiceRepository "1" <--o "1" ServicoServiceImpl
+    Servico <.. Ocorrencia
+    Servico "1" <--o "1" Ocorrencia
+    Servico <.. ServiceRepository
+    Servico <.. ServicoDTOMapper : <<create>>
+    ServicoDTO <.. ServicoDTOMapper : <<create>>
+    Service <.. ServicoService
 }
 
-namespace br.com.thiaguten.microservices.relatorioservice #FFFFFF {
+' namespace br.com.thiaguten.microservices.notificacaoservice #FFFFFF {
     
-}
+' }
+
+' namespace br.com.thiaguten.microservices.relatorioservice #FFFFFF {
+    
+' }
 
 @enduml
