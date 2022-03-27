@@ -13,53 +13,59 @@ circle ApiRESTfulOcorrencia
 namespace br.com.thiaguten.microservices.localizacaoservice #FFFFFF {
 
     class CEPUtils
-    class EnderecoDTO
-    class CEPClientAPIResponse
-    class CEPClientAPIException
+    class CEPClientConfig
     interface CEPClientAPI
     class CEPClientAPIImpl
-    interface EnderecoRepository
-    class EnderecoInMemoryRepository 
+    class CEPClientAPIResponse
+    class CEPClientAPIException
+    
+    class EnderecoDTO
+    class EnderecoController
+    class EnderecoModelAssembler
     interface EnderecoService
     class EnderecoServiceImpl
-    class EnderecoModelAssembler
-    class EnderecoController
-    class HttpStatusException
-    class WebClientFilters
-    class WebClientConfig
-    class CEPClientConfig
+    interface EnderecoRepository
+    class EnderecoInMemoryRepository
     class EnderecoNotFoundException
+    
+    class WebClientConfig
+    class WebClientFilters
+    class HttpStatusException
+
     class LocalizacaoServiceApplication
 
     .ApiRESTfulLocalizacao -- EnderecoController
 
     WebClientFilters <.. WebClientConfig
-    HttpStatusException <.. WebClientFilters : <<create>>
-    CEPClientAPI <|.. CEPClientAPIImpl
-    CEPUtils <.. CEPClientAPIImpl
-    CEPClientAPIResponse <.. CEPClientAPIImpl
-    EnderecoDTO <.. CEPClientAPIImpl : <<create>>
     WebClientFilters <.. CEPClientAPIImpl
-    CEPClientAPIException <.. CEPClientAPIImpl
-    EnderecoRepository <|.. EnderecoInMemoryRepository
-    EnderecoDTO <.. EnderecoInMemoryRepository
+    HttpStatusException <.. WebClientFilters : <<create>>
+    
+    CEPUtils <.. CEPClientAPIImpl
+    CEPUtils <.. EnderecoModelAssembler
     CEPUtils <.. EnderecoInMemoryRepository
-    EnderecoDTO <.. EnderecoRepository
-    EnderecoRepository <.. EnderecoServiceImpl
-    EnderecoRepository "1" <--o "1" EnderecoServiceImpl
+    CEPClientAPI <|.. CEPClientAPIImpl
     CEPClientAPI <.. EnderecoServiceImpl
     CEPClientAPI "1" <--o "1" EnderecoServiceImpl
-    EnderecoService <|.. EnderecoServiceImpl
-    EnderecoDTO <.. EnderecoServiceImpl : <<create>>
-    EnderecoDTO <.. EnderecoService
-    EnderecoDTO <.. EnderecoModelAssembler
-    CEPUtils <.. EnderecoModelAssembler
+    CEPClientAPIResponse <.. CEPClientAPIImpl
+    CEPClientAPIException <.. CEPClientAPIImpl
+    
     EnderecoDTO <.. EnderecoController : <<create>>
-    EnderecoService <.. EnderecoController
-    EnderecoService "1" <--o "1" EnderecoController
+    EnderecoDTO <.. EnderecoModelAssembler
+    EnderecoDTO <.. EnderecoService
+    EnderecoDTO <.. EnderecoServiceImpl : <<create>>
+    EnderecoDTO <.. EnderecoRepository
+    EnderecoDTO <.. EnderecoInMemoryRepository
+    EnderecoDTO <.. CEPClientAPI
+    EnderecoDTO <.. CEPClientAPIImpl : <<create>>
+    
     EnderecoModelAssembler <..> EnderecoController
     EnderecoModelAssembler "1" <--o "1" EnderecoController
-    EnderecoDTO <.. CEPClientAPI
+    EnderecoService <|.. EnderecoServiceImpl
+    EnderecoService <.. EnderecoController
+    EnderecoService "1" <--o "1" EnderecoController
+    EnderecoRepository <|.. EnderecoInMemoryRepository
+    EnderecoRepository <.. EnderecoServiceImpl
+    EnderecoRepository "1" <--o "1" EnderecoServiceImpl
 }
 
 namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
@@ -67,8 +73,10 @@ namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
     class KeycloakService
     class KeycloakIntegrationException
     class KeycloakUserAlreadyExistsException
-    class Usuario
+
     class UsuarioIdentificado
+    
+    class Usuario
     class UsuarioDTO
     class UsuarioDTOMapper
     class UsuarioModelAssembler
@@ -77,33 +85,40 @@ namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
     class UsuarioServiceImpl
     interface UsuarioRepository
     class UsuarioNotFoundException
+
     class Ocorrencia
+    class OcorrenciaDTO
+    class OcorrenciaDTOMapper
+    class OcorrenciaModelAssembler
     class OcorrenciaController
     interface OcorrenciaService
     class OcorrenciaServiceImpl
     interface OcorrenciaRepository
-    class OcorrenciaDTO
-    class OcorrenciaDTOMapper
     class OcorrenciaNotFoundException
-    class OcorrenciaModelAssembler
+    
     class Atendente
     class AtendenteIdentificado
-    class AtendimentoOcorrencia
     class AtendimentoOcorrenciaPK
+    class AtendimentoOcorrencia
+    
     class Endereco
+
     class SituacaoOcorrencia
     class SituacaoOcorrenciaConverter
     class SituacaoOcorrenciaNotFoundException
+
     interface DTOMapper
+
     class Servico
-    interface ServicoService
-    class ServicoServiceImpl
     class ServicoDTO
     class ServicoDTOMapper
-    class ServicoController
-    class ServicoNotFoundException
     class ServicoModelAssembler
+    class ServicoController
+    interface ServicoService
+    class ServicoServiceImpl
     interface ServicoRepository
+    class ServicoNotFoundException
+    
     class SecurityResourceServerConfig
     class OcorrenciaServiceApplication
     class RolesAllowedConstants
@@ -114,118 +129,128 @@ namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
     .ApiRESTfulServico -- ServicoController
     .ApiRESTfulOcorrencia -- OcorrenciaController
 
-    KeycloakIntegrationException <.. KeycloakService : <<create>>
-    KeycloakUserAlreadyExistsException <.. KeycloakService : <<create>>
-    UsuarioDTO <.. KeycloakService
-    Usuario <.. UsuarioController
-    UsuarioDTO <.. UsuarioController
-    UsuarioDTOMapper <.. UsuarioController
-    UsuarioService <.. UsuarioController
-    UsuarioNotFoundException <.. UsuarioController : <<create>>
     KeycloakService <.. UsuarioController
     KeycloakService "1" <--o "1" UsuarioController
-    UsuarioDTOMapper "1" <--o "1" UsuarioController
-    UsuarioService "1" <--o "1" UsuarioController
-    UsuarioModelAssembler "1" <--o "1" UsuarioController
-    UsuarioModelAssembler <..> UsuarioController
-    Usuario <.. UsuarioModelAssembler
-    UsuarioDTO <..> UsuarioModelAssembler
-    UsuarioDTOMapper <..> UsuarioModelAssembler
-    UsuarioDTOMapper "1" <--o "1" UsuarioModelAssembler
-    Usuario <.. UsuarioDTOMapper : <<create>>
+    KeycloakIntegrationException <.. KeycloakService : <<create>>
+    KeycloakUserAlreadyExistsException <.. KeycloakService : <<create>>
+
+    UsuarioIdentificado "1" <--o "1" Usuario
     UsuarioIdentificado <.. UsuarioDTOMapper : <<create>>
-    UsuarioDTO <.. UsuarioDTOMapper : <<create>>
-    Usuario <.. UsuarioRepository
-    UsuarioRepository <.. UsuarioServiceImpl
-    UsuarioRepository "1" <--o "1" UsuarioServiceImpl
+
+    Usuario <.. UsuarioController
+    Usuario <.. UsuarioModelAssembler
+    Usuario <.. UsuarioDTOMapper : <<create>>
     Usuario <.. UsuarioService
     Usuario <.. UsuarioServiceImpl
-    UsuarioService <|.. UsuarioServiceImpl
-    UsuarioNotFoundException <.. UsuarioServiceImpl : <<create>>
-    UsuarioService <.. OcorrenciaController
-    UsuarioService "1" <--o "1" OcorrenciaController
-    Usuario <..> UsuarioIdentificado
-    Usuario "1" <--o "1" UsuarioIdentificado
-    UsuarioIdentificado "1" <--o "1" Usuario
-    Usuario "1" <--o "1" Ocorrencia
+    Usuario <.. UsuarioRepository
     Usuario <.. Ocorrencia
+    Usuario "1" <--o "1" Ocorrencia
     Usuario <.. OcorrenciaController
     Usuario <.. OcorrenciaService
     Usuario <.. OcorrenciaServiceImpl
-    OcorrenciaService <|.. OcorrenciaServiceImpl
+    Usuario <..> UsuarioIdentificado
+    Usuario "1" <--o "1" UsuarioIdentificado
+    UsuarioModelAssembler <..> UsuarioController
+    UsuarioModelAssembler "1" <--o "1" UsuarioController
+    UsuarioService <|.. UsuarioServiceImpl
+    UsuarioService <.. UsuarioController
+    UsuarioService "1" <--o "1" UsuarioController
+    UsuarioService <.. OcorrenciaController
+    UsuarioService "1" <--o "1" OcorrenciaController
+    UsuarioRepository <.. UsuarioServiceImpl
+    UsuarioRepository "1" <--o "1" UsuarioServiceImpl
+    UsuarioNotFoundException <.. UsuarioController : <<create>>
+    UsuarioNotFoundException <.. UsuarioServiceImpl : <<create>>
     UsuarioNotFoundException <.. OcorrenciaController : <<create>>
+
+    UsuarioDTO <.. KeycloakService
+    UsuarioDTO <.. UsuarioController
+    UsuarioDTO <..> UsuarioModelAssembler
+    UsuarioDTO <.. UsuarioDTOMapper : <<create>>
+    UsuarioDTOMapper <.. UsuarioController
+    UsuarioDTOMapper "1" <--o "1" UsuarioController
+    UsuarioDTOMapper <..> UsuarioModelAssembler
+    UsuarioDTOMapper "1" <--o "1" UsuarioModelAssembler
+
     Atendente <..> AtendenteIdentificado
     Atendente "1" <--o "1" AtendenteIdentificado
+    Atendente <.. AtendimentoOcorrencia
+    Atendente "1" <--o "many" AtendimentoOcorrencia
     AtendenteIdentificado "1" <--o "1" Atendente
     AtendimentoOcorrenciaPK "1" <--o "1" AtendimentoOcorrencia
     AtendimentoOcorrenciaPK <.. AtendimentoOcorrencia : <<create>>
-    Atendente <.. AtendimentoOcorrencia
-    Ocorrencia <.. AtendimentoOcorrencia
-    AtendimentoOcorrencia <.. Ocorrencia
     AtendimentoOcorrencia <.. Atendente : <<create>>
     AtendimentoOcorrencia "many" <--o "1" Atendente
-    Atendente "1" <--o "many" AtendimentoOcorrencia
+    AtendimentoOcorrencia <.. Ocorrencia
     AtendimentoOcorrencia "1" <--o "1" Ocorrencia
+    
+    Ocorrencia <.. AtendimentoOcorrencia
     Ocorrencia "1" <--o "1" AtendimentoOcorrencia
-    OcorrenciaRepository <.. OcorrenciaServiceImpl
-    OcorrenciaRepository "1" <--o "1" OcorrenciaServiceImpl
-    Ocorrencia <.. OcorrenciaServiceImpl
+    Ocorrencia "1" <--o "1" Endereco
+    Ocorrencia <.. OcorrenciaDTOMapper : <<create>>
+    Ocorrencia <.. OcorrenciaController
+    Ocorrencia <.. OcorrenciaModelAssembler
     Ocorrencia <.. OcorrenciaService
+    Ocorrencia <.. OcorrenciaServiceImpl
+    OcorrenciaModelAssembler <..> OcorrenciaController
+    OcorrenciaModelAssembler "1" <--o "1" OcorrenciaController
+    OcorrenciaService <|.. OcorrenciaServiceImpl
     OcorrenciaService <.. OcorrenciaController
     OcorrenciaService "1" <--o "1" OcorrenciaController
+    OcorrenciaRepository <.. OcorrenciaServiceImpl
+    OcorrenciaRepository "1" <--o "1" OcorrenciaServiceImpl
     OcorrenciaNotFoundException <.. OcorrenciaController : <<create>>
-    Ocorrencia <.. OcorrenciaController
-    OcorrenciaModelAssembler <.. OcorrenciaController
-    OcorrenciaModelAssembler "1" <--o "1" OcorrenciaController
+    
     OcorrenciaDTO <.. OcorrenciaController
-    SituacaoOcorrencia <.. OcorrenciaController
+    OcorrenciaDTO <.. OcorrenciaModelAssembler
+    OcorrenciaDTO <.. OcorrenciaDTOMapper : <<create>>
     OcorrenciaDTOMapper <.. OcorrenciaController
     OcorrenciaDTOMapper "1" <--o "1" OcorrenciaController
-    Endereco <..> Ocorrencia
-    Endereco "1" <--o "1" Ocorrencia
-    Ocorrencia "1" <--o "1" Endereco
-    Endereco <.. OcorrenciaDTOMapper : <<create>>
-    Ocorrencia <.. OcorrenciaDTOMapper : <<create>>
-    OcorrenciaDTO <.. OcorrenciaDTOMapper : <<create>>
     OcorrenciaDTOMapper <.. OcorrenciaModelAssembler
     OcorrenciaDTOMapper "1" <--o "1" OcorrenciaModelAssembler
-    SituacaoOcorrencia <.. OcorrenciaModelAssembler
-    OcorrenciaDTO <.. OcorrenciaModelAssembler
-    Ocorrencia <.. OcorrenciaModelAssembler
-    SituacaoOcorrenciaNotFoundException <.. SituacaoOcorrencia : <<create>>
+    
+    Endereco <..> Ocorrencia
+    Endereco "1" <--o "1" Ocorrencia
+    Endereco <.. OcorrenciaDTOMapper : <<create>>
+    
     SituacaoOcorrencia <.. Ocorrencia
     SituacaoOcorrencia <.. OcorrenciaDTOMapper
+    SituacaoOcorrencia <.. OcorrenciaController
+    SituacaoOcorrencia <.. OcorrenciaModelAssembler
     SituacaoOcorrencia <.. SituacaoOcorrenciaConverter
+    SituacaoOcorrenciaNotFoundException <.. SituacaoOcorrencia : <<create>>
+    
+    DTOMapper <|.. ServicoDTOMapper
     DTOMapper <|.. OcorrenciaDTOMapper
     DTOMapper <|.. UsuarioDTOMapper
-    Servico <.. OcorrenciaDTOMapper
-    Servico "1" <--o "1" OcorrenciaDTOMapper
+
+    Servico <.. ServicoController
+    Servico <.. ServicoService
+    Servico <.. ServicoRepository
+    Servico <.. ServicoModelAssembler
+    Servico <.. ServicoDTOMapper : <<create>>
     Servico <.. Ocorrencia
     Servico "1" <--o "1" Ocorrencia
+    Servico <.. OcorrenciaDTOMapper
+    Servico "1" <--o "1" OcorrenciaDTOMapper
+    ServicoModelAssembler <..> ServicoController
+    ServicoModelAssembler "1" <--o "1" ServicoController
+    ServicoService <|.. ServicoServiceImpl
     ServicoService <.. OcorrenciaDTOMapper
     ServicoService "1" <--o "1" OcorrenciaDTOMapper
-    ServicoNotFoundException <.. ServicoController : <<create>>
-    Servico <.. ServicoController
-    ServicoDTO <.. ServicoController
-    ServicoDTOMapper <.. ServicoController
-    ServicoDTOMapper "1" <--o "1" ServicoController
     ServicoService <.. ServicoController
     ServicoService "1" <--o "1" ServicoController
-    ServicoModelAssembler "1" <--o "1" ServicoController
-    ServicoModelAssembler <.. ServicoController
-    ServicoController <.. ServicoModelAssembler
-    Servico <.. ServicoModelAssembler
-    ServicoDTO <.. ServicoModelAssembler
-    ServicoDTOMapper <.. ServicoModelAssembler
-    ServicoDTOMapper "1" <--o "1" ServicoModelAssembler
-    DTOMapper <|.. ServicoDTOMapper
-    Servico <.. ServicoDTOMapper : <<create>>
-    ServicoDTO <.. ServicoDTOMapper : <<create>>
-    ServicoService <|.. ServicoServiceImpl
     ServicoRepository <.. ServicoServiceImpl
     ServicoRepository "1" <--o "1" ServicoServiceImpl
-    Servico <.. ServicoRepository
-    Servico <.. ServicoService
+    ServicoNotFoundException <.. ServicoController : <<create>>
+    
+    ServicoDTO <.. ServicoController
+    ServicoDTO <.. ServicoModelAssembler
+    ServicoDTO <.. ServicoDTOMapper : <<create>>
+    ServicoDTOMapper <.. ServicoController
+    ServicoDTOMapper "1" <--o "1" ServicoController
+    ServicoDTOMapper <.. ServicoModelAssembler
+    ServicoDTOMapper "1" <--o "1" ServicoModelAssembler
 }
 
 ' namespace br.com.thiaguten.microservices.notificacaoservice #FFFFFF {
