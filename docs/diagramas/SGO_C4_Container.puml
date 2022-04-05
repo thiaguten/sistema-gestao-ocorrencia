@@ -37,6 +37,7 @@ System_Boundary(sgo, "Sistema de Gestão de Ocorrência") {
     ContainerDb(db_nosql, "Banco de dados NoSQL", "MongoDB", "Armazena localizações, endereço e CEPs.", $sprite="mongodb")
     ContainerQueue(queue, "Barramento de mensageria", "RabbitMQ", "Fila de transporte e processamento de eventos em segundo plano.")
     
+    Rel_R(nginx, spa, "Entrega", "")
     Rel(spa, api_localizacao, "Usa", "HTTPS")
     Rel(spa, api_ocorrencia, "Usa", "HTTPS")
     Rel(spa, api_relatorio, "Usa", "HTTPS")
@@ -54,9 +55,11 @@ Rel(atendente, spa, "Atende ocorrência em", "HTTPS")
 Rel(sistema_os, queue, "Lê ocorrências aprovadas em", "AMQP", $tags = "async")
 Rel(api_localizacao, sistema_correios, "Usa", "JSON/HTTPS")
 Rel(api_notificacao, usuario, "Notifica o usuário via email em", "SMTP", $tags = "async")
-Rel_R(api_notificacao, spa, "Notifica o usuário via sistema web em", "HTTPS")
+Rel(spa, api_notificacao, "Obtêm notificações do usuário via sistema web em", "HTTPS")
 
 Lay_L(usuario, atendente)
 Lay_R(usuario, atendente)
+Lay_L(api_notificacao, api_ocorrencia)
+Lay_R(api_notificacao, api_ocorrencia)
 
 @enduml
