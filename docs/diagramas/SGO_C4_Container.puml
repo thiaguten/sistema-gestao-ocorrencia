@@ -24,7 +24,7 @@ AddRelTag("async", $lineStyle = DashedLine())
 Person(usuario, "Usuário", "Pessoa que precisa registrar uma ocorrência.")
 Person(atendente, "Atendente", "Pessoa que atende uma ocorrência.")
 System_Ext(sistema_os, "Sistema de Gestão de Ordem de Serviço", "Gerencia Ordem de Serviço para execução.")
-System_Ext(sistema_correios, "Sistema de Localização (Correios)", "Gerencia endereços")
+System_Ext(sistema_api_cep, "Sistema de Localização (apicep.com)", "Gerencia endereços")
 
 System_Boundary(sgo, "Sistema de Gestão de Ocorrência") {
     Container(nginx, "Página Web", "nginx",  "Serve ativos estáticos do website para o cliente", $sprite = "nginx")
@@ -46,6 +46,7 @@ System_Boundary(sgo, "Sistema de Gestão de Ocorrência") {
     Rel(api_ocorrencia, api_notificacao, "Usa", "JSON/HTTP")
     Rel(api_ocorrencia, db_relacional, "Lê e escreve em", "JDBC, TCP/IP")
     Rel(api_relatorio, db_relacional, "Lê em", "JDBC, TCP/IP")
+    Rel(api_notificacao, db_relacional, "Lê em", "JDBC, TCP/IP")
     Rel(api_ocorrencia, queue, "Escreve ocorrências aprovadas em", "AMQP", $tags = "async")
 }
 Rel(usuario, nginx, "Navega no site usando", "HTTPS")
@@ -53,13 +54,11 @@ Rel(atendente, nginx, "Navega no site usando", "HTTPS")
 Rel(usuario, spa, "Registra ocorrência em", "HTTPS")
 Rel(atendente, spa, "Atende ocorrência em", "HTTPS")
 Rel(sistema_os, queue, "Lê ocorrências aprovadas em", "AMQP", $tags = "async")
-Rel(api_localizacao, sistema_correios, "Usa", "JSON/HTTPS")
+Rel(api_localizacao, sistema_api_cep, "Usa", "JSON/HTTPS")
 Rel(api_notificacao, usuario, "Notifica o usuário via email em", "SMTP", $tags = "async")
 Rel(spa, api_notificacao, "Obtêm notificações do usuário via sistema web em", "HTTPS")
 
 Lay_L(usuario, atendente)
 Lay_R(usuario, atendente)
-Lay_L(api_notificacao, api_ocorrencia)
-Lay_R(api_notificacao, api_ocorrencia)
 
 @enduml
