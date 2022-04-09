@@ -68,9 +68,9 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootBuildImage {
+tasks.named('bootBuildImage') {
 	imageName = "thiaguten/sgo-${project.name}:${project.version}"
-	pullPolicy = "IF_NOT_PRESENT"
+	pullPolicy = 'IF_NOT_PRESENT'
 	environment = [
 		'PROFILE_CONFIG' : '',
 		'SPRING_PROFILES_ACTIVE' : '',
