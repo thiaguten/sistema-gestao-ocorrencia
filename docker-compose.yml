@@ -81,6 +81,23 @@ services:
 #      rabbitmq:
 #        condition: service_started
 
+  sgo-mongo:
+    image: mongo:4.4
+    container_name: sgo-mongo
+    # restart: always
+    command: mongod --oplogSize 128 --storageEngine wiredTiger
+    ports:
+      - "27017:27017"
+    volumes:
+      #- sgo_mongo_dump:/dump
+      - sgo_mongo_data:/data/db
+      - ./scripts/mongo/init.js:/docker-entrypoint-initdb.d/1init.js
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    networks:
+      - sgo-network
+
   sgo-mysql:
     image: mysql:5.7
     container_name: sgo-mysql
@@ -89,6 +106,7 @@ services:
       - "3306:3306"
     volumes:
       - sgo_mysql_data:/var/lib/mysql
+      - ./scripts/mysql/schema.sql:/docker-entrypoint-initdb.d/1schema.sql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=db_sgo
@@ -110,7 +128,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./realm-export.json:/tmp/realm-export.json
+      - ./scripts/keycloak/realm-export.json:/tmp/realm-export.json
     environment:
       - KEYCLOAK_IMPORT=/tmp/realm-export.json
       - KEYCLOAK_USER=admin
@@ -139,6 +157,7 @@ services:
 
 volumes:
   sgo_mysql_data:
+  sgo_mongo_data:
 
 networks:
   sgo-network:

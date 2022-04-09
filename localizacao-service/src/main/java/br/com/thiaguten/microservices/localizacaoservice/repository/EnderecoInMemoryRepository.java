@@ -18,14 +18,14 @@ public class EnderecoInMemoryRepository implements EnderecoRepository {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EnderecoInMemoryRepository.class);
 
-    private Cache<String, EnderecoDTO> localInMemoryDB = Caffeine.newBuilder()
+    private final Cache<String, EnderecoDTO> localInMemoryDB = Caffeine.newBuilder()
             .expireAfterWrite(Duration.ofMinutes(10))
             .maximumSize(1_000)
             .build();
 
     @Override
     public Mono<EnderecoDTO> obterEnderecoPeloCEP(String cep) {
-        LOGGER.info("Pesquisando o CEP: {}", cep);
+        LOGGER.debug("Cache local: Pesquisando o CEP: {}", cep);
         var endereco = localInMemoryDB.getIfPresent(cep);
         return Mono.justOrEmpty(endereco);
     }
@@ -33,7 +33,7 @@ public class EnderecoInMemoryRepository implements EnderecoRepository {
     @Override
     public Mono<EnderecoDTO> salvarEnderecoPeloCEP(EnderecoDTO endereco) {
         var cep = CEPUtils.apenasDigitos(endereco.getCep());
-        LOGGER.info("Salvando o CEP: {}", cep);
+        LOGGER.debug("Cache local: Salvando o CEP: {}", cep);
         localInMemoryDB.put(cep, endereco);
         return Mono.just(endereco);
     }

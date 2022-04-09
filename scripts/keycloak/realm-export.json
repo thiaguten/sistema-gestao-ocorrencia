@@ -82,6 +82,9 @@
         "composite": true,
         "composites": {
           "client": {
+            "sgo-localizacao-service": [
+              "enderecos_read"
+            ],
             "sgo-ocorrencia-service": [
               "ocorrencias_write",
               "servicos_read",
@@ -108,6 +111,10 @@
         "composite": true,
         "composites": {
           "client": {
+            "sgo-localizacao-service": [
+              "enderecos_write",
+              "enderecos_read"
+            ],
             "sgo-ocorrencia-service": [
               "servicos_write",
               "ocorrencias_write",
@@ -331,6 +338,26 @@
           "composite": false,
           "clientRole": true,
           "containerId": "d93dec66-b2ae-485b-9bec-9a1ac0c9354a",
+          "attributes": {}
+        }
+      ],
+      "sgo-localizacao-service": [
+        {
+          "id": "f602bb09-6f72-4b07-8b4c-aead5963b5c8",
+          "name": "enderecos_write",
+          "description": "Incluir/Atualizar informações de endereço.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "99c466ad-70c2-4e00-a514-6852803c4420",
+          "attributes": {}
+        },
+        {
+          "id": "ada18809-e95c-4aa9-91e8-a7e65946f43a",
+          "name": "enderecos_read",
+          "description": "Obter informações de endereço.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "99c466ad-70c2-4e00-a514-6852803c4420",
           "attributes": {}
         }
       ],
@@ -801,13 +828,77 @@
       ]
     },
     {
+      "id": "99c466ad-70c2-4e00-a514-6852803c4420",
+      "clientId": "sgo-localizacao-service",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "OaILqLWLx3xwfubwVOgQzCKluy7Zmcx2",
+      "redirectUris": [
+        "http://localhost:8000/*"
+      ],
+      "webOrigins": [
+        "*"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": false,
+      "frontchannelLogout": false,
+      "protocol": "openid-connect",
+      "attributes": {
+        "id.token.as.detached.signature": "false",
+        "saml.assertion.signature": "false",
+        "saml.force.post.binding": "false",
+        "saml.multivalued.roles": "false",
+        "saml.encrypt": "false",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "backchannel.logout.revoke.offline.tokens": "false",
+        "saml.server.signature": "false",
+        "saml.server.signature.keyinfo.ext": "false",
+        "use.refresh.tokens": "true",
+        "exclude.session.state.from.auth.response": "false",
+        "oidc.ciba.grant.enabled": "false",
+        "saml.artifact.binding": "false",
+        "backchannel.logout.session.required": "true",
+        "client_credentials.use_refresh_token": "false",
+        "saml_force_name_id_format": "false",
+        "require.pushed.authorization.requests": "false",
+        "saml.client.signature": "false",
+        "tls.client.certificate.bound.access.tokens": "false",
+        "saml.authnstatement": "false",
+        "display.on.consent.screen": "false",
+        "saml.onetimeuse.condition": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "web-origins",
+        "roles",
+        "profile",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+      ]
+    },
+    {
       "id": "639a73c1-95df-4b3c-b383-03b453273cbb",
       "clientId": "sgo-ocorrencia-service",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "PXmHphRiP1F8rkJ57Nj4k8qiMZ9XiDZp",
       "redirectUris": [
         "http://localhost:8200/*"
       ],
