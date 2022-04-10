@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.thiaguten.microservices.ocorrenciaservice.exception.OcorrenciaNotFoundException;
@@ -64,13 +65,19 @@ public class OcorrenciaController {
     }
 
     @GetMapping(value = "/v1/ocorrencias", produces = MediaTypes.HAL_JSON_VALUE)
-    public CollectionModel<EntityModel<OcorrenciaDTO>> listar(
-            @AuthenticationPrincipal Jwt jwt) {
+    public CollectionModel<EntityModel<OcorrenciaDTO>> listar(@AuthenticationPrincipal Jwt jwt) {
         var usuario = getAuthenticatedUser(jwt);
         // var ocorrencias = service.listar();
         var ocorrencias = service.listarPorUsuario(usuario);
         var models = ocorrencias.stream().map(assembler::toModel).collect(Collectors.toList());
         return CollectionModel.of(models, linkTo(methodOn(OcorrenciaController.class).listar(null)).withSelfRel());
+    }
+
+    @GetMapping(value = "/v1/ocorrencias", produces = MediaTypes.HAL_JSON_VALUE, params = { "codigo" })
+    public EntityModel<OcorrenciaDTO> pesquisarPorCodigo(@RequestParam("codigo") String codigo) {
+        return service.pesquisarPorCodigo(codigo)
+                .map(assembler::toModel)
+                .orElseThrow(() -> new OcorrenciaNotFoundException(codigo));
     }
 
     @PostMapping(value = "/v1/ocorrencias", produces = MediaTypes.HAL_JSON_VALUE)

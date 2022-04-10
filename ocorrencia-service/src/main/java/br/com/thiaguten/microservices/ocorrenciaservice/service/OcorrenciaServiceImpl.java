@@ -58,8 +58,7 @@ public class OcorrenciaServiceImpl implements OcorrenciaService {
 
     @Override
     public Optional<Ocorrencia> pesquisarPorCodigo(String codigo) {
-        // TODO Auto-generated method stub
-        return null;
+        return repository.findByCodigo(codigo);
     }
 
 }

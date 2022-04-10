@@ -1,4 +1,3 @@
-INSERT INTO servico (nome) VALUES ('Tapa Buraco');
-INSERT INTO servico (nome) VALUES ('Caça Vazamento');
-INSERT INTO atendente (id) VALUES (1);
-INSERT INTO atendente_identificado (id, matricula, nome) VALUES (1, '1', 'Thiago Costa');
+DELETE FROM servico WHERE id IN (1, 2);
+INSERT INTO servico (id, nome) VALUES (1, 'Tapa Buraco');
+INSERT INTO servico (id, nome) VALUES (2, 'Caça Vazamento');

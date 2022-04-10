@@ -10,4 +10,8 @@ public class OcorrenciaNotFoundException extends RuntimeException {
         super("Não foi possível encontrar a ocorrência: " + id);
     }
 
+    public OcorrenciaNotFoundException(String codigo) {
+        super("Não foi possível encontrar a ocorrência: " + codigo);
+    }
+
 }

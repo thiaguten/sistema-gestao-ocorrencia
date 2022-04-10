@@ -1,0 +1,571 @@
+{
+	"info": {
+		"_postman_id": "23366f50-47ed-4e33-a355-5d528f6a801b",
+		"name": "TCC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SGO - OpenID Configuration Endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{kc-auth-server}}/auth/realms/{{kc-realm-sgo}}/.well-known/openid-configuration",
+					"host": [
+						"{{kc-auth-server}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"{{kc-realm-sgo}}",
+						".well-known",
+						"openid-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SGO - Authorize Endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{kc-auth-server}}/auth/realms/{{kc-realm-sgo}}/protocol/openid-connect/auth?response_type=code&client_id={{kc-sgo-localizacao-service-client-id}}&scope=openid profile email offline_access&redirect_uri={{kc-sgo-localizacao-service-redirect-uri}}",
+					"host": [
+						"{{kc-auth-server}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"{{kc-realm-sgo}}",
+						"protocol",
+						"openid-connect",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "client_id",
+							"value": "{{kc-sgo-localizacao-service-client-id}}"
+						},
+						{
+							"key": "scope",
+							"value": "openid profile email offline_access"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{kc-sgo-localizacao-service-redirect-uri}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SGO - Token Endpoint (authorization code flow)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonObject = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"kc-access_token\", jsonObject.access_token);\r",
+							"pm.collectionVariables.set(\"kc-refresh_token\", jsonObject.refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "default"
+						},
+						{
+							"key": "code",
+							"value": "0dad9ca8-dde1-47ea-8162-ae52448491a7.12ced86e-34c5-4828-824f-6298902263e6.99c466ad-70c2-4e00-a514-6852803c4420",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "{{kc-sgo-localizacao-service-client-id}}",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{kc-sgo-localizacao-service-client-secret}}",
+							"type": "default"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{kc-sgo-localizacao-service-redirect-uri}}",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{kc-auth-server}}/auth/realms/{{kc-realm-sgo}}/protocol/openid-connect/token",
+					"host": [
+						"{{kc-auth-server}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"{{kc-realm-sgo}}",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SGO - Token Endpoint (password flow)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonObject = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"kc-access_token\", jsonObject.access_token);\r",
+							"pm.collectionVariables.set(\"kc-refresh_token\", jsonObject.refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "username",
+							"value": "{{kc-sgo-user}}",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "{{kc-sgo-user-password}}",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "{{kc-sgo-localizacao-service-client-id}}",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{kc-sgo-localizacao-service-client-secret}}",
+							"type": "default"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{kc-sgo-localizacao-service-redirect-uri}}",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{kc-auth-server}}/auth/realms/{{kc-realm-sgo}}/protocol/openid-connect/token",
+					"host": [
+						"{{kc-auth-server}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"{{kc-realm-sgo}}",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SGO - User Information Endpoint",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{kc-access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqQTJYY29OQldPV0lDdGd3NVJKbC1mMjhDOGdZbWNlbWhmMFZQdTZQOUxnIn0.eyJleHAiOjE2NDk1MTY5MjIsImlhdCI6MTY0OTUxNjYyMiwianRpIjoiMDJiYTBlYWQtM2Y0Ny00YzJlLTk4ODgtZjFkODI1YzUxNzk1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NnbyIsImF1ZCI6WyJzZ28tb2NvcnJlbmNpYS1zZXJ2aWNlIiwiYWNjb3VudCJdLCJzdWIiOiJjNGQ0OTMxZS0xZDI5LTQyNGEtYTA3MC0zYTgzZGNjMWFmYjQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzZ28tbG9jYWxpemFjYW8tc2VydmljZSIsInNlc3Npb25fc3RhdGUiOiJhMDNjMzA5My1jYjg3LTRkZDItOWUyOC03NjYwMDgwMzY0YmQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtc2dvIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInNnby11c2VyIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsic2dvLWxvY2FsaXphY2FvLXNlcnZpY2UiOnsicm9sZXMiOlsiZW5kZXJlY29zX3JlYWQiXX0sInNnby1vY29ycmVuY2lhLXNlcnZpY2UiOnsicm9sZXMiOlsib2NvcnJlbmNpYXNfcmVhZCIsInNlcnZpY29zX3JlYWQiLCJvY29ycmVuY2lhc193cml0ZSJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwic2lkIjoiYTAzYzMwOTMtY2I4Ny00ZGQyLTllMjgtNzY2MDA4MDM2NGJkIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiVGhpYWdvIFRlc3RlIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGhpYWd1dGVuIiwiZ2l2ZW5fbmFtZSI6IlRoaWFnbyIsImZhbWlseV9uYW1lIjoiVGVzdGUiLCJlbWFpbCI6InRoaWFnb0BlbWFpbC5jb20ifQ.dM-wRMtFDdXw-oTb39fCEvWpYImLEnq_JbB_82s2MWVTYJoqktM_GDWm91BjGYyZ3CfpnD4G7wiQIWj2BSnI41BHrIYA9M67mGoyxRxGGMAkZ65IPOaAZ3HTr6n1FaRKhe0fhYsJQJfYsgBJXLouCPtei0vJc_zHCGv5YmqTvNvd_-wDSu7pBGqGO7mjWX10wNtKIOe8X-uERixfszKy12nBM6I5YeYA6tbCYhzOFW7TEgRb9JpWHMgfpgPsgLMtQWhZw3sIGPOwLtVivFVnzigpeR4pCAFqa3P_ZUI6VS08FO9km8e172LES9gFYhzPYtLVSneqNVVQlj6dmj1jgw",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{kc-access_token}}",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{kc-auth-server}}/auth/realms/{{kc-realm-sgo}}/protocol/openid-connect/userinfo",
+					"host": [
+						"{{kc-auth-server}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"{{kc-realm-sgo}}",
+						"protocol",
+						"openid-connect",
+						"userinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SGO - Token Introspect Endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "{{kc-access_token}}",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "{{kc-sgo-localizacao-service-client-id}}",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{kc-sgo-localizacao-service-client-secret}}",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{kc-auth-server}}/auth/realms/{{kc-realm-sgo}}/protocol/openid-connect/token/introspect",
+					"host": [
+						"{{kc-auth-server}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"{{kc-realm-sgo}}",
+						"protocol",
+						"openid-connect",
+						"token",
+						"introspect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sgo-localizacao-service-cep-api",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{kc-access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/enderecos/cep/70297020",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"enderecos",
+						"cep",
+						"70297020"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sgo-localizacao-service-hateoas-cep-api",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{kc-access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/enderecos/hateoas/cep/71693015",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"enderecos",
+						"hateoas",
+						"cep",
+						"71693015"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sgo-ocorrencia-service-listar-ocorrencias",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{kc-access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8200/api/v1/ocorrencias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"api",
+						"v1",
+						"ocorrencias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sgo-ocorrencia-service-pesquisar-ocorrencia-por-codigo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{kc-access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8200/api/v1/ocorrencias?codigo=fd6c7eba-75cb-b27c-7c56-017fb38ea828",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"api",
+						"v1",
+						"ocorrencias"
+					],
+					"query": [
+						{
+							"key": "codigo",
+							"value": "fd6c7eba-75cb-b27c-7c56-017fb38ea828"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sgo-ocorrencia-service-criar-ocorrencias",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{kc-access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"teste lalalalala\",\r\n    \"cep\": \"71693015\",\r\n    \"logradouro\": \"Quadra 14\",\r\n    \"bairro\": \"Vila São José (São Sebastião)\",\r\n    \"localidade\": \"Brasília\",\r\n    \"uf\": \"DF\",\r\n    \"servicoId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8200/api/v1/ocorrencias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"api",
+						"v1",
+						"ocorrencias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sgo-ocorrencia-service-listar-servicos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{kc-access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8200/api/v1/servicos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"api",
+						"v1",
+						"servicos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "kc-auth-server",
+			"value": "http://localhost:8080",
+			"type": "default"
+		},
+		{
+			"key": "kc-realm-sgo",
+			"value": "sgo",
+			"type": "default"
+		},
+		{
+			"key": "kc-access_token",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "kc-refresh_token",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "kc-sgo-localizacao-service-client-id",
+			"value": "sgo-localizacao-service",
+			"type": "default"
+		},
+		{
+			"key": "kc-sgo-localizacao-service-client-secret",
+			"value": "OaILqLWLx3xwfubwVOgQzCKluy7Zmcx2",
+			"type": "default"
+		},
+		{
+			"key": "kc-sgo-localizacao-service-redirect-uri",
+			"value": "http://localhost:8000/*",
+			"type": "default"
+		},
+		{
+			"key": "kc-sgo-user",
+			"value": "thiaguten",
+			"type": "default"
+		},
+		{
+			"key": "kc-sgo-user-password",
+			"value": "123456",
+			"type": "default"
+		}
+	]
+}
