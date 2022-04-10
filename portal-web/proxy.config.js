@@ -13,7 +13,7 @@ const PROXY_CONFIG = [
   },
   {
     context: [
-      "/api/v1/endereco"
+      "/api/v1/enderecos"
     ],
     target: "http://localhost:8000",
     secure: false,

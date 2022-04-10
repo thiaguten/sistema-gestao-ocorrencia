@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OAuthModule } from 'angular-oauth2-oidc';
-import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
+import { EnderecosAPI } from './localizacao/service/localizacao.service';
 import { LoginModule } from './login/login.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { OcorrenciasAPI } from './ocorrencia/service/ocorrencia.service';
+import { ServicosAPI } from './servico/service/servico.service';
 import { SharedModule } from './shared/shared.module';
 
 
@@ -30,8 +32,9 @@ import { SharedModule } from './shared/shared.module';
     OAuthModule.forRoot({
       resourceServer: {
         allowedUrls: [
-          `${environment.api_servico_base_url}/api/v1/servicos`,
-          `${environment.api_ocorrencia_base_url}/api/v1/ocorrencias`
+          ServicosAPI,
+          OcorrenciasAPI,
+          EnderecosAPI
         ],
         sendAccessToken: true
       }

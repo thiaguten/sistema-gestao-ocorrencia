@@ -14,17 +14,18 @@ export const ReadonlyEmptyEndereco: Readonly<Endereco> = {
   complemento: ''
 };
 
+export const EnderecosAPI: string = `${environment.api_localizacao_base_url}/api/v1/enderecos`;
+
 @Injectable({
   providedIn: 'root'
 })
 export class LocalizacaoService {
 
-  private readonly API_ENDERECOS = `${environment.api_localizacao_base_url}/api/v1/enderecos`;
+  private readonly API_ENDERECOS = EnderecosAPI;
 
   constructor(private httpClient: HttpClient) { }
 
   getEnderecoByCEP(cepCode: number): Observable<Endereco> {
-    //return this.httpClient.get<Endereco>(this.API)
     return this.httpClient.get<Endereco>(`${this.API_ENDERECOS}/hateoas/cep/${cepCode}`)
       .pipe(
         first(),

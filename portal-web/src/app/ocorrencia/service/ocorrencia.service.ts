@@ -5,12 +5,14 @@ import { environment } from 'src/environments/environment';
 
 import { Ocorrencia } from '../model/ocorrencia';
 
+export const OcorrenciasAPI: string = `${environment.api_ocorrencia_base_url}/api/v1/ocorrencias`;
+
 @Injectable({
   providedIn: 'root'
 })
 export class OcorrenciaService {
 
-  private readonly API_OCORRENCIAS = `${environment.api_ocorrencia_base_url}/api/v1/ocorrencias`;
+  private readonly API_OCORRENCIAS = OcorrenciasAPI;
 
   constructor(private httpClient: HttpClient) { }
 

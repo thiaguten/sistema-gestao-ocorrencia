@@ -5,12 +5,14 @@ import { environment } from 'src/environments/environment';
 
 import { Servico } from '../model/servico';
 
+export const ServicosAPI: string = `${environment.api_servico_base_url}/api/v1/servicos`;
+
 @Injectable({
   providedIn: 'root'
 })
 export class ServicoService {
 
-  private readonly API_SERVICOS = `${environment.api_servico_base_url}/api/v1/servicos`;
+  private readonly API_SERVICOS = ServicosAPI;
 
   constructor(private httpClient: HttpClient) { }
 
