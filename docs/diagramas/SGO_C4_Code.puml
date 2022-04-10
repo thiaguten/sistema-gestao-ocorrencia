@@ -19,20 +19,25 @@ namespace br.com.thiaguten.microservices.localizacaoservice #FFFFFF {
     class CEPClientAPIResponse
     class CEPClientAPIException
     
+    class Endereco
     class EnderecoDTO
     class EnderecoController
     class EnderecoModelAssembler
     interface EnderecoService
     class EnderecoServiceImpl
     interface EnderecoRepository
+    class EnderecoMongoRepository
     class EnderecoInMemoryRepository
     class EnderecoNotFoundException
+    interface ReactiveEnderecoRepository
     
     class WebClientConfig
     class WebClientFilters
     class HttpStatusException
 
     class LocalizacaoServiceApplication
+    class SecurityResourceServerConfig
+    class RolesAllowedConstants
 
     .ApiRESTfulLocalizacao -- EnderecoController
 
@@ -42,30 +47,37 @@ namespace br.com.thiaguten.microservices.localizacaoservice #FFFFFF {
     
     CEPUtils <.. CEPClientAPIImpl
     CEPUtils <.. EnderecoModelAssembler
+    CEPUtils <.. EnderecoMongoRepository
     CEPUtils <.. EnderecoInMemoryRepository
     CEPClientAPI <|.. CEPClientAPIImpl
     CEPClientAPI <.. EnderecoServiceImpl
     CEPClientAPI "1" <--o "1" EnderecoServiceImpl
     CEPClientAPIResponse <.. CEPClientAPIImpl
-    CEPClientAPIException <.. CEPClientAPIImpl
+    CEPClientAPIException <.. CEPClientAPIImpl : <<create>>
     
     EnderecoDTO <.. EnderecoController : <<create>>
     EnderecoDTO <.. EnderecoModelAssembler
     EnderecoDTO <.. EnderecoService
     EnderecoDTO <.. EnderecoServiceImpl : <<create>>
     EnderecoDTO <.. EnderecoRepository
+    EnderecoDTO <.. EnderecoMongoRepository : <<create>>
     EnderecoDTO <.. EnderecoInMemoryRepository
     EnderecoDTO <.. CEPClientAPI
     EnderecoDTO <.. CEPClientAPIImpl : <<create>>
     
+    Endereco <.. EnderecoMongoRepository : <<create>>
     EnderecoModelAssembler <..> EnderecoController
     EnderecoModelAssembler "1" <--o "1" EnderecoController
     EnderecoService <|.. EnderecoServiceImpl
     EnderecoService <.. EnderecoController
     EnderecoService "1" <--o "1" EnderecoController
+    EnderecoRepository <|.. EnderecoMongoRepository
     EnderecoRepository <|.. EnderecoInMemoryRepository
     EnderecoRepository <.. EnderecoServiceImpl
     EnderecoRepository "1" <--o "1" EnderecoServiceImpl
+    ReactiveEnderecoRepository "1" <--o "1" EnderecoMongoRepository
+    ReactiveEnderecoRepository <.. EnderecoMongoRepository
+    Endereco <.. ReactiveEnderecoRepository
 }
 
 namespace br.com.thiaguten.microservices.ocorrenciaservice #FFFFFF {
