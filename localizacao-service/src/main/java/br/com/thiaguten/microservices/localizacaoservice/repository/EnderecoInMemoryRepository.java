@@ -26,15 +26,14 @@ public class EnderecoInMemoryRepository implements EnderecoRepository {
     @Override
     public Mono<EnderecoDTO> obterEnderecoPeloCEP(String cep) {
         LOGGER.debug("Cache local: Pesquisando o CEP: {}", cep);
-        var endereco = localInMemoryDB.getIfPresent(cep);
+        var endereco = localInMemoryDB.getIfPresent(CEPUtils.apenasDigitos(cep));
         return Mono.justOrEmpty(endereco);
     }
 
     @Override
     public Mono<EnderecoDTO> salvarEnderecoPeloCEP(EnderecoDTO endereco) {
-        var cep = CEPUtils.apenasDigitos(endereco.getCep());
-        LOGGER.debug("Cache local: Salvando o CEP: {}", cep);
-        localInMemoryDB.put(cep, endereco);
+        LOGGER.debug("Cache local: Salvando o CEP: {}", endereco.getCep());
+        localInMemoryDB.put(CEPUtils.apenasDigitos(endereco.getCep()), endereco);
         return Mono.just(endereco);
     }
 

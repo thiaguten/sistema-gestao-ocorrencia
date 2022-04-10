@@ -27,33 +27,31 @@ public class EnderecoMongoRepository implements EnderecoRepository {
     @Override
     public Mono<EnderecoDTO> obterEnderecoPeloCEP(String cep) {
         LOGGER.debug("Mongo: Pesquisando o CEP: {}", cep);
-        return reactiveEnderecoRepository.findByCep(cep).map(this::toDTO);
+        return reactiveEnderecoRepository.findByCep(CEPUtils.apenasDigitos(cep)).map(this::toDTO);
     }
 
     @Override
     public Mono<EnderecoDTO> salvarEnderecoPeloCEP(EnderecoDTO enderecoDTO) {
-        LOGGER.debug("Cache local: Salvando o CEP: {}", enderecoDTO.getCep());
+        LOGGER.debug("Mongo: Salvando o CEP: {}", enderecoDTO.getCep());
         return reactiveEnderecoRepository.insert(fromDTO(enderecoDTO)).thenReturn(enderecoDTO);
     }
 
     private EnderecoDTO toDTO(Endereco endereco) {
-        var cep = CEPUtils.apenasDigitos(endereco.getCep());
-
         EnderecoDTO enderecoDTO = new EnderecoDTO();
         enderecoDTO.setLogradouro(endereco.getLogradouro());
         enderecoDTO.setLocalidade(endereco.getLocalidade());
-        enderecoDTO.setCep(cep);
+        enderecoDTO.setCep(endereco.getCep());
         enderecoDTO.setBairro(endereco.getBairro());
         enderecoDTO.setUf(endereco.getUf());
         return enderecoDTO;
     }
 
-    private Endereco fromDTO(EnderecoDTO endereco) {
+    private Endereco fromDTO(EnderecoDTO enderecoDTO) {
         return new Endereco(null,
-                endereco.getLogradouro(),
-                endereco.getBairro(),
-                endereco.getLocalidade(),
-                endereco.getUf(),
-                endereco.getCep());
+                enderecoDTO.getLogradouro(),
+                enderecoDTO.getBairro(),
+                enderecoDTO.getLocalidade(),
+                enderecoDTO.getUf(),
+                CEPUtils.apenasDigitos(enderecoDTO.getCep()));
     }
 }

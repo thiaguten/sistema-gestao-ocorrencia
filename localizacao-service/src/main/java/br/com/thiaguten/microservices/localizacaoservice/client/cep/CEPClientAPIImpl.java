@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.thiaguten.microservices.localizacaoservice.configuration.http.webclient.WebClientFilters;
@@ -43,10 +44,15 @@ public class CEPClientAPIImpl implements CEPClientAPI {
     @CircuitBreaker(name = "api-cep", fallbackMethod = "cepApiFallback")
     @Override
     public Mono<EnderecoDTO> obterEnderecoPeloCEP(String cep) {
+        LOGGER.debug("Obtendo informações para o CEP: {}", cep);
+
         var cepCode = CEPUtils.apenasDigitos(cep);
-        LOGGER.info("Obtendo informações para o CEP: {}", cepCode);
+        if (!StringUtils.hasText(cepCode)) {
+            return Mono.empty();
+        }
+
         var uriTemplate = ObjectUtils.requireNonEmpty(apiCEPPath) + "/{cepCode}";
-        var uriVariable = ObjectUtils.requireNonEmpty(cepCode) + ".json";
+        var uriVariable = cepCode + ".json";
         return webClient.get()
                 .uri(uriTemplate, uriVariable)
                 .accept(MediaType.APPLICATION_JSON)

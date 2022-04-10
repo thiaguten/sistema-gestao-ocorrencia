@@ -28,8 +28,8 @@ public class WebClientFilters {
 	private static Mono<ClientRequest> logRequest(ClientRequest request) {
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("----- HTTP REQUEST -----");
-			LOGGER.debug("Request URL: {}", request.url());
 			LOGGER.debug("Request Method: {}", request.method());
+			LOGGER.debug("Request URL: {}", request.url());
 
 			// HttpHeaders headers = new HttpHeaders();
 			// headers.addAll(request.headers());
