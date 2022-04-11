@@ -2,10 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { catchError, EMPTY, Observable, of } from 'rxjs';
 import { Endereco } from 'src/app/localizacao/model/endereco';
 import { LocalizacaoService, ReadonlyEmptyEndereco } from 'src/app/localizacao/service/localizacao.service';
-import { LoginService } from 'src/app/login/service/login.service';
 import { Servico } from 'src/app/servico/model/servico';
 import { ServicoService } from 'src/app/servico/service/servico.service';
 import { MessageSnackBarComponent } from 'src/app/shared/component/message-snack-bar/message-snack-bar.component';
@@ -22,8 +22,10 @@ export class RegistrarOcorrenciaComponent implements OnInit {
 
   registroForm: FormGroup;
   servicos$: Observable<Servico[]>;
+  //@ViewChild(FormGroupDirective) formGroupDirective;
 
   constructor(
+    private router: Router,
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private servicoService: ServicoService,
@@ -74,13 +76,13 @@ export class RegistrarOcorrenciaComponent implements OnInit {
 
   private criarNovaOcorrencia(): Ocorrencia {
     const ocorrencia: Ocorrencia = {
-      descricao: this.descricaoFormControl?.value,
-      cep: this.cepFormControl?.value,
-      logradouro: this.enderecoFormControl?.value,
-      bairro: this.bairroFormControl?.value,
-      localidade: this.cidadeFormControl?.value,
-      uf: this.estadoFormControl?.value,
-      servicoId: this.servicoFormControl?.value
+      descricao: this.descricaoFormControl!.value,
+      cep: this.cepFormControl!.value,
+      logradouro: this.enderecoFormControl!.value,
+      bairro: this.bairroFormControl!.value,
+      localidade: this.cidadeFormControl!.value,
+      uf: this.estadoFormControl!.value,
+      servicoId: this.servicoFormControl!.value
     };
     return ocorrencia;
   }
@@ -91,19 +93,27 @@ export class RegistrarOcorrenciaComponent implements OnInit {
       this.ocorrenciaService.criarOcorrencia(ocorrencia)
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.onError(`Falha ao registrar ocorrência! - Erro: ${error.message}`);
+            this.onError(error);
             //return of({});
             return EMPTY;
           })
         )
-        .subscribe((o: Ocorrencia) => {
-          this.onSuccess(`Ocorrência registrada com sucesso! - Código: ${o.codigo}`);
-          this.registroForm.reset();
-        });
+        .subscribe((o: Ocorrencia) => this.onSuccess(o));
     }
   }
 
-  private onSuccess(successMessage: string): void {
+  private resetForm() {
+    // https://github.com/angular/components/issues/4190#issuecomment-305031716
+    //this.registroFormDirective.resetForm();
+
+    // limpa o formulário.
+    this.registroForm.reset();
+  }
+
+  private onSuccess(ocorrencia: Ocorrencia): void {
+    const successMessage: string = `Ocorrência registrada com sucesso! - Código: ${ocorrencia.codigo}`;
+
+    // mostra mensagem de sucesso.
     this.mostrarSnapBar(this.createMatSnackBarConfig(
       {
         message: successMessage,
@@ -111,9 +121,19 @@ export class RegistrarOcorrenciaComponent implements OnInit {
       },
       ['green-snackbar']
     ));
+
+    this.resetForm();
+
+    setTimeout(async () => {
+      // volta para a tela inicial.
+      await this.router.navigate(['/']);
+    }, 3000);
   }
 
-  private onError(errorMessage: string): void {
+  private onError(error: HttpErrorResponse): void {
+    const errorMessage: string = `Falha ao registrar ocorrência! - Erro: ${error.message}`;
+
+    // mostra mensagem de falha.
     this.mostrarSnapBar(this.createMatSnackBarConfig(
       {
         message: errorMessage,

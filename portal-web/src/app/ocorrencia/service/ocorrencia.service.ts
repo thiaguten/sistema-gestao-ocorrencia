@@ -22,12 +22,13 @@ export class OcorrenciaService {
         first(),
         //delay(500), // para testar o spinner de carregando na listagem na tela.
         //tap(ocorrencias => console.log('ocorrencias', ocorrencias)),
-        map(({ _embedded }) => {
-          if (_embedded) {
-            return _embedded.ocorrenciaDTOList;
-          }
-          return [];
-        })
+
+        // obtem o objeto _embedded e o array de ocorrencia dentro dele.
+        // nesse cenário também poderia usar o operador pluck conforme exemplo abaixo.
+        map(({ _embedded }) => (_embedded.ocorrenciaDTOList || [])),
+
+        //pluck('_embedded', 'ocorrenciaDTOList'),
+        //map((ocorrencias: Ocorrencia[]) => (ocorrencias || []))
       );
   }
 

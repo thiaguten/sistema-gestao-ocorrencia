@@ -63,17 +63,22 @@ public class SecurityResourceServerConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // @formatter:off
-        
+
         http
             // Excluir as requisições preflight da autorização.
             .cors().and()
+
             // Desativar proteção do CSRF apenas localmente!
             //.csrf().disable()
+
+            // Habilitar a proteção contra falsificações em locais cruzados (CSRF).
             .csrf()
                 // URI de cadastro onde a proteção do CSRF não será aplicada.
                 .ignoringAntMatchers("/api/v1/usuarios/**")
-                // Define um repositório onde os tokens são armazenadas.
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
+                .csrfTokenRepository(CookieCsrfTokenRepository
+                    // Define um repositório onde os tokens são armazenadas.
+                    .withHttpOnlyFalse()).and()
+
             .authorizeHttpRequests(authorize -> authorize
                 .mvcMatchers(HttpMethod.POST, "/api/v1/usuarios/**").permitAll()
 
@@ -102,7 +107,14 @@ public class SecurityResourceServerConfig {
                     .jwtAuthenticationConverter(jwtAuthenticationConverter())
                 )
             );
-        
+
+        // // Neste caso particular, o CSP não será utilizado, uma vez que o Angular é uma aplicação separada.
+        // http
+        //     .headers()
+        //         // Usar uma Política de Segurança de Conteúdo (CSP) para evitar ataques XSS.
+        //         // Configurar um CSP que só permite scripts locais.
+        //         .contentSecurityPolicy("script-src 'self'; report-to /csp-report-endpoint/");
+
         return http.build();
 
         // @formatter:on
