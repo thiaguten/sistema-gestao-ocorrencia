@@ -1,13 +1,14 @@
 # SGO - Serviço de Ocorrência
 
 ## Escopo
-TODO
+Microserviço desenvolvido utilizando o framework SpringBoot, expõe endpoints RESTful acessíveis a partir de solicitações HTTP para um IP e porta específico juntamente com um JSON Web Token no cabeçalho de autenticação para possibilitar a manipulação de dados que compõem uma ocorrência e através do processamento negocial manter as informações no banco de dados MySQL.
 
 ## Pré-requisitos para execução do projeto
 * RabbitMQ
 * Zipkin
 * Service Discovery (Eureka)
 * MySQL
+* Keycloak
 
 ## Começando com o projeto
 A ferramenta de build é o [Gradle](https://gradle.org/) execute os comandos abaixo para cada etapa:
@@ -24,8 +25,10 @@ A ferramenta de build é o [Gradle](https://gradle.org/) execute os comandos aba
     - Unix: ```./gradlew bootBuildImage```
 
 ## Endpoints do projeto
+* ```/api/v1/ocorrencias/*```: Disponibiliza endpoints RESTful para manter ocorrências e retorna no padrão HAL+JSON.
+* ```/api/v1/servicos/*```: Disponibiliza endpoints RESTful para manter serviços e retorna no padrão HAL+JSON.
+* ```/api/v1/usuarios/*```: Disponibiliza endpoints RESTful para manter usuários e retorna no padrão HAL+JSON.
 * ```/actuator```: Disponibiliza recursos para monitorar, obter métricas, compreender o tráfego ou o estado do banco de dados, etc.
-TODO
 
 ## Porta
 * 8200

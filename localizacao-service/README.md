@@ -1,12 +1,14 @@
 # SGO - Serviço de Localização
 
 ## Escopo
-Serviço de integração responsável por obter informações sobre uma determinada localização, mas especificamente sobre um endereço a partir de CEP fornecido se comunicando com um sistema externo.
+Microserviço desenvolvido utilizando o framework SpringBoot, expõe endpoints RESTful acessíveis a partir de solicitações HTTP para um IP e porta específico juntamente com um JSON Web Token no cabeçalho de autenticação para possibilitar busca de informações de endereço relacionadas à um CEP. Esse serviço, através de um cliente HTTP, se integra com um sistema externo para realizar solicitações de busca, obtendo como retorno o endereço em formato JSON que por sua vez é cacheado no banco de dados MongoDB para propiciar certa confiabilidade de resposta caso a integração externa tenha algum problema.
 
 ## Pré-requisitos para execução do projeto
 * RabbitMQ
 * Zipkin
 * Service Discovery (Eureka)
+* MongoDB
+* Keycloak
 
 ## Começando com o projeto
 A ferramenta de build é o [Gradle](https://gradle.org/) execute os comandos abaixo para cada etapa:
@@ -23,8 +25,8 @@ A ferramenta de build é o [Gradle](https://gradle.org/) execute os comandos aba
     - Unix: ```./gradlew bootBuildImage```
 
 ## Endpoints do projeto
-* ```/api/v1/endereco/cep/{cep:\\d{8}}```: Disponibiliza um endpoint para buscar informações sobre um endereço a partir de um CEP e retorna no padrão JSON.
-* ```/api/v1/endereco/hateoas/cep/{cep:\\d{8}}```: Disponibiliza um endpoint para buscar informações sobre um endereço a partir de um CEP e retorna no padrão HAL+JSON.
+* ```/api/v1/enderecos/cep/{cep:\\d{8}}```: Disponibiliza um endpoint para buscar informações sobre um endereço a partir de um CEP e retorna no padrão JSON.
+* ```/api/v1/enderecos/hateoas/cep/{cep:\\d{8}}```: Disponibiliza um endpoint para buscar informações sobre um endereço a partir de um CEP e retorna no padrão HAL+JSON.
 * ```/actuator```: Disponibiliza recursos para monitorar, obter métricas, compreender o tráfego ou o estado do banco de dados, etc.
 
 ## Porta
