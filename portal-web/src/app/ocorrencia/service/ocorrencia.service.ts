@@ -25,7 +25,7 @@ export class OcorrenciaService {
 
         // obtem o objeto _embedded e o array de ocorrencia dentro dele.
         // nesse cenário também poderia usar o operador pluck conforme exemplo abaixo.
-        map(({ _embedded }) => (_embedded.ocorrenciaDTOList || [])),
+        map(({ _embedded }) => (_embedded?.ocorrenciaDTOList || [])),
 
         //pluck('_embedded', 'ocorrenciaDTOList'),
         //map((ocorrencias: Ocorrencia[]) => (ocorrencias || []))

@@ -1,30 +1,45 @@
-<div>
-  <div>
-    <b>access_token:</b>
-    <pre>{{ loginService.access_token }}</pre>
-  </div>
-  <div>
-    <b>access_token_expiration:</b>
-    <pre>{{ loginService.access_token_expiration }}</pre>
-  </div>
-  <div>
-    <b>has_valid_access_token:</b>
-    <pre>{{ loginService.hasValidAccessToken }}</pre>
-  </div>
-  <div>
-    <b>id_token:</b>
-    <pre>{{ loginService.id_token }}</pre>
-  </div>
-  <div>
-    <b>id_token_expiration:</b>
-    <pre>{{ loginService.id_token_expiration }}</pre>
-  </div>
-  <div>
-    <b>has_valid_id_token:</b>
-    <pre>{{ loginService.hasValidIdToken }}</pre>
-  </div>
-  <div *ngIf="loginService.userProfile">
-    <b>user_profile:</b>
-    <pre>{{ loginService.userProfile | json }}</pre>
-  </div>
-</div>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <!-- <mat-panel-title>
+        Informações de Login
+      </mat-panel-title> -->
+      <mat-panel-description fxLayout="row" fxLayoutAlign="space-between center">
+        <span>Informações de Login</span>
+        <span>OAuth2 - JWT ({{ panelOpenState ? 'visível' : 'escondido' }})</span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <div>
+        <div>
+          <b>access_token:</b>
+          <pre>{{ loginService.access_token }}</pre>
+        </div>
+        <div>
+          <b>access_token_expiration:</b>
+          <pre>{{ loginService.access_token_expiration }}</pre>
+        </div>
+        <div>
+          <b>has_valid_access_token:</b>
+          <pre>{{ loginService.hasValidAccessToken }}</pre>
+        </div>
+        <div>
+          <b>id_token:</b>
+          <pre>{{ loginService.id_token }}</pre>
+        </div>
+        <div>
+          <b>id_token_expiration:</b>
+          <pre>{{ loginService.id_token_expiration }}</pre>
+        </div>
+        <div>
+          <b>has_valid_id_token:</b>
+          <pre>{{ loginService.hasValidIdToken }}</pre>
+        </div>
+        <div *ngIf="loginService.userProfile">
+          <b>user_profile:</b>
+          <pre>{{ loginService.userProfile | json }}</pre>
+        </div>
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -9,9 +9,9 @@ import { LoginService } from '../service/login.service';
 })
 export class LoginInfoComponent implements OnInit {
 
-  constructor(
-    public loginService: LoginService
-    ) {}
+  panelOpenState = false;
+
+  constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
   }

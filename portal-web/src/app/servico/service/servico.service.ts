@@ -24,7 +24,7 @@ export class ServicoService {
 
         // obtem o objeto _embedded e o array de servico dentro dele.
         // nesse cenário também poderia usar o operador pluck conforme exemplo abaixo.
-        map(({ _embedded }) => (_embedded.servicoDTOList || [])),
+        map(({ _embedded }) => (_embedded?.servicoDTOList || [])),
 
         //pluck('_embedded', 'servicoDTOList'),
         //map((servicos: Servico[]) => (servicos || []))

@@ -13,7 +13,12 @@ import { OcorrenciaService } from '../../service/ocorrencia.service';
 })
 export class ListarOcorrenciaComponent implements OnInit {
 
-  displayedColumns = ['codigo', 'data'];
+  displayedColumns = [
+    'codigo',
+    'servico',
+    'situacao',
+    'data'
+  ];
   ocorrencias$: Observable<Ocorrencia[]>;
   ocorrenciasJson?: string;
 

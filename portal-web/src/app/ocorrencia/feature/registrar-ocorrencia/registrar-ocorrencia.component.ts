@@ -22,7 +22,7 @@ export class RegistrarOcorrenciaComponent implements OnInit {
 
   registroForm: FormGroup;
   servicos$: Observable<Servico[]>;
-  //@ViewChild(FormGroupDirective) formGroupDirective;
+  //@ViewChild(FormGroupDirective) registroFormDirective;
 
   constructor(
     private router: Router,
@@ -127,7 +127,7 @@ export class RegistrarOcorrenciaComponent implements OnInit {
     setTimeout(async () => {
       // volta para a tela inicial.
       await this.router.navigate(['/']);
-    }, 3000);
+    }, 2000);
   }
 
   private onError(error: HttpErrorResponse): void {

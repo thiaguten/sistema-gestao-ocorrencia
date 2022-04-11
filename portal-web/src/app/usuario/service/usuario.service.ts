@@ -5,12 +5,14 @@ import { environment } from 'src/environments/environment';
 
 import { Usuario } from '../model/usuario';
 
+export const UsuariosAPI: string = `${environment.api_usuarios_base_url}/api/v1/usuarios`;
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  private readonly API_USUARIOS = `${environment.api_usuarios_base_url}/api/v1/usuarios`;
+  private readonly API_USUARIOS = UsuariosAPI;
 
   constructor(private httpClient: HttpClient) { }
 

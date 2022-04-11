@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { catchError, EMPTY } from 'rxjs';
 import { MessageSnackBarComponent } from 'src/app/shared/component/message-snack-bar/message-snack-bar.component';
 import { Usuario } from 'src/app/usuario/model/usuario';
@@ -16,8 +17,10 @@ export class CadastroComponent implements OnInit {
 
   hidePassword = true;
   cadastroForm: FormGroup;
+  //@ViewChild(FormGroupDirective) cadastroFormDirective;
 
   constructor(
+    private router: Router,
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService
@@ -50,12 +53,12 @@ export class CadastroComponent implements OnInit {
 
   private criarNovoUsuario(): Usuario {
     const usuario: Usuario = {
-      nomeUsuario: this.usuarioFormControl?.value,
-      cpf: this.cpfFormControl?.value,
-      email: this.emailFormControl?.value,
-      primeiroNome: this.primeiroNomeFormControl?.value,
-      ultimoNome: this.ultimoNomeFormControl?.value,
-      senha: this.senhaFormControl?.value,
+      nomeUsuario: this.usuarioFormControl!.value,
+      cpf: this.cpfFormControl!.value,
+      email: this.emailFormControl!.value,
+      primeiroNome: this.primeiroNomeFormControl!.value,
+      ultimoNome: this.ultimoNomeFormControl!.value,
+      senha: this.senhaFormControl!.value,
       notificacaoEmailAtivo: false
     };
     return usuario;
@@ -67,15 +70,12 @@ export class CadastroComponent implements OnInit {
       this.usuarioService.criarUsuario(usuario)
         .pipe(
           catchError((error: HttpErrorResponse) => {
-            this.onError(`Falha ao cadastrar usuário! - Erro: ${error.message}`);
+            this.onError(error);
             //return of({});
             return EMPTY;
           })
         )
-        .subscribe((u: Usuario) => {
-          this.onSuccess(`Usuário cadastrado com sucesso! - ID: ${u.id} - IDP_ID: ${u.idpId}`);
-          this.cadastroForm.reset();
-        });
+        .subscribe((u: Usuario) => this.onSuccess(u));
     }
   }
 
@@ -89,7 +89,18 @@ export class CadastroComponent implements OnInit {
     //return this.cadastroForm.controls[controlName];
   }
 
-  private onSuccess(successMessage: string): void {
+  private resetForm() {
+    // https://github.com/angular/components/issues/4190#issuecomment-305031716
+    //this.cadastroFormDirective.resetForm();
+
+    // limpa o formulário.
+    this.cadastroForm.reset();
+  }
+
+  private onSuccess(u: Usuario): void {
+    const successMessage: string = `Usuário cadastrado com sucesso! - ID: ${u.id} - IDP_ID: ${u.idpId}`;
+
+    // mostra mensagem de sucesso.
     this.mostrarSnapBar(this.createMatSnackBarConfig(
       {
         message: successMessage,
@@ -97,9 +108,19 @@ export class CadastroComponent implements OnInit {
       },
       ['green-snackbar']
     ));
+
+    this.resetForm();
+
+    setTimeout(async () => {
+      // volta para a tela inicial.
+      await this.router.navigate(['/']);
+    }, 2000);
   }
 
-  private onError(errorMessage: string): void {
+  private onError(error: HttpErrorResponse): void {
+    const errorMessage: string = `Falha ao cadastrar usuário! - Erro: ${error.message}`;
+
+    // mostra mensagem de falha.
     this.mostrarSnapBar(this.createMatSnackBarConfig(
       {
         message: errorMessage,

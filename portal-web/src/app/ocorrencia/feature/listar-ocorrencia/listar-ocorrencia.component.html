@@ -4,6 +4,14 @@
       <th mat-header-cell *matHeaderCellDef> Código </th>
       <td mat-cell *matCellDef="let ocorrencia"> {{ ocorrencia.codigo }} </td>
     </ng-container>
+    <ng-container matColumnDef="servico">
+      <th mat-header-cell *matHeaderCellDef> Tipo de Serviço </th>
+      <td mat-cell *matCellDef="let ocorrencia"> {{ ocorrencia.servicoId | tipoServico }} </td>
+    </ng-container>
+    <ng-container matColumnDef="situacao">
+      <th mat-header-cell *matHeaderCellDef> Situação </th>
+      <td mat-cell *matCellDef="let ocorrencia"> {{ ocorrencia.situacao }} </td>
+    </ng-container>
     <ng-container matColumnDef="data">
       <th mat-header-cell *matHeaderCellDef> Data </th>
       <td mat-cell *matCellDef="let ocorrencia"> {{ ocorrencia.dataModificacao }} </td>
