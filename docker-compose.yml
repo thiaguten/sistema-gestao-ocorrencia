@@ -41,46 +41,6 @@ services:
       rabbitmq:
         condition: service_healthy
 
-  sgo-naming-server:
-    image: thiaguten/sgo-naming-server:0.0.1-SNAPSHOT
-    container_name: sgo-naming-server
-    ports:
-      - "8761:8761"
-    networks:
-      - sgo-network
-
-  sgo-localizacao-service:
-    image: thiaguten/sgo-localizacao-service:0.0.1-SNAPSHOT
-    container_name: sgo-localizacao-service
-    ports:
-      - "8000:8000"
-    environment:
-      - PROFILE_CONFIG=docker
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - sgo-network
-    depends_on:
-      - sgo-naming-server
-      - rabbitmq
-
-#  sgo-ocorrencia-service:
-#    image: thiaguten/sgo-ocorrencia-service:0.0.1-SNAPSHOT
-#    container_name: sgo-ocorrencia-service
-#    ports:
-#      - "8200:8200"
-#    environment:
-#      - PROFILE_CONFIG=docker
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - sgo-network
-#    depends_on:
-#      sgo-mysql:
-#        condition: service_healthy
-#      sgo-naming-server:
-#        condition: service_started
-#      rabbitmq:
-#        condition: service_started
-
   sgo-mongo:
     image: mongo:4.4
     container_name: sgo-mongo
@@ -106,7 +66,7 @@ services:
       - "3306:3306"
     volumes:
       - sgo_mysql_data:/var/lib/mysql
-      - ./scripts/mysql/schema.sql:/docker-entrypoint-initdb.d/1schema.sql
+      #- ./scripts/mysql/schema.sql:/docker-entrypoint-initdb.d/1schema.sql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=db_sgo
@@ -115,7 +75,8 @@ services:
     networks:
       - sgo-network
     healthcheck:
-      test: "mysql $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'"
+      #test: "mysql $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'"
+      test: "mysql sys -uroot -p$$MYSQL_ROOT_PASSWORD -e 'SELECT 1;'"
       interval: 10s
       timeout: 5s
       retries: 5
@@ -154,6 +115,46 @@ services:
       timeout: 10s
       retries: 10
       start_period: 1m
+
+  sgo-naming-server:
+    image: thiaguten/sgo-naming-server:0.0.1-SNAPSHOT
+    container_name: sgo-naming-server
+    ports:
+      - "8761:8761"
+    networks:
+      - sgo-network
+
+  sgo-localizacao-service:
+    image: thiaguten/sgo-localizacao-service:0.0.1-SNAPSHOT
+    container_name: sgo-localizacao-service
+    ports:
+      - "8000:8000"
+    environment:
+      - PROFILE_CONFIG=docker
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - sgo-network
+    depends_on:
+      - sgo-naming-server
+      - rabbitmq
+
+  sgo-ocorrencia-service:
+    image: thiaguten/sgo-ocorrencia-service:0.0.1-SNAPSHOT
+    container_name: sgo-ocorrencia-service
+    ports:
+      - "8200:8200"
+    environment:
+      - PROFILE_CONFIG=docker
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - sgo-network
+    depends_on:
+      sgo-mysql:
+        condition: service_healthy
+      sgo-naming-server:
+        condition: service_started
+      rabbitmq:
+        condition: service_started
 
 volumes:
   sgo_mysql_data:
