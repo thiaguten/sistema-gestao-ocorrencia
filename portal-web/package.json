@@ -6,7 +6,9 @@
     "start": "ng serve --proxy-config proxy.config.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "docker": "docker build -t thiaguten/sgo-${npm_package_name}:${npm_package_version} .",
+    "sgo-portal-web": "docker run -p 4200:80 thiaguten/sgo-${npm_package_name}:${npm_package_version}"
   },
   "private": true,
   "dependencies": {
@@ -23,21 +25,22 @@
     "@angular/router": "~13.3.2",
     "angular-oauth2-oidc": "^13.0.1",
     "rxjs": "~7.5.5",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "tslib": "^2.3.1",
+    "zone.js": "~0.11.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.2",
     "@angular/cli": "~13.3.2",
     "@angular/compiler-cli": "~13.3.2",
-    "@types/jasmine": "~3.10.5",
-    "@types/node": "^12.20.47",
-    "jasmine-core": "~4.0.0",
-    "karma": "~6.3.0",
+    "@types/jasmine": "~4.0.2",
+    "@types/node": "^17.0.23",
+    "jasmine-core": "~4.0.1",
+    "karma": "~6.3.17",
     "karma-chrome-launcher": "~3.1.1",
-    "karma-coverage": "~2.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "~4.0.2",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.5.2"
+    "typescript": "~4.6.3"
   }
 }

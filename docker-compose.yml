@@ -156,6 +156,27 @@ services:
       rabbitmq:
         condition: service_started
 
+  sgo-portal-web:
+    image: thiaguten/sgo-portal-web:0.0.0
+    container_name: sgo-portal-web
+    build:
+      context: ./portal-web
+      #dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - sgo-network
+    depends_on:
+      #- sgo-ocorrencia-service
+      #- sgo-localizacao-service
+      #- keycloak-server
+      sgo-ocorrencia-service:
+        condition: service_started
+      sgo-localizacao-service:
+        condition: service_started
+      keycloak-server:
+        condition: service_healthy
+
 volumes:
   sgo_mysql_data:
   sgo_mongo_data:
