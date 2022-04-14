@@ -4,54 +4,70 @@
   </mat-toolbar>
   <mat-card>
     <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" novalidate>
-      <div fxLayout="column" fxLayoutAlign="space-between center">
-        <mat-form-field appearance="outline">
-          <mat-label>Usuário</mat-label>
-          <input matInput formControlName="usuario" id="usuario" required>
-          <mat-error *ngIf="hasError('usuario', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="column" fxLayoutAlign="center stretch">
 
-        <mat-form-field appearance="outline">
-          <mat-label>CPF</mat-label>
-          <input matInput #input maxlength="11" placeholder="000.000.000-00" formControlName="cpf" id="cpf" required>
-          <mat-hint align="end">{{ input.value?.length || 0 }}/11</mat-hint>
-          <mat-error *ngIf="hasError('cpf', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
+          <div fxLayout="column" fxLayoutAlign="space-between stretch">
+            <div fxFlex>
+              <mat-form-field appearance="outline">
+                <mat-label>Usuário</mat-label>
+                <input matInput formControlName="usuario" id="usuario" title="Usuário" required>
+                <mat-error *ngIf="hasError('usuario', 'required')">Campo é obrigatório</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field appearance="outline">
+                <mat-label>CPF</mat-label>
+                <input matInput #input maxlength="11" placeholder="000.000.000-00" formControlName="cpf" id="cpf"
+                  title="CPF" required>
+                <mat-hint align="end">{{ input.value?.length || 0 }}/11</mat-hint>
+                <mat-error *ngIf="hasError('cpf', 'required')">Campo é obrigatório</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput formControlName="email" id="email" title="E-mail" required>
+                <mat-error *ngIf="hasError('email', 'required')">Campo é obrigatório</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field appearance="outline">
+                <mat-label>Primeiro Nome</mat-label>
+                <input matInput formControlName="primeiroNome" id="primeiroNome" title="Primeiro Nome" required>
+                <mat-error *ngIf="hasError('primeiroNome', 'required')">Campo é obrigatório</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field appearance="outline">
+                <mat-label>Último Nome</mat-label>
+                <input matInput formControlName="ultimoNome" id="ultimoNome" title="Último Nome" required>
+                <mat-error *ngIf="hasError('ultimoNome', 'required')">Campo é obrigatório</mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex>
+              <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="senha" id="senha"
+                  title="Senha" required>
+                <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                  [attr.aria-label]="'Ocultar senha'" [attr.aria-pressed]="hidePassword">
+                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <!-- <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon> -->
+                <mat-error *ngIf="hasError('senha', 'required')">Campo é obrigatório</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>E-mail</mat-label>
-          <input matInput formControlName="email" id="email" required>
-          <mat-error *ngIf="hasError('email', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+            <button fxFlex type="submit" mat-raised-button color="primary"
+              [disabled]="cadastroForm.invalid">Criar</button>
+            <button fxFlex type="reset" mat-raised-button color="accent">Limpar</button>
+            <button fxFlex type="button" mat-raised-button routerLink="/">Voltar</button>
+          </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Primeiro Nome</mat-label>
-          <input matInput formControlName="primeiroNome" id="primeiroNome" required>
-          <mat-error *ngIf="hasError('primeiroNome', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Último Nome</mat-label>
-          <input matInput formControlName="ultimoNome" id="ultimoNome" required>
-          <mat-error *ngIf="hasError('ultimoNome', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Senha</mat-label>
-          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="senha" id="senha" required>
-          <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Ocultar senha'"
-            [attr.aria-pressed]="hidePassword">
-            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
-          <!-- <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon> -->
-          <mat-error *ngIf="hasError('senha', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-        <button type="submit" mat-raised-button color="primary" [disabled]="cadastroForm.invalid">Criar</button>
-        <button type="reset" mat-raised-button color="accent">Limpar</button>
-        <button type="button" mat-raised-button routerLink="/">Voltar</button>
+        </div>
       </div>
     </form>
   </mat-card>

@@ -4,51 +4,71 @@
   </mat-toolbar>
   <mat-card>
     <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" novalidate>
-      <div fxLayout="column" fxLayoutAlign="space-between center">
+      <div fxLayout="column">
 
-        <mat-form-field appearance="outline">
-          <mat-label>Serviço</mat-label>
-          <mat-select formControlName="servico" id="servico" required>
-            <!-- <mat-option>Nenhum</mat-option> -->
-            <ng-container *ngIf="servicos$ | async as servicos;">
-              <mat-option *ngFor="let servico of servicos" [value]="servico.id">
-                {{ servico.nome }}
-              </mat-option>
-            </ng-container>
-          </mat-select>
-          <mat-error *ngIf="hasError('servico', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+          <div fxFlex="20">
+            <mat-form-field appearance="outline">
+              <mat-label>Serviço</mat-label>
+              <mat-select formControlName="servico" id="servico" required>
+                <!-- <mat-option>Nenhum</mat-option> -->
+                <ng-container *ngIf="servicos$ | async as servicos;">
+                  <mat-option *ngFor="let servico of servicos" [value]="servico.id">
+                    {{ servico.nome }}
+                  </mat-option>
+                </ng-container>
+              </mat-select>
+              <mat-error *ngIf="hasError('servico', 'required')">Campo é obrigatório</mat-error>
+            </mat-form-field>
+          </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>CEP</mat-label>
-          <input matInput #input maxlength="8" placeholder="00000-000" formControlName="cep" id="cep" required>
-          <mat-hint align="end">{{ input.value?.length || 0 }}/8</mat-hint>
-          <mat-error *ngIf="hasError('cep', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
+          <div fxFlex="80">
+            <div fxLayout="column">
+              <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+                <div fxFlex="30">
+                  <mat-form-field appearance="outline">
+                    <mat-label>CEP</mat-label>
+                    <input matInput #input maxlength="8" placeholder="00000-000" formControlName="cep" id="cep"
+                      title="CEP" required>
+                    <mat-hint align="end">{{ input.value?.length || 0 }}/8</mat-hint>
+                    <mat-error *ngIf="hasError('cep', 'required')">Campo é obrigatório</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="20">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <input matInput formControlName="estado" id="estado" title="Estado" required>
+                    <mat-error *ngIf="hasError('estado', 'required')">Campo é obrigatório</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="50">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Cidade</mat-label>
+                    <input matInput formControlName="cidade" id="cidade" title="Cidade" required>
+                    <mat-error *ngIf="hasError('cidade', 'required')">Campo é obrigatório</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Estado</mat-label>
-          <input matInput formControlName="estado" id="estado" required>
-          <mat-error *ngIf="hasError('estado', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Cidade</mat-label>
-          <input matInput formControlName="cidade" id="cidade" required>
-          <mat-error *ngIf="hasError('cidade', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Bairro</mat-label>
-          <input matInput formControlName="bairro" id="bairro" required>
-          <mat-error *ngIf="hasError('bairro', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Endereço</mat-label>
-          <input matInput formControlName="endereco" id="endereco" required>
-          <mat-error *ngIf="hasError('endereco', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
+              <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+                <div fxFlex="30">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Bairro</mat-label>
+                    <input matInput formControlName="bairro" id="bairro" title="Bairro" required>
+                    <mat-error *ngIf="hasError('bairro', 'required')">Campo é obrigatório</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="70">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Endereço</mat-label>
+                    <input matInput formControlName="endereco" id="endereco" title="Endereço" required>
+                    <mat-error *ngIf="hasError('endereco', 'required')">Campo é obrigatório</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- <div>
           <button mat-fab color="primary" type="button" (click)="fileInput.click()">
@@ -57,17 +77,21 @@
           <input hidden type="file" #fileInput >
         </div> -->
 
-        <mat-form-field appearance="outline">
-          <mat-label>Descrição</mat-label>
-          <textarea matInput formControlName="descricao" id="descricao" required></textarea>
-          <mat-error *ngIf="hasError('descricao', 'required')">Campo é obrigatório</mat-error>
-        </mat-form-field>
-      </div>
+        <div fxLayout="row" fxLayout.xs="column">
+          <div fxFlex>
+            <mat-form-field appearance="outline">
+              <mat-label>Descrição</mat-label>
+              <textarea matInput formControlName="descricao" id="descricao" title="Descrição" required></textarea>
+              <mat-error *ngIf="hasError('descricao', 'required')">Campo é obrigatório</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <button type="submit" mat-raised-button color="primary" [disabled]="registroForm.invalid">Criar</button>
-        <button type="reset" mat-raised-button color="accent">Limpar</button>
-        <button type="button" mat-raised-button routerLink="/">Voltar</button>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+          <button type="submit" mat-raised-button color="primary" [disabled]="registroForm.invalid">Criar</button>
+          <button type="reset" mat-raised-button color="accent">Limpar</button>
+          <button type="button" mat-raised-button routerLink="/">Voltar</button>
+        </div>
       </div>
     </form>
   </mat-card>

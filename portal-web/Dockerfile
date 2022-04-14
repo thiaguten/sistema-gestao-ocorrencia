@@ -1,6 +1,7 @@
 ##### Stage 1
 FROM node:lts-alpine as node
 WORKDIR /app
+ENV TZ=America/Sao_Paulo
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install
 #RUN npm install --silent
@@ -16,6 +17,7 @@ RUN npm run build -- --prod
 ##### Stage 2
 FROM nginx:alpine
 VOLUME /var/cache/nginx
+ENV TZ=America/Sao_Paulo
 #COPY --from=node /app/dist /usr/share/nginx/html
 COPY --from=node /app/dist/portal-web /usr/share/nginx/html
 COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf

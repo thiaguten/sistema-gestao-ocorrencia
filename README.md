@@ -10,7 +10,7 @@ Sistema para registro de ocorrência de serviços de manutenção em estruturas 
 * [Docker Compose](https://docs.docker.com/compose/)
 
 ## Começando com o projeto
-O sistema está conteinerizado, onde seus módulos são imagens Docker.
+O sistema está conteinerizado, onde seus módulos são imagens Docker. Unidades padrão de software que empacota todo ambiente, o código e todas as suas dependências, de forma autocontida. Afim de acabar com o famoso funciona na minha máquina.
 
 Para executar todos eles de uma vez só e subir o sistema como um todo, a ferramenta Docker Compose deve ser utilizada através dos [comandos](https://docs.docker.com/compose/reference/) abaixo:
 
