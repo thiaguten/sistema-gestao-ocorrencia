@@ -159,9 +159,9 @@ services:
   sgo-portal-web:
     image: thiaguten/sgo-portal-web:0.0.0
     container_name: sgo-portal-web
-    build:
-      context: ./portal-web
-      #dockerfile: Dockerfile
+    #build:
+    #  context: ./portal-web
+    #  #dockerfile: Dockerfile
     ports:
       - "4200:80"
     networks:
