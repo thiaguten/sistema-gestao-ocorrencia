@@ -10,7 +10,9 @@ Sistema para registro de ocorrência de serviços de manutenção em estruturas 
 * [Docker Compose](https://docs.docker.com/compose/)
 
 ## Começando com o projeto
-O sistema está conteinerizado, onde seus módulos são imagens Docker. Unidades padrão de software que empacota todo ambiente, o código e todas as suas dependências, de forma autocontida. Afim de acabar com o famoso funciona na minha máquina.
+O sistema está conteinerizado, onde seus módulos são imagens Docker. 
+
+Docker Containers são unidades padrão de software que empacota todo ambiente, o código e todas as suas dependências, de forma autocontida. Afim de acabar com o famoso funciona na minha máquina.
 
 Para executar todos eles de uma vez só e subir o sistema como um todo, a ferramenta Docker Compose deve ser utilizada através dos [comandos](https://docs.docker.com/compose/reference/) abaixo:
 
@@ -18,19 +20,29 @@ Para executar todos eles de uma vez só e subir o sistema como um todo, a ferram
 
 ```docker-compose up -d```
 
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/docker-compose-up.png "Comando docker-compose up")
+
 Isso irá criar e iniciará os containers junto com os recursos de networks, volumes, etc. e via navegador web basta acessar o endereço: `http://localhost:4200/`
 
 2. Parar o sistema, execute o comando:
 
 ```docker-compose stop```
 
-Isso irá parar os containers, mas sem removê-los! Preservando todas as informações criadas. Onde o sistema pode ser iniciados novamente desta vez apenas com o comando: ```docker-compose start```
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/docker-compose-stop.png "Comando docker-compose stop")
+
+Isso irá parar os containers, mas sem removê-los! Preservando todas as informações criadas. Onde o sistema pode ser iniciados novamente desta vez apenas com o comando: 
+
+```docker-compose start```
+
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/docker-compose-start.png "Comando docker-compose start")
 
 2. Encerrar, removendo o containers previamente criados através do comando `up`, execute o comando: 
 
 ```docker-compose down```
 
-Isso irá parar e remover os containers e recursos de rede (networks) previamente criados. Neste caso o comando 1 `up` deverá ser executado novamente para iniciar o sistema novamente.
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/docker-compose-down.png "Comando docker-compose down")
+
+Isso irá parar e remover os containers e recursos de rede (networks) previamente criados. Neste caso o comando `up` deverá ser executado novamente para iniciar o sistema criando os containers e networks novamente.
 
 3. Encerrar e resetar (factory reset/purge), execute o comando:
 
