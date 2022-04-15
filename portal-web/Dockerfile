@@ -5,6 +5,7 @@ ENV TZ=America/Sao_Paulo
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install
 #RUN npm install --silent
+RUN npm fund
 COPY . .
 # Angular 12+ does a production build by default if you've enabled it using
 # ng update @angular/cli --migrate-only production-by-default

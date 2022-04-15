@@ -19,7 +19,8 @@ export class AppComponent {
     clientId: 'sgo-portal-web',
     responseType: 'code',
     scope: 'openid profile email offline_access',
-    showDebugInformation: true
+    showDebugInformation: true,
+    requireHttps: environment.idp_require_https
   };
 
   constructor(

@@ -97,7 +97,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./scripts/keycloak/realm-export.json:/tmp/realm-export.json
+      #- ./scripts/keycloak/realm-export.json:/tmp/realm-export.json
+      - ./scripts/keycloak/realm-export-no-ssl.json:/tmp/realm-export.json # executar tbm: update REALM set SSL_REQUIRED = 'NONE' where ID = 'master';
     environment:
       - KEYCLOAK_IMPORT=/tmp/realm-export.json
       - KEYCLOAK_USER=admin

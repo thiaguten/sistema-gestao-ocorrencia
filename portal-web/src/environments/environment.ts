@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  idp_require_https: false,
   idp_base_url: 'http://localhost:8080/auth',
   api_servico_base_url: 'http://localhost:8200',
   api_usuarios_base_url: 'http://localhost:8200',

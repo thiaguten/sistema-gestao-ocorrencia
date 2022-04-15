@@ -11,7 +11,7 @@ GRANT ALL ON db_sgo.* TO 'user_sgo'@'%' ;
 
 -- DROP SCHEMA IF EXISTS `db_keycloak` ;
 CREATE SCHEMA IF NOT EXISTS `db_keycloak` ;
--- USE `db_keycloak` ;
+USE `db_keycloak` ;
 -- DROP USER IF EXISTS 'user_keycloak'@'%' ;
 -- CREATE USER 'user_keycloak'@'%' IDENTIFIED BY 'Kcp@SsWd';
 -- REVOKE ALL ON db_keycloak.* FROM 'user_keycloak'@'%' ;
