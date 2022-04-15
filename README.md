@@ -56,8 +56,9 @@ Isso irá para os containers e removê-los além das networks, dos volumes, e da
 
 Tela inicial do sistema, onde é apresentada uma breve introdução sobre o mesmo.
 
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-inicial-mobile.png "Tela inicial Mobile")
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-inicial.png "Tela inicial")
+Mobile                                         | Desktop
+:---------------------------------------------:|:-------------------------------------------:
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-inicial-mobile.png "Tela inicial Mobile") | ![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-inicial.png "Tela inicial")
 
 ### Tela de cadastro
 
