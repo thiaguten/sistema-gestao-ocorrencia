@@ -64,29 +64,33 @@ Mobile                                         | Desktop
 
 Tela de cadastro de usuário do sistema. Para que o usuário possa registrar uma ocorrência, primeiro têm que ser feito um cadastro inicial.
 
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-cadastro-mobile.png "Tela de cadastro Mobile")
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-cadastro.png "Tela de cadastro")
+Mobile                                              | Desktop
+:--------------------------------------------------:|:-----------------------------------------------:
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-cadastro-mobile.png "Tela de cadastro Mobile") | ![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-cadastro.png "Tela de cadastro")
 
 ### Tela de login
 
 Tela de autenticação ao sistema. O sistema utiliza o conceito de SSO (Single-Sign-On) e para tal usa o servidor de autenticação Keycloak para gerenciamento de acesso e identificação do usuário.
 
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-login-mobile.png "Tela de login Mobile")
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-login.png "Tela de login")
+Mobile                      | Desktop
+:--------------------------:|:--------------------------:
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-login-mobile.png "Tela de login Mobile") | ![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-login.png "Tela de login")
 
 ### Tela de home
 
 Tela inicial após autenticação no sistema. Apresenta as funcionalidade no qual o usuário logado tem permissão de acesso e para o perfil de usuário público comum, apresenta uma tabela listando as últimas ocorrências registradas pelo mesmo.
 
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-home-mobile.png "Tela de home Mobile")
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-home.png "Tela de home")
+Mobile                     | Desktop
+:-------------------------:|:-------------------------:
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-home-mobile.png "Tela de home Mobile") | ![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-home.png "Tela de home")
 
 ### Tela de registro de ocorrência
 
 Tela de registro de ocorrência. Permite ao usuário registrar uma ocorrência detalhando um serviço específico, endereço entre outras informações que possam ser pertinentes.
 
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-registro-ocorrencia-mobile.png "Tela de registro de ocorrência")
-![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-registro-ocorrencia.png "Tela de registro de ocorrência")
+Mobile                                                                | Desktop
+:--------------------------------------------------------------------:|:--------------------------------------------------------------------:
+![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-registro-ocorrencia-mobile.png "Tela de registro de ocorrência") | ![Alt text](https://github.com/thiaguten/sistema-gestao-ocorrencia/blob/main/docs/assets/tela-registro-ocorrencia.png "Tela de registro de ocorrência")
 
 ## Bando de dados
 
