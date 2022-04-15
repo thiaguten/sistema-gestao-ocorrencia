@@ -50,9 +50,8 @@ services:
           memory: 256M
     restart: always
     command: mongod --oplogSize 128 --storageEngine wiredTiger
-    # DESCOMENTAR AS PORTA SOMENTE LOCALMENTE.
-    #ports:
-    #  - "27017:27017"
+    ports:
+      - "27017:27017"
     volumes:
       #- sgo_mongo_dump:/dump
       - sgo_mongo_data:/data/db
@@ -71,7 +70,6 @@ services:
         limits:
           memory: 256M
     restart: always
-    # DESCOMENTAR AS PORTAS SOMENTE LOCALMENTE.
     ports:
       - "3306:3306"
     volumes:
@@ -96,8 +94,8 @@ services:
     image: quay.io/keycloak/keycloak:16.1.1
     container_name: keycloak-server
     restart: always
-    #ports:
-    #  - "8080:8080"
+    ports:
+      - "8080:8080"
     volumes:
       - ./scripts/keycloak/realm-export.json:/tmp/realm-export.json
     environment:
@@ -132,8 +130,8 @@ services:
   sgo-naming-server:
     image: thiaguten/sgo-naming-server:0.0.1-SNAPSHOT
     container_name: sgo-naming-server
-    #ports:
-    #  - "8761:8761"
+    ports:
+      - "8761:8761"
     networks:
       - sgo-network
 
