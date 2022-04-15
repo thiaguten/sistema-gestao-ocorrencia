@@ -4,11 +4,11 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-    # restart: always
+    #deploy:
+    #  resources:
+    #    limits:
+    #      memory: 256M
+    restart: always
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -25,11 +25,11 @@ services:
   zipkin-server:
     image: openzipkin/zipkin:2.23
     container_name: zipkin-server
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-    # restart: always
+    #deploy:
+    #  resources:
+    #    limits:
+    #      memory: 256M
+    restart: always
     ports:
       - "9411:9411"
     environment:
@@ -44,8 +44,9 @@ services:
   sgo-mongo:
     image: mongo:4.4
     container_name: sgo-mongo
-    # restart: always
+    restart: always
     command: mongod --oplogSize 128 --storageEngine wiredTiger
+    # DESCOMENTAR AS PORTA SOMENTE LOCALMENTE.
     ports:
       - "27017:27017"
     volumes:
@@ -61,7 +62,8 @@ services:
   sgo-mysql:
     image: mysql:5.7
     container_name: sgo-mysql
-    # restart: always
+    restart: always
+    # DESCOMENTAR AS PORTAS SOMENTE LOCALMENTE.
     ports:
       - "3306:3306"
     volumes:
@@ -85,7 +87,7 @@ services:
   keycloak-server:
     image: quay.io/keycloak/keycloak:16.1.1
     container_name: keycloak-server
-    # restart: unless-stopped
+    restart: always
     ports:
       - "8080:8080"
     volumes:
@@ -116,6 +118,9 @@ services:
       retries: 10
       start_period: 1m
 
+  # Open Container Initiative (OCI) IMAGE CRIADA USANDO Cloud Native Buildpacks (CNB) 
+  # ATRAVES DO PLUGIN DO SPRINGBOOT PARA GRADLE E EXECUÇÃO DO COMANDO: ./gradlew bootBuildImage
+  # https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#build-image
   sgo-naming-server:
     image: thiaguten/sgo-naming-server:0.0.1-SNAPSHOT
     container_name: sgo-naming-server
@@ -124,6 +129,9 @@ services:
     networks:
       - sgo-network
 
+  # Open Container Initiative (OCI) IMAGE CRIADA USANDO Cloud Native Buildpacks (CNB)
+  # ATRAVES DO PLUGIN DO SPRINGBOOT PARA GRADLE E EXECUÇÃO DO COMANDO: ./gradlew bootBuildImage
+  # https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#build-image
   sgo-localizacao-service:
     image: thiaguten/sgo-localizacao-service:0.0.1-SNAPSHOT
     container_name: sgo-localizacao-service
@@ -138,6 +146,9 @@ services:
       - sgo-naming-server
       - rabbitmq
 
+  # Open Container Initiative (OCI) IMAGE CRIADA USANDO Cloud Native Buildpacks (CNB)
+  # ATRAVES DO PLUGIN DO SPRINGBOOT PARA GRADLE E EXECUÇÃO DO COMANDO: ./gradlew bootBuildImage
+  # https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#build-image
   sgo-ocorrencia-service:
     image: thiaguten/sgo-ocorrencia-service:0.0.1-SNAPSHOT
     container_name: sgo-ocorrencia-service
@@ -161,7 +172,7 @@ services:
     container_name: sgo-portal-web
     #build:
     #  context: ./portal-web
-    #  #dockerfile: Dockerfile
+    #  dockerfile: Dockerfile
     ports:
       - "4200:80"
     networks:
