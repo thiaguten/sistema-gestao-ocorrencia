@@ -1,0 +1,205 @@
+version: "3.9"
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - sgo-network
+    healthcheck:
+      # https://www.rabbitmq.com/monitoring.html#health-checks
+      test: rabbitmq-diagnostics -q status
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  zipkin-server:
+    image: openzipkin/zipkin:2.23
+    container_name: zipkin-server
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    restart: always
+    ports:
+      - "9411:9411"
+    environment:
+      # https://github.com/openzipkin/zipkin/tree/master/zipkin-collector/rabbitmq
+      - RABBIT_URI=amqp://guest:guest@rabbitmq:5672
+    networks:
+      - sgo-network
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  sgo-mongo:
+    image: mongo:4.4
+    container_name: sgo-mongo
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    restart: always
+    command: mongod --oplogSize 128 --storageEngine wiredTiger
+    ports:
+      - "27017:27017"
+    volumes:
+      ##- sgo_mongo_dump:/dump
+      #- sgo_mongo_data:/data/db
+      - ./sgo_mongo_data:/data/db
+      - ./scripts/mongo/init.js:/docker-entrypoint-initdb.d/1init.js
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    networks:
+      - sgo-network
+
+  sgo-mysql:
+    image: mysql:5.7
+    container_name: sgo-mysql
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      #- sgo_mysql_data:/var/lib/mysql
+      - ./sgo_mysql_data:/var/lib/mysql
+      - ./scripts/mysql/schema.sql:/docker-entrypoint-initdb.d/1schema.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db_sgo
+      - MYSQL_USER=user_sgo
+      - MYSQL_PASSWORD=Sg0p@SsWd
+    networks:
+      - sgo-network
+    healthcheck:
+      #test: "mysql $$MYSQL_DATABASE -u$$MYSQL_USER -p$$MYSQL_PASSWORD -e 'SELECT 1;'"
+      test: "mysql sys -uroot -p$$MYSQL_ROOT_PASSWORD -e 'SELECT 1;'"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  keycloak-server:
+    image: quay.io/keycloak/keycloak:16.1.1
+    container_name: keycloak-server
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      #- ./scripts/keycloak/realm-export.json:/tmp/realm-export.json
+      - ./scripts/keycloak/realm-export-no-ssl.json:/tmp/realm-export.json # executar tbm: update REALM set SSL_REQUIRED = 'NONE' where ID = 'master';
+    environment:
+      - KEYCLOAK_IMPORT=/tmp/realm-export.json
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=MYSQL
+      - DB_ADDR=sgo-mysql
+      - DB_DATABASE=db_keycloak
+      #- DB_USER=user_keycloak
+      #- DB_PASSWORD=Kcp@SsWd
+      - DB_USER=user_sgo
+      - DB_PASSWORD=Sg0p@SsWd
+      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the MySQL JDBC driver documentation in order to use it.
+      - JDBC_PARAMS=connectTimeout=60000
+      #- JDBC_PARAMS=useSSL=false&allowPublicKeyRetrieval=true&connectTimeout=60000
+    networks:
+      - sgo-network
+    depends_on:
+      sgo-mysql:
+        condition: service_healthy
+    healthcheck:
+      test: curl --silent --fail http://keycloak-server:8080/auth || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 1m
+
+  # Open Container Initiative (OCI) IMAGE CRIADA USANDO Cloud Native Buildpacks (CNB) 
+  # ATRAVES DO PLUGIN DO SPRINGBOOT PARA GRADLE E EXECUÇÃO DO COMANDO: ./gradlew bootBuildImage
+  # https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#build-image
+  sgo-naming-server:
+    image: thiaguten/sgo-naming-server:0.0.1-SNAPSHOT
+    container_name: sgo-naming-server
+    ports:
+      - "8761:8761"
+    networks:
+      - sgo-network
+
+  # Open Container Initiative (OCI) IMAGE CRIADA USANDO Cloud Native Buildpacks (CNB)
+  # ATRAVES DO PLUGIN DO SPRINGBOOT PARA GRADLE E EXECUÇÃO DO COMANDO: ./gradlew bootBuildImage
+  # https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#build-image
+  sgo-localizacao-service:
+    image: thiaguten/sgo-localizacao-service:0.0.1-SNAPSHOT
+    container_name: sgo-localizacao-service
+    ports:
+      - "8000:8000"
+    environment:
+      - PROFILE_CONFIG=docker
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - sgo-network
+    depends_on:
+      - sgo-naming-server
+      - rabbitmq
+
+  # Open Container Initiative (OCI) IMAGE CRIADA USANDO Cloud Native Buildpacks (CNB)
+  # ATRAVES DO PLUGIN DO SPRINGBOOT PARA GRADLE E EXECUÇÃO DO COMANDO: ./gradlew bootBuildImage
+  # https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#build-image
+  sgo-ocorrencia-service:
+    image: thiaguten/sgo-ocorrencia-service:0.0.1-SNAPSHOT
+    container_name: sgo-ocorrencia-service
+    ports:
+      - "8200:8200"
+    environment:
+      - PROFILE_CONFIG=docker
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - sgo-network
+    depends_on:
+      sgo-mysql:
+        condition: service_healthy
+      sgo-naming-server:
+        condition: service_started
+      rabbitmq:
+        condition: service_started
+
+  sgo-portal-web:
+    image: thiaguten/sgo-portal-web:0.0.0-CLOUD
+    container_name: sgo-portal-web
+    #build:
+    #  context: ./portal-web
+    #  dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - sgo-network
+    depends_on:
+      #- sgo-ocorrencia-service
+      #- sgo-localizacao-service
+      #- keycloak-server
+      sgo-ocorrencia-service:
+        condition: service_started
+      sgo-localizacao-service:
+        condition: service_started
+      keycloak-server:
+        condition: service_healthy
+
+#volumes:
+#  sgo_mysql_data:
+#  sgo_mongo_data:
+
+networks:
+  sgo-network:
