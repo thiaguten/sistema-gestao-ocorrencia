@@ -51,7 +51,8 @@ services:
     restart: always
     command: mongod --oplogSize 128 --storageEngine wiredTiger
     ports:
-      - "27017:27017"
+      #- "27017:27017"
+      - "27017"
     volumes:
       ##- sgo_mongo_dump:/dump
       #- sgo_mongo_data:/data/db
@@ -72,7 +73,8 @@ services:
           memory: 256M
     restart: always
     ports:
-      - "3306:3306"
+      #- "3306:3306"
+      - "3306"
     volumes:
       #- sgo_mysql_data:/var/lib/mysql
       - ./sgo_mysql_data:/var/lib/mysql

@@ -110,7 +110,7 @@ O MongoDB é o banco de dados usado para cadastro e busca de informações relac
 
 ## Nuvem
 
-Uma instância (Droplet) do sistema está implantada temporariamente na nuvem da [DigitalOcean](https://m.do.co/c/95cca974b167), acessível a partir do IP público: http://134.209.39.98:4200/
+Uma instância (Droplet) do sistema ~~está~~ estava implantada temporariamente na nuvem da [DigitalOcean](https://m.do.co/c/95cca974b167), acessível a partir do IP público: http://134.209.39.98:4200/
 
 Usuário: pucminas
 Senha: 123456
